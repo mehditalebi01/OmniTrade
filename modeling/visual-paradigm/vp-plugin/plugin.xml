@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin
+    id="omnitrade.report.diagrams"
+    name="OmniTrade Report Diagram Builder"
+    description="Builds the report-aligned OmniTrade Visual Paradigm project."
+    provider="OmniTrade AI course project"
+    class="omnitrade.vp.OmniTradeDiagramPlugin">
+  <runtime>
+    <library path="lib/omnitrade-vp-plugin.jar" relativePath="true" />
+  </runtime>
+  <actionSets />
+</plugin>

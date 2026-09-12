@@ -1,0 +1,45 @@
+@startuml
+title OmniTrade AI - UML package dependency view
+left to right direction
+skinparam shadowing false
+skinparam linetype ortho
+package "frontend" as Frontend {
+  package "pages/components" as Pages
+  package "API client/types" as Client
+}
+package "public API" as PublicAPI
+package "application services" as Services
+package "domain contracts" as Contracts
+package "workflow engine" as Engine {
+  package "validator" as Validator
+  package "runtime" as Runtime
+  package "catalog/executors" as Catalog
+}
+package "evidence adapters" as Evidence
+package "model gateway" as Model
+package "reporting" as Reporting
+package "persistence" as Persistence
+package "event infrastructure" as EventInfra
+Pages ..> Client
+Client ..> PublicAPI
+PublicAPI ..> Services
+PublicAPI ..> Contracts
+Services ..> Engine
+Services ..> Evidence
+Services ..> Model
+Services ..> Reporting
+Services ..> Persistence
+Engine ..> Contracts
+Validator ..> Catalog
+Runtime ..> Validator
+Runtime ..> Catalog
+Runtime ..> EventInfra
+Evidence ..> Contracts
+Model ..> Contracts
+Reporting ..> Contracts
+Persistence ..> Contracts
+note bottom of Contracts
+Stable dependency: framework/provider types do not enter
+workflow and domain contracts.
+end note
+@enduml

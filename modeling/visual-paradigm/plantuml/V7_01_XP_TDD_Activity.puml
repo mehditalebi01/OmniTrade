@@ -1,0 +1,43 @@
+@startuml
+title XP increment with test-driven development and evidence
+skinparam shadowing false
+skinparam linetype ortho
+|Planning Game|
+start
+:Select ready story and priority;
+:Confirm UR / FR / NFR links;
+:Write examples and acceptance tests;
+|Developer + reviewer|
+:Model risky behavior with UML;
+:Write smallest failing test (RED);
+if (Fails for expected reason?) then (yes)
+  :Implement minimum behavior (GREEN);
+else (no)
+  :Correct test or requirement;
+  -left-> Write smallest failing test (RED);
+endif
+if (Focused tests pass?) then (yes)
+  :Refactor design and code;
+else (no)
+  -left-> Implement minimum behavior (GREEN);
+endif
+:Run unit, contract, integration,\nstatic and regression checks;
+if (Quality gates pass?) then (yes)
+  |User / reviewer|
+  :Demonstrate story confirmation;
+else (no)
+  |Developer + reviewer|
+  :Diagnose failure and add test;
+  -left-> Implement minimum behavior (GREEN);
+endif
+if (Acceptance passes?) then (yes)
+  :Accept story and record evidence;
+  |Planning Game|
+  :Review and retrospective;
+  :Update backlog and next story;
+  stop
+else (no)
+  :Return story with feedback;
+  -left-> Write examples and acceptance tests;
+endif
+@enduml

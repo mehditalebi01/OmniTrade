@@ -1,0 +1,17 @@
+@startuml
+title Figure 18 - End-to-end execution sequence
+skinparam shadowing false
+skinparam linetype ortho
+skinparam componentStyle rectangle
+left to right direction
+rectangle "User" as user #FFFFFF
+rectangle "React UI" as ui #FFFFFF
+rectangle "API :8000" as api #FFFFFF
+rectangle "Postgres" as db #FFFFFF
+rectangle "Workflow :8001" as wf #FFFFFF
+rectangle "Evidence :8002" as ev #FFFFFF
+rectangle "Data APIs" as data #FFFFFF
+rectangle "Model gateway :8003" as mg #FFFFFF
+rectangle "Model APIs" as models #FFFFFF
+rectangle "Report :8004" as report #FFFFFF
+@enduml

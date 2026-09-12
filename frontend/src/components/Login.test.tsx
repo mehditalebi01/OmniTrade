@@ -1,0 +1,1 @@
+import{render,screen}from'@testing-library/react';import{describe,expect,it}from'vitest';import Login from'./Login';describe('Login',()=>{it('shows safety boundary',()=>{render(<Login onLogin={()=>{}}/>);expect(screen.getByText(/No broker connection/)).toBeTruthy()})});

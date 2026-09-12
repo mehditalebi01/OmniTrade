@@ -1,0 +1,33 @@
+name: quality
+on: [push, pull_request]
+jobs:
+  backend:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - run: pip install -e ".[dev]"
+      - run: ruff check omnitrade tests scripts
+      - run: mypy omnitrade
+      - run: pytest
+      - run: python -m scripts.measure_quality
+      - run: python scripts/run_defense_scenario.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: engineering-evidence
+          path: |
+            artifacts/defense
+            artifacts/quality
+  frontend:
+    runs-on: ubuntu-latest
+    defaults: {run: {working-directory: frontend}}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with: {version: 10}
+      - uses: actions/setup-node@v4
+        with: {node-version: 22, cache: pnpm, cache-dependency-path: frontend/pnpm-lock.yaml}
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm test
+      - run: pnpm build

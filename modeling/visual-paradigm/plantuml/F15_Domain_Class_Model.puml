@@ -1,0 +1,37 @@
+@startuml
+title Figure 15 - Domain and class model
+skinparam shadowing false
+skinparam linetype ortho
+skinparam componentStyle rectangle
+left to right direction
+rectangle "WorkflowDefinition\nname, schema_version\nnodes[], edges[]\nbudget" as workflow #E9EEFF
+rectangle "NodeDefinition\ntyped node + config\nfailure policy + timeout\nretry + position" as node_def #E9EEFF
+rectangle "EdgeDefinition\nsource.port → target.port\nloop flag" as edge_def #E9EEFF
+rectangle "WorkflowVersion\nimmutable published snapshot\ncontent_hash + version" as workflow_ver #E9EEFF
+rectangle "Run\nowner + workflow_version\nticker + as_of + trace_id\nstatus + degraded reasons" as run #E5F8F5
+rectangle "NodeRun\nnode status\nattempt + iteration\noutput or error" as node_run #E5F8F5
+rectangle "RunEvent\nevent_id + event_type\nrun_id + node_id + trace\ntimestamp + payload" as event #E5F8F5
+rectangle "Checkpoint\nsequence\nnode_states{}\nconsumed_event_ids{}" as checkpoint #E5F8F5
+rectangle "Artifact\nreport_id + format\npath + SHA-256" as artifact #F2F4F7
+rectangle "EvidenceItem\nvalue + type + unit/currency\nobserved/retrieved timestamps\nprovider + URL + hash + flags" as evidence #F2EDFF
+rectangle "Claim\ntext\nevidence_ids[]\nconfidence 0..1" as claim #F2EDFF
+rectangle "AgentReport\nspecialist + summary\nclaims[] + risks[]" as agent_report #F2EDFF
+rectangle "Decision\nBUY | HOLD | SELL | NO_DECISION\nconfidence + rationale\nclaim_ids[] + warnings[]" as decision #FFECEF
+rectangle "RunConfiguration\nagents, depth, providers\nmodels, retries, freshness\ncurrency, language, degradation" as config #FFF4D8
+rectangle "Budget\nruntime/model/provider/token caps\nmax parallel nodes" as budget #FFF4D8
+rectangle "InvestorPolicy\nhorizon + experience\nloss + position limits\nexcluded sectors" as policy #FFF4D8
+workflow --> node_def : contains 1..*
+workflow --> edge_def : contains 0..*
+workflow_ver --> workflow : snapshots
+run --> node_run : owns per node
+run --> event : emits
+checkpoint --> node_run : restores
+event --> checkpoint : deduplicated by event_id
+event --> artifact : final report event
+evidence --> claim : evidence_ids[]
+evidence --> agent_report : supports
+agent_report --> decision : claim_ids[]
+config --> run : copied into run
+budget --> workflow : default or override
+policy --> run : risk constraints
+@enduml

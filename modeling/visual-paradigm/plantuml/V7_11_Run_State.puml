@@ -1,0 +1,29 @@
+@startuml
+title OmniTrade AI - UML run state machine
+skinparam shadowing false
+[*] --> Queued : accepted configuration
+Queued --> Running : worker starts
+Running --> Pausing : pause requested
+Pausing --> Paused : safe batch complete / checkpoint saved
+Paused --> Queued : resume accepted / credentials rechecked
+Running --> Cancelling : cancel requested
+Pausing --> Cancelling : cancel requested
+Paused --> Cancelling : cancel requested
+Cancelling --> Cancelled : control observed
+Running --> Interrupted : worker/process lost
+Interrupted --> Queued : recoverable resume
+Running --> Failed : required failure / deadlock / exhausted budget
+Failed --> Queued : legal retry from checkpoint
+Running --> Succeeded : all required work complete
+Running --> Degraded : report complete with disclosed optional loss
+Succeeded --> [*]
+Degraded --> [*]
+Cancelled --> [*]
+note right of Paused
+Completed node outputs remain immutable.
+Old live runs require reconnected session capabilities.
+end note
+note right of Cancelled
+Cancellation is final and cannot resume.
+end note
+@enduml

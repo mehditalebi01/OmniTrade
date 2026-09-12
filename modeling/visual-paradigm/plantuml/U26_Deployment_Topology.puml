@@ -1,0 +1,40 @@
+@startuml
+title Supplement 26 - Deployment diagram: Docker Compose topology
+skinparam shadowing false
+skinparam linetype ortho
+skinparam componentStyle rectangle
+left to right direction
+rectangle "Browser\nlocalhost:5173\nJWT held by frontend client" as browser #E9EEFF
+rectangle "frontend\nNginx + React\nhost 5173 → container 80" as frontend #E9EEFF
+rectangle "api\nuvicorn :8000\nartifact volume\ndepends workflow + Redis + migrate" as api #E5F8F5
+rectangle "workflow\nuvicorn :8001\nWorkflowRuntime\ndepends Redis + migrate" as workflow #FFF0EB
+rectangle "evidence\nuvicorn :8002\nprovider/calculation nodes" as evidence #FFF4D8
+rectangle "model-gateway\nuvicorn :8003\nmodel clients + validation" as model #F2EDFF
+rectangle "report\nuvicorn :8004\nartifact volume" as report #E9EEFF
+rectangle "postgres:16-alpine\nDB omnitrade\nhealth: pg_isready\npostgres-data volume" as postgres #F2F4F7
+rectangle "redis:7.4-alpine\nappendonly yes\nhealth: redis-cli ping\nredis-data volume" as redis #F2F4F7
+rectangle "migrate job\nalembic upgrade head\nmust complete before services" as migrate #F2F4F7
+rectangle "artifacts volume\n/data/artifacts\nJSON + PDF reports" as artifact #F2F4F7
+rectangle "Data APIs\nYahoo / Alpha / FRED\nPolymarket / social feeds\nFrankfurter.dev FX" as data #FFF4D8
+rectangle "Model APIs\nOpenAI-compatible / Anthropic / Gemini\nAzure / AWS Bedrock" as llm #F2EDFF
+browser --> frontend : HTTP :5173
+frontend --> api : /api/v1 reverse proxy
+api --> workflow : HTTP :8001
+workflow --> evidence : HTTP :8002
+workflow --> model : HTTP :8003
+workflow --> report : HTTP :8004
+api ..> redis : Redis Streams
+workflow ..> redis : 
+evidence ..> redis : 
+model ..> redis : 
+report ..> redis : 
+api --> postgres : SQLAlchemy
+workflow --> postgres : 
+evidence --> postgres : 
+model --> postgres : 
+report --> postgres : 
+evidence --> data : HTTPS
+model --> llm : HTTPS
+report --> artifact : write files
+migrate --> postgres : schema migration
+@enduml

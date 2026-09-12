@@ -1,0 +1,48 @@
+@startuml
+title CCL-03 - UML sequence: resilient evidence acquisition and quality gate
+skinparam shadowing false
+actor Analyst
+participant "New Analysis" as UI
+participant "Run API" as API
+participant "Workflow Runtime" as Runtime
+participant "Evidence Service" as Evidence
+participant "Provider Chain" as Chain
+participant "External Provider" as Provider
+participant "Quality / Time Gate" as Gate
+database "Evidence Repository" as Repo
+Analyst -> UI : choose ticker, as-of, currency, verified chains
+UI -> API : createRun(configuration)
+API -> Runtime : execute immutable version
+par market
+  Runtime -> Evidence : collect(market, chain)
+else fundamentals
+  Runtime -> Evidence : collect(fundamentals, chain)
+else news/social/macro
+  Runtime -> Evidence : collect(optional role, chain)
+end
+Evidence -> Chain : next selected verified provider
+loop max attempts and fallbacks
+  Chain -> Provider : request(ticker, as-of)
+  alt usable response
+    Provider --> Chain : raw payload + metadata
+    break
+  else timeout / 403 / 429 / contract error
+    Provider --> Chain : classified failure
+    Chain -> Chain : bounded backoff / next provider
+  end
+end
+Chain --> Evidence : payload or exhaustion
+Evidence -> Evidence : normalize units, time, provenance, hash
+opt non-base currency
+  Evidence -> Evidence : historical FX conversion + original value
+end
+Evidence -> Gate : validate role, ticker, time, freshness, currency
+alt accepted
+  Gate -> Repo : persist normalized evidence and lineage
+  Gate --> Runtime : accepted evidence
+else optional source unusable and degradation allowed
+  Gate --> Runtime : exclude + quality warning
+else critical evidence unusable
+  Gate --> Runtime : required failure
+end
+@enduml

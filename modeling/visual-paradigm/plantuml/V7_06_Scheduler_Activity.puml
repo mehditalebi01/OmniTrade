@@ -1,0 +1,42 @@
+@startuml
+title CCL-02 - UML activity: deterministic readiness scheduler
+skinparam shadowing false
+skinparam linetype ortho
+start
+:Create or restore node states and loop counters;
+repeat
+  if (Cancel requested?) then (yes)
+    :Checkpoint stable state;
+    :Set CANCELLED;
+    stop
+  endif
+  if (Pause requested?) then (yes)
+    :Finish current safe batch;
+    :Write checkpoint and set PAUSED;
+    stop
+  endif
+  :Find pending nodes with accepted required inputs;
+  :Sort by stable node ID and cap by max parallel nodes;
+  if (Ready set empty?) then (yes)
+    if (All required paths terminal?) then (yes)
+      :Set SUCCEEDED or DEGRADED;
+      stop
+    else (no)
+      :Set FAILED with deadlock / required-failure reason;
+      stop
+    endif
+  endif
+  fork
+    :Execute ready node 1 with bounded attempts;
+  fork again
+    :Execute ready node 2 with bounded attempts;
+  fork again
+    :Execute ready node N with bounded attempts;
+  end fork
+  :Merge results in stable edge order;
+  :Apply failure/degradation policy;
+  :Append events and durable checkpoint;
+repeat while (Required work remains?) is (yes)
+:Set SUCCEEDED or DEGRADED;
+stop
+@enduml

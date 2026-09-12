@@ -1,0 +1,26 @@
+@startuml
+title Figure 4 - Reconstructed function-point timing model
+skinparam shadowing false
+skinparam linetype ortho
+skinparam componentStyle rectangle
+left to right direction
+rectangle "I1 Walking skeleton\n20 planned hours\n10 relative FP\n2.00 h / relative FP" as i1 #E9EEFF
+rectangle "I2 Safe workflow design\n28 planned hours\n16 relative FP\n1.75 h / relative FP" as i2 #FFFFFF
+rectangle "I3 Event execution\n34 planned hours\n18 relative FP\n1.89 h / relative FP" as i3 #FFFFFF
+rectangle "I4 Trusted evidence\n28 planned hours\n14 relative FP\n2.00 h / relative FP" as i4 #FFFFFF
+rectangle "I5 Typed analysis\n24 planned hours\n12 relative FP\n2.00 h / relative FP" as i5 #FFFFFF
+rectangle "I6 Decision workflow\n28 planned hours\n15 relative FP\n1.87 h / relative FP" as i6 #FFFFFF
+rectangle "I7 Explainable product\n22 planned hours\n10 relative FP\n2.20 h / relative FP" as i7 #FFFFFF
+rectangle "I8 Release evidence\n16 planned hours\n5 relative FP\n3.20 h / relative FP" as i8 #E9EEFF
+rectangle "External interaction\ninputs, outputs, and inquiries through UI and API" as ei #FFFFFF
+rectangle "Data functions\nworkflows, versions, runs, events, evidence, reports, artifacts" as data #FFFFFF
+rectangle "External interfaces\nproviders, model gateway, PostgreSQL and Redis" as interfaces #FFFFFF
+rectangle "Owned control complexity\nvalidation, scheduling, joins, failure, checkpoint, lineage" as complexity #FFFFFF
+i1 --> i2 : 
+i2 --> i3 : 
+i3 --> i4 : 
+i4 --> i5 : 
+i5 --> i6 : 
+i6 --> i7 : 
+i7 --> i8 : 
+@enduml

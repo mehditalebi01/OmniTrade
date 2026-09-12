@@ -1,0 +1,103 @@
+@startuml
+title OmniTrade AI - UML domain class model
+skinparam shadowing false
+skinparam linetype ortho
+hide empty methods
+class WorkflowDefinition {
+  +schemaVersion: String
+  +name: String
+  +validate(): ValidationResult
+}
+class NodeDefinition {
+  +id: String
+  +type: String
+  +failurePolicy: FailurePolicy
+}
+class EdgeDefinition {
+  +sourcePort: String
+  +targetPort: String
+  +loop: Boolean
+}
+class WorkflowVersion {
+  +id: UUID
+  +version: Integer
+  +contentHash: String
+}
+class Run {
+  +id: UUID
+  +ticker: String
+  +status: RunStatus
+  +traceId: UUID
+}
+class RunConfiguration {
+  +analysts: Set
+  +researchDepth: Integer
+  +riskProfile: String
+}
+class NodeRun {
+  +nodeId: String
+  +status: NodeStatus
+  +attempt: Integer
+}
+class RunEvent {
+  +eventId: UUID
+  +eventType: String
+  +occurredAt: DateTime
+}
+class Checkpoint {
+  +sequence: Integer
+  +consumedEventIds: Set
+}
+class EvidenceItem {
+  +provider: String
+  +observedAt: DateTime
+  +currency: String
+  +contentHash: String
+}
+class AgentReport {
+  +role: String
+  +confidence: Decimal
+  +summary: String
+}
+class Claim {
+  +text: String
+  +supported: Boolean
+}
+class Decision {
+  +action: Action
+  +confidence: Decimal
+  +rationale: String
+}
+class Report {
+  +runId: UUID
+  +lineageComplete: Boolean
+}
+class Artifact {
+  +format: String
+  +sha256: String
+}
+class UserProfile {
+  +horizon: String
+  +maxLoss: Decimal
+  +maxPosition: Decimal
+}
+WorkflowDefinition "1" *-- "1..*" NodeDefinition
+WorkflowDefinition "1" *-- "1..*" EdgeDefinition
+WorkflowVersion "1" *-- "1" WorkflowDefinition : immutable snapshot
+Run "*" --> "1" WorkflowVersion
+Run "1" *-- "1" RunConfiguration
+Run "1" *-- "0..*" NodeRun
+Run "1" *-- "0..*" RunEvent
+Run "1" *-- "0..*" Checkpoint
+Run "1" *-- "0..*" EvidenceItem
+Run "1" --> "1" UserProfile : policy snapshot
+NodeRun "1" o-- "0..1" AgentReport
+AgentReport "1" *-- "0..*" Claim
+Claim "*" --> "0..*" EvidenceItem : evidenceRefs
+Report "1" *-- "1" Decision
+Report "1" o-- "0..*" AgentReport
+Report "1" o-- "0..*" Claim
+Report "1" *-- "1..*" Artifact
+Run "1" --> "0..1" Report
+Checkpoint "1" o-- "0..*" NodeRun : restores
+@enduml

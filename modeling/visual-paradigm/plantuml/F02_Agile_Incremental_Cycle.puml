@@ -1,0 +1,28 @@
+@startuml
+title Figure 2 - Agile incremental cycle with XP engineering practices
+skinparam shadowing false
+skinparam linetype ortho
+skinparam componentStyle rectangle
+left to right direction
+rectangle "Select value\nstory + acceptance criteria\nplanning game" as select #E9EEFF
+rectangle "Analyze and design\nsimple typed contract\nspike only for uncertainty" as analyze #F2F4F7
+rectangle "Implement\nsmall change\nlead + reviewer rotation" as implement #F2F4F7
+rectangle "Verify\ntests + static checks\nfake models / recorded providers" as verify #EAF8EF
+rectangle "Integrate\nworking main baseline\ncontinuous integration" as integrate #F2F4F7
+rectangle "Review\nuser + professor feedback\ndemonstrate evidence" as review #FFF4D8
+rectangle "Reflect\nlimits + improvements\nrefactor without behavior drift" as reflect #F2EDFF
+rectangle "Adapt next increment\nreprioritize story\nkeep acceptance boundary" as adapt #E9EEFF
+rectangle "Communication\nshared contracts + daily review" as communication #FFFFFF
+rectangle "Simplicity\nsmall typed slices; no speculative services" as simplicity #FFFFFF
+rectangle "Feedback\ntests, UI evidence, demonstrations" as feedback_v #FFFFFF
+rectangle "Courage\nexpose gaps and refactor" as courage #FFFFFF
+rectangle "Respect\ncollective ownership and review" as respect #FFFFFF
+select --> analyze : 
+analyze --> implement : 
+implement --> verify : 
+verify --> integrate : 
+integrate --> review : 
+review --> reflect : 
+reflect --> adapt : 
+adapt --> select : feedback changes the next story; it never bypasses verification
+@enduml

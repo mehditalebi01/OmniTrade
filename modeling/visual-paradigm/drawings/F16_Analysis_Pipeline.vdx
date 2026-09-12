@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VisioDocument xmlns="urn:schemas-microsoft-com:office:visio" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+ <DocumentProperties><Creator>OmniTradeAI</Creator><Title>Figure 16 - Analysis pipeline: stages, gates, parallelism, and recovery</Title></DocumentProperties>
+ <DocumentSettings><DefaultLineStyle>0</DefaultLineStyle><DefaultFillStyle>0</DefaultFillStyle><DefaultTextStyle>0</DefaultTextStyle></DocumentSettings>
+ <Colors/><StyleSheets/><Masters/>
+ <Pages><Page ID="0" NameU="F16_Analysis_Pipeline" Name="Figure 16 - Analysis pipeline: stages, gates, parallelism, and recovery">
+  <PageSheet><PageProps><PageWidth>30.0000</PageWidth><PageHeight>15.5000</PageHeight><PageScale>1</PageScale><DrawingScale>1</DrawingScale></PageProps></PageSheet>
+  <Shapes><Shape ID="1" NameU="boundary_1" Type="Shape">
+      <XForm><PinX>15.0000</PinX><PinY>7.6500</PinY><Width>27.8000</Width><Height>3.3000</Height><LocPinX>13.9000</LocPinX><LocPinY>1.6500</LocPinY><Angle>0</Angle></XForm>
+      <Line><LineWeight>0.018</LineWeight><LineColor>RGB(102,112,133)</LineColor><LinePattern>1</LinePattern></Line>
+      <Fill><FillForegnd>RGB(252,252,253)</FillForegnd><FillPattern>1</FillPattern></Fill>
+      <Char IX="0"><Font>0</Font><Color>RGB(23,32,51)</Color><Size>0.115</Size></Char><Para IX="0"><HorzAlign>1</HorzAlign><SpBefore>0</SpBefore><SpAfter>0</SpAfter></Para>
+      <Text>Cross-cutting owned execution controls</Text>
+      <Geom IX="0"><MoveTo IX="1"><X>0</X><Y>0</Y></MoveTo><LineTo IX="2"><X>27.8000</X><Y>0</Y></LineTo><LineTo IX="3"><X>27.8000</X><Y>3.3000</Y></LineTo><LineTo IX="4"><X>0</X><Y>3.3000</Y></LineTo><LineTo IX="5"><X>0</X><Y>0</Y></LineTo></Geom>
+    </Shape><Shape ID="2" NameU="pipe_0" Type="Shape">
+      <XForm><PinX>3.1750</PinX><PinY>12.8005</PinY><Width>0.3500</Width><Height>0.0010</Height><LocPinX>0.1750</LocPinX><LocPinY>0.0005</LocPinY><Angle>0</Angle></XForm>
+      <Line><LineWeight>0.014</LineWeight><LineColor>RGB(102,112,133)</LineColor><LinePattern>1</LinePattern><EndArrow>4</EndArrow><EndArrowSize>2</EndArrowSize></Line>
+      <Fill><FillPattern>0</FillPattern></Fill><Geom IX="0"><NoFill>1</NoFill><MoveTo IX="1"><X>0.0000</X><Y>0.0000</Y></MoveTo><LineTo IX="2"><X>0.3500</X><Y>0.0000</Y></LineTo></Geom>
+    </Shape><Shape ID="3" NameU="pipe_1" Type="Shape">
+      <XForm><PinX>6.0750</PinX><PinY>12.8005</PinY><Width>0.3500</Width><Height>0.0010</Height><LocPinX>0.1750</LocPinX><LocPinY>0.0005</LocPinY><Angle>0</Angle></XForm>
+      <Line><LineWeight>0.014</LineWeight><LineColor>RGB(102,112,133)</LineColor><LinePattern>1</LinePattern><EndArrow>4</EndArrow><EndArrowSize>2</EndArrowSize></Line>
+      <Fill><FillPattern>0</FillPattern></Fill><Geom IX="0"><NoFill>1</NoFill><MoveTo IX="1"><X>0.0000</X><Y>0.0000</Y></MoveTo><LineTo IX="2"><X>0.3500</X><Y>0.0000</Y></LineTo></Geom>
+    </Shape><Shape ID="4" NameU="pipe_2" Type="Shape">
+      <XForm><PinX>8.9750</PinX><PinY>12.8005</PinY><Width>0.3500</Width><Height>0.0010</Height><LocPinX>0.1750</LocPinX><LocPinY>0.0005</LocPinY><Angle>0</Angle></XForm>
+      <Line><LineWeight>0.014</LineWeight><LineColor>RGB(102,112,133)</LineColor><LinePattern>1</LinePattern><EndArrow>4</EndArrow><EndArrowSize>2</EndArrowSize></Line>
+      <Fill><FillPattern>0</FillPattern></Fill><Geom IX="0"><NoFill>1</NoFill><MoveTo IX="1"><X>0.0000</X><Y>0.0000</Y></MoveTo><LineTo IX="2"><X>0.3500</X><Y>0.0000</Y></LineTo></Geom>
+    </Shape><Shape ID="5" NameU="pipe_3" Type="Shape">
+      <XForm><PinX>11.8750</PinX><PinY>12.8005</PinY><Width>0.3500</Width><Height>0.0010</Height><LocPinX>0.1750</LocPinX><LocPinY>0.0005</LocPinY><Angle>0</Angle></XForm>
+      <Line><LineWeight>0.014</LineWeight><LineColor>RGB(102,112,133)</LineColor><LinePattern>1</LinePattern><EndArrow>4</EndArrow><EndArrowSize>2</EndArrowSize></Line>
+      <Fill><FillPattern>0</FillPattern></Fill><Geom IX="0"><NoFill>1</NoFill><MoveTo IX="1"><X>0.0000</X><Y>0.0000</Y></MoveTo><LineTo IX="2"><X>0.3500</X><Y>0.0000</Y></LineTo></Geom>
+    </Shape><Shape ID="6" NameU="pipe_4" Type="Shape">
+      <XForm><PinX>14.7750</PinX><PinY>12.8005</PinY><Width>0.3500</Width><Height>0.0010</Height><LocPinX>0.1750</LocPinX><LocPinY>0.0005</LocPinY><Angle>0</Angle></XForm>
+      <Line><LineWeight>0.014</LineWeight><LineColor>RGB(102,112,133)</LineColor><LinePattern>1</LinePattern><EndArrow>4</EndArrow><EndArrowSize>2</EndArrowSize></Line>
+      <Fill><FillPattern>0</FillPattern></Fill><Geom IX="0"><NoFill>1</NoFill><MoveTo IX="1"><X>0.0000</X><Y>0.0000</Y></MoveTo><LineTo IX="2"><X>0.3500</X><Y>0.0000</Y></LineTo></Geom>
+    </Shape><Shape ID="7" NameU="pipe_5" Type="Shape">
+      <XForm><PinX>17.6750</PinX><PinY>12.8005</PinY><Width>0.3500</Width><Height>0.0010</Height><LocPinX>0.1750</LocPinX><LocPinY>0.0005</LocPinY><Angle>0</Angle></XForm>
+      <Line><LineWeight>0.014</LineWeight><LineColor>RGB(102,112,133)</LineColor><LinePattern>1</LinePattern><EndArrow>4</EndArrow><EndArrowSize>2</EndArrowSize></Line>
+      <Fill><FillPattern>0</FillPattern></Fill><Geom IX="0"><NoFill>1</NoFill><MoveTo IX="1"><X>0.0000</X><Y>0.0000</Y></MoveTo><LineTo IX="2"><X>0.3500</X><Y>0.0000</Y></LineTo></Geom>
+    </Shape><Shape ID="8" NameU="pipe_6" Type="Shape">
+      <XForm><PinX>20.5750</PinX><PinY>12.8005</PinY><Width>0.3500</Width><Height>0.0010</Height><LocPinX>0.1750</LocPinX><LocPinY>0.0005</LocPinY><Angle>0</Angle></XForm>
+      <Line><LineWeight>0.014</LineWeight><LineColor>RGB(102,112,133)</LineColor><LinePattern>1</LinePattern><EndArrow>4</EndArrow><EndArrowSize>2</EndArrowSize></Line>
+      <Fill><FillPattern>0</FillPattern></Fill><Geom IX="0"><NoFill>1</NoFill><MoveTo IX="1"><X>0.0000</X><Y>0.0000</Y></MoveTo><LineTo IX="2"><X>0.3500</X><Y>0.0000</Y></LineTo></Geom>
+    </Shape><Shape ID="9" NameU="pipe_7" Type="Shape">
+      <XForm><PinX>23.4750</PinX><PinY>12.8005</PinY><Width>0.3500</Width><Height>0.0010</Height><LocPinX>0.1750</LocPinX><LocPinY>0.0005</LocPinY><Angle>0</Angle></XForm>
+      <Line><LineWeight>0.014</LineWeight><LineColor>RGB(102,112,133)</LineColor><LinePattern>1</LinePattern><EndArrow>4</EndArrow><EndArrowSize>2</EndArrowSize></Line>
+      <Fill><FillPattern>0</FillPattern></Fill><Geom IX="0"><NoFill>1</NoFill><MoveTo IX="1"><X>0.0000</X><Y>0.0000</Y></MoveTo><LineTo IX="2"><X>0.3500</X><Y>0.0000</Y></LineTo></Geom>
+    </Shape><Shape ID="10" NameU="pipe_8" Type="Shape">
+      <XForm><PinX>26.3750</PinX><PinY>12.8005</PinY><Width>0.3500</Width><Height>0.0010</Height><LocPinX>0.1750</LocPinX><LocPinY>0.0005</LocPinY><Angle>0</Angle></XForm>
+      <Line><LineWeight>0.014</LineWeight><LineColor>RGB(102,112,133)</LineColor><LinePattern>1</LinePattern><EndArrow>4</EndArrow><EndArrowSize>2</EndArrowSize></Line>
+      <Fill><FillPattern>0</FillPattern></Fill><Geom IX="0"><NoFill>1</NoFill><MoveTo IX="1"><X>0.0000</X><Y>0.0000</Y></MoveTo><LineTo IX="2"><X>0.3500</X><Y>0.0000</Y></LineTo></Geom>
+    </Shape><Shape ID="11" NameU="gate_link_0" Type="Shape">
+      <XForm><PinX>1.7255</PinX><PinY>11.6000</PinY><Width>0.0010</Width><Height>0.8000</Height><LocPinX>0.0005</LocPinX><LocPinY>0.4000</LocPinY><Angle>0</Angle></XForm>
+      <Line><LineWeight>0.014</LineWeight><LineColor>RGB(102,112,133)</LineColor><LinePattern>2</LinePattern><EndArrow>4</EndArrow><EndArrowSize>2</EndArrowSize></Line>
+      <Fill><FillPattern>0</FillPattern></Fill><Geom IX="0"><NoFill>1</NoFill><MoveTo IX="1"><X>0.0000</X><Y>0.8000</Y></MoveTo><LineTo IX="2"><X>0.0000</X><Y>0.0000</Y></LineTo></Geom>
+    </Shape><Shape ID="12" NameU="gate_link_1" Type="Shape">
+      <XForm><PinX>4.6255</PinX><PinY>11.6000</PinY><Width>0.0010</Width><Height>0.8000</Height><LocPinX>0.0005</LocPinX><LocPinY>0.4000</LocPinY><Angle>0</Angle></XForm>
+      <Line><LineWeight>0.014</LineWeight><LineColor>RGB(102,112,133)</LineColor><LinePattern>2</LinePattern><EndArrow>4</EndArrow><EndArrowSize>2</EndArrowSize></Line>
+      <Fill><FillPattern>0</FillPattern></Fill><Geom IX="0"><NoFill>1</NoFill><MoveTo IX="1"><X>0.0000</X><Y>0.8000</Y></MoveTo><LineTo IX="2"><X>0.0000</X><Y>0.0000</Y></LineTo></Geom>
+    </Shape><Shape ID="13" NameU="gate_link_2" Type="Shape">
+      <XForm><PinX>7.5255</PinX><PinY>11.6000</PinY><Width>0.0010</Width><Height>0.8000</Height><LocPinX>0.0005</LocPinX><LocPinY>0.4000</LocPinY><Angle>0</Angle></XForm>
+      <Line><LineWeight>0.014</LineWeight><LineColor>RGB(102,112,133)</LineColor><LinePattern>2</LinePattern><EndArrow>4</EndArrow><EndArrowSize>2</EndArrowSize></Line>
+      <Fill><FillPattern>0</FillPattern></Fill><Geom IX="0"><NoFill>1</NoFill><MoveTo IX="1"><X>0.0000</X><Y>0.8000</Y></MoveTo><LineTo IX="2"><X>0.0000</X><Y>0.0000</Y></LineTo></Geom>
+    </Shape><Shape ID="14" NameU="gate_link_3" Type="Shape">
+      <XForm><PinX>10.4255</PinX><PinY>11.6000</PinY><Width>0.0010</Width><Height>0.8000</Height><LocPinX>0.0005</LocPinX><LocPinY>0.4000</LocPinY><Angle>0</Angle></XForm>
+      <Line><LineWeight>0.014</LineWeight><LineColor>RGB(102,112,133)</LineColor><LinePattern>2</LinePattern><EndArrow>4</EndArrow><EndArrowSize>2</EndArrowSize></Line>
+      <Fill><FillPattern>0</FillPattern></Fill><Geom IX="0"><NoFill>1</NoFill><MoveTo IX="1"><X>0.0000</X><Y>0.8000</Y></MoveTo><LineTo IX="2"><X>0.0000</X><Y>0.0000</Y></LineTo></Geom>
+    </Shape><Shape ID="15" NameU="gate_link_4" Type="Shape">
+      <XForm><PinX>13.3255</PinX><PinY>11.6000</PinY><Width>0.0010</Width><Height>0.8000</Height><LocPinX>0.0005</LocPinX><LocPinY>0.4000</LocPinY><Angle>0</Angle></XForm>
+      <Line><LineWeight>0.014</LineWeight><LineColor>RGB(102,112,133)</LineColor><LinePattern>2</LinePattern><EndArrow>4</EndArrow><EndArrowSize>2</EndArrowSize></Line>
+      <Fill><FillPattern>0</FillPattern></Fill><Geom IX="0"><NoFill>1</NoFill><MoveTo IX="1"><X>0.0000</X><Y>0.8000</Y></MoveTo><LineTo IX="2"><X>0.0000</X><Y>0.0000</Y></LineTo></Geom>
+    </Shape><Shape ID="16" NameU="gate_link_5" Type="Shape">
+      <XForm><PinX>16.2255</PinX><PinY>11.6000</PinY><Width>0.0010</Width><Height>0.8000</Height><LocPinX>0.0005</LocPinX><LocPinY>0.4000</LocPinY><Angle>0</Angle></XForm>
+      <Line><LineWeight>0.014</LineWeight><LineColor>RGB(102,112,133)</LineColor><LinePattern>2</LinePattern><EndArrow>4</EndArrow><EndArrowSize>2</EndArrowSize></Line>
+      <Fill><FillPattern>0</FillPattern></Fill><Geom IX="0"><NoFill>1</NoFill><MoveTo IX="1"><X>0.0000</X><Y>0.8000</Y></MoveTo><LineTo IX="2"><X>0.0000</X><Y>0.0000</Y></LineTo></Geom>
+    </Shape><Shape ID="17" NameU="gate_link_6" Type="Shape">
+      <XForm><PinX>19.1255</PinX><PinY>11.6000</PinY><Width>0.0010</Width><Height>0.8000</Height><LocPinX>0.0005</LocPinX><LocPinY>0.4000</LocPinY><Angle>0</Angle></XForm>
+      <Line><LineWeight>0.014</LineWeight><LineColor>RGB(102,112,133)</LineColor><LinePattern>2</LinePattern><EndArrow>4</EndArrow><EndArrowSize>2</EndArrowSize></Line>
+      <Fill><FillPattern>0</FillPattern></Fill><Geom IX="0"><NoFill>1</NoFill><MoveTo IX="1"><X>0.0000</X><Y>0.8000</Y></MoveTo><LineTo IX="2"><X>0.0000</X><Y>0.0000</Y></LineTo></Geom>
+    </Shape><Shape ID="18" NameU="gate_link_7" Type="Shape">
+      <XForm><PinX>22.0255</PinX><PinY>11.6000</PinY><Width>0.0010</Width><Height>0.8000</Height><LocPinX>0.0005</LocPinX><LocPinY>0.4000</LocPinY><Angle>0</Angle></XForm>
+      <Line><LineWeight>0.014</LineWeight><LineColor>RGB(102,112,133)</LineColor><LinePattern>2</LinePattern><EndArrow>4</EndArrow><EndArrowSize>2</EndArrowSize></Line>
+      <Fill><FillPattern>0</FillPattern></Fill><Geom IX="0"><NoFill>1</NoFill><MoveTo IX="1"><X>0.0000</X><Y>0.8000</Y></MoveTo><LineTo IX="2"><X>0.0000</X><Y>0.0000</Y></LineTo></Geom>
+    </Shape><Shape ID="19" NameU="gate_link_8" Type="Shape">
+      <XForm><PinX>24.9255</PinX><PinY>11.6000</PinY><Width>0.0010</Width><Height>0.8000</Height><LocPinX>0.0005</LocPinX><LocPinY>0.4000</LocPinY><Angle>0</Angle></XForm>
+      <Line><LineWeight>0.014</LineWeight><LineColor>RGB(102,112,133)</LineColor><LinePattern>2</LinePattern><EndArrow>4</EndArrow><EndArrowSize>2</EndArrowSize></Line>
+      <Fill><FillPattern>0</FillPattern></Fill><Geom IX="0"><NoFill>1</NoFill><MoveTo IX="1"><X>0.0000</X><Y>0.8000</Y></MoveTo><LineTo IX="2"><X>0.0000</X><Y>0.0000</Y></LineTo></Geom>
+    </Shape><Shape ID="20" NameU="gate_link_9" Type="Shape">
+      <XForm><PinX>27.8255</PinX><PinY>11.6000</PinY><Width>0.0010</Width><Height>0.8000</Height><LocPinX>0.0005</LocPinX><LocPinY>0.4000</LocPinY><Angle>0</Angle></XForm>
+      <Line><LineWeight>0.014</LineWeight><LineColor>RGB(102,112,133)</LineColor><LinePattern>2</LinePattern><EndArrow>4</EndArrow><EndArrowSize>2</EndArrowSize></Line>
+      <Fill><FillPattern>0</FillPattern></Fill><Geom IX="0"><NoFill>1</NoFill><MoveTo IX="1"><X>0.0000</X><Y>0.8000</Y></MoveTo><LineTo IX="2"><X>0.0000</X><Y>0.0000</Y></LineTo></Geom>
+    </Shape><Shape ID="21" NameU="control_recover" Type="Shape">
+      <XForm><PinX>12.8000</PinX><PinY>5.7000</PinY><Width>15.1000</Width><Height>2.6000</Height><LocPinX>7.5500</LocPinX><LocPinY>1.3000</LocPinY><Angle>0</Angle></XForm>
+      <Line><LineWeight>0.014</LineWeight><LineColor>RGB(217,83,103)</LineColor><LinePattern>1</LinePattern><EndArrow>4</EndArrow><EndArrowSize>2</EndArrowSize></Line>
+      <Fill><FillPattern>0</FillPattern></Fill><Geom IX="0"><NoFill>1</NoFill><MoveTo IX="1"><X>15.1000</X><Y>2.6000</Y></MoveTo><LineTo IX="2"><X>15.1000</X><Y>0.8000</Y></LineTo><LineTo IX="3"><X>0.0000</X><Y>0.8000</Y></LineTo><LineTo IX="4"><X>0.0000</X><Y>0.0000</Y></LineTo></Geom>
+    </Shape><Shape ID="22" NameU="label_control_recover" Type="Shape">
+      <XForm><PinX>4.8000</PinX><PinY>5.4800</PinY><Width>1.4600</Width><Height>0.2800</Height><LocPinX>0.7300</LocPinX><LocPinY>0.1400</LocPinY><Angle>0</Angle></XForm>
+      <Line><LineWeight>0.018</LineWeight><LineColor>RGB(208,213,221)</LineColor><LinePattern>1</LinePattern></Line>
+      <Fill><FillForegnd>RGB(255,255,255)</FillForegnd><FillPattern>1</FillPattern></Fill>
+      <Char IX="0"><Font>0</Font><Color>RGB(23,32,51)</Color><Size>0.115</Size></Char><Para IX="0"><HorzAlign>1</HorzAlign><SpBefore>0</SpBefore><SpAfter>0</SpAfter></Para>
+      <Text>classified failure</Text>
+      <Geom IX="0"><MoveTo IX="1"><X>0</X><Y>0</Y></MoveTo><LineTo IX="2"><X>1.4600</X><Y>0</Y></LineTo><LineTo IX="3"><X>1.4600</X><Y>0.2800</Y></LineTo><LineTo IX="4"><X>0</X><Y>0.2800</Y></LineTo><LineTo IX="5"><X>0</X><Y>0</Y></LineTo></Geom>
+    </Shape><Shape ID="23" NameU="control_resume" Type="Shape">
+      <XForm><PinX>20.4000</PinX><PinY>5.7000</PinY><Width>10.8000</Width><Height>2.6000</Height><LocPinX>5.4000</LocPinX><LocPinY>1.3000</LocPinY><Angle>0</Angle></XForm>
+      <Line><LineWeight>0.014</LineWeight><LineColor>RGB(67,97,238)</LineColor><LinePattern>1</LinePattern><EndArrow>4</EndArrow><EndArrowSize>2</EndArrowSize></Line>
+      <Fill><FillPattern>0</FillPattern></Fill><Geom IX="0"><NoFill>1</NoFill><MoveTo IX="1"><X>10.8000</X><Y>2.6000</Y></MoveTo><LineTo IX="2"><X>10.8000</X><Y>0.8000</Y></LineTo><LineTo IX="3"><X>0.0000</X><Y>0.8000</Y></LineTo><LineTo IX="4"><X>0.0000</X><Y>0.0000</Y></LineTo></Geom>
+    </Shape><Shape ID="24" NameU="label_control_resume" Type="Shape">
+      <XForm><PinX>13.8000</PinX><PinY>5.4000</PinY><Width>1.5300</Width><Height>0.2800</Height><LocPinX>0.7650</LocPinX><LocPinY>0.1400</LocPinY><Angle>0</Angle></XForm>
+      <Line><LineWeight>0.018</LineWeight><LineColor>RGB(208,213,221)</LineColor><LinePattern>1</LinePattern></Line>
+      <Fill><FillForegnd>RGB(255,255,255)</FillForegnd><FillPattern>1</FillPattern></Fill>
+      <Char IX="0"><Font>0</Font><Color>RGB(23,32,51)</Color><Size>0.115</Size></Char><Para IX="0"><HorzAlign>1</HorzAlign><SpBefore>0</SpBefore><SpAfter>0</SpAfter></Para>
+      <Text>checkpoint/recovery</Text>
+      <Geom IX="0"><MoveTo IX="1"><X>0</X><Y>0</Y></MoveTo><LineTo IX="2"><X>1.5300</X><Y>0</Y></LineTo><LineTo IX="3"><X>1.5300</X><Y>0.2800</Y></LineTo><LineTo IX="4"><X>0</X><Y>0.2800</Y></LineTo><LineTo IX="5"><X>0</X><Y>0</Y></LineTo></Geom>
+    </Shape><Shape ID="25" NameU="control_terminal" Type="Shape">
+      <XForm><PinX>14.3750</PinX><PinY>5.7000</PinY><Width>20.7500</Width><Height>2.6000</Height><LocPinX>10.3750</LocPinX><LocPinY>1.3000</LocPinY><Angle>0</Angle></XForm>
+      <Line><LineWeight>0.014</LineWeight><LineColor>RGB(102,112,133)</LineColor><LinePattern>1</LinePattern><EndArrow>4</EndArrow><EndArrowSize>2</EndArrowSize></Line>
+      <Fill><FillPattern>0</FillPattern></Fill><Geom IX="0"><NoFill>1</NoFill><MoveTo IX="1"><X>0.0000</X><Y>2.6000</Y></MoveTo><LineTo IX="2"><X>0.0000</X><Y>1.0000</Y></LineTo><LineTo IX="3"><X>20.7500</X><Y>1.0000</Y></LineTo><LineTo IX="4"><X>20.7500</X><Y>0.0000</Y></LineTo></Geom>
+    </Shape><Shape ID="26" NameU="label_control_terminal" Type="Shape">
+      <XForm><PinX>22.9000</PinX><PinY>5.6000</PinY><Width>1.4600</Width><Height>0.2800</Height><LocPinX>0.7300</LocPinX><LocPinY>0.1400</LocPinY><Angle>0</Angle></XForm>
+      <Line><LineWeight>0.018</LineWeight><LineColor>RGB(208,213,221)</LineColor><LinePattern>1</LinePattern></Line>
+      <Fill><FillForegnd>RGB(255,255,255)</FillForegnd><FillPattern>1</FillPattern></Fill>
+      <Char IX="0"><Font>0</Font><Color>RGB(23,32,51)</Color><Size>0.115</Size></Char><Para IX="0"><HorzAlign>1</HorzAlign><SpBefore>0</SpBefore><SpAfter>0</SpAfter></Para>
+      <Text>terminal selection</Text>
+      <Geom IX="0"><MoveTo IX="1"><X>0</X><Y>0</Y></MoveTo><LineTo IX="2"><X>1.4600</X><Y>0</Y></LineTo><LineTo IX="3"><X>1.4600</X><Y>0.2800</Y></LineTo><LineTo IX="4"><X>0</X><Y>0.2800</Y></LineTo><LineTo IX="5"><X>0</X><Y>0</Y></LineTo></Geom>
+    </Shape><Shape ID="27" NameU="configure" Type="Shape">
+      <XForm><PinX>1.7250</PinX><PinY>12.8000</PinY><Width>2.5500</Width><Height>1.6000</Height><LocPinX>1.2750</LocPinX><LocPinY>0.8000</LocPinY><Angle>0</Angle></XForm>
+      <Line><LineWeight>0.018</LineWeight><LineColor>RGB(67,97,238)</LineColor><LinePattern>1</LinePattern></Line>
+      <Fill><FillForegnd>RGB(233,238,255)</FillForegnd><FillPattern>1</FillPattern></Fill>
+      <Char IX="0"><Font>0</Font><Color>RGB(23,32,51)</Color><Size>0.115</Size></Char><Para IX="0"><HorzAlign>1</HorzAlign><SpBefore>0</SpBefore><SpAfter>0</SpAfter></Para>
+      <Text>«activity»&#10;1. Configure&#10;ticker/date/roles/depth&#10;risk/report/reasoning/currency&#10;budgets/retries/freshness/concurrency</Text>
+      <Geom IX="0"><MoveTo IX="1"><X>0</X><Y>0</Y></MoveTo><LineTo IX="2"><X>2.5500</X><Y>0</Y></LineTo><LineTo IX="3"><X>2.5500</X><Y>1.6000</Y></LineTo><LineTo IX="4"><X>0</X><Y>1.6000</Y></LineTo><LineTo IX="5"><X>0</X><Y>0</Y></LineTo></Geom>
+    </Shape><Shape ID="28" NameU="validate" Type="Shape">
+      <XForm><PinX>4.6250</PinX><PinY>12.8000</PinY><Width>2.5500</Width><Height>1.6000</Height><LocPinX>1.2750</LocPinX><LocPinY>0.8000</LocPinY><Angle>0</Angle></XForm>
+      <Line><LineWeight>0.018</LineWeight><LineColor>RGB(102,112,133)</LineColor><LinePattern>1</LinePattern></Line>
+      <Fill><FillForegnd>RGB(255,255,255)</FillForegnd><FillPattern>1</FillPattern></Fill>
+      <Char IX="0"><Font>0</Font><Color>RGB(23,32,51)</Color><Size>0.115</Size></Char><Para IX="0"><HorzAlign>1</HorzAlign><SpBefore>0</SpBefore><SpAfter>0</SpAfter></Para>
+      <Text>«activity»&#10;2. Validate&#10;Pydantic bounds + enum matrix&#10;types/ports/reachability/cycles&#10;loops/joins/side effects/budget</Text>
+      <Geom IX="0"><MoveTo IX="1"><X>0</X><Y>0</Y></MoveTo><LineTo IX="2"><X>2.5500</X><Y>0</Y></LineTo><LineTo IX="3"><X>2.5500</X><Y>1.6000</Y></LineTo><LineTo IX="4"><X>0</X><Y>1.6000</Y></LineTo><LineTo IX="5"><X>0</X><Y>0</Y></LineTo></Geom>
+    </Shape><Shape ID="29" NameU="publish" Type="Shape">
+      <XForm><PinX>7.5250</PinX><PinY>12.8000</PinY><Width>2.5500</Width><Height>1.6000</Height><LocPinX>1.2750</LocPinX><LocPinY>0.8000</LocPinY><Angle>0</Angle></XForm>
+      <Line><LineWeight>0.018</LineWeight><LineColor>RGB(102,112,133)</LineColor><LinePattern>1</LinePattern></Line>
+      <Fill><FillForegnd>RGB(255,255,255)</FillForegnd><FillPattern>1</FillPattern></Fill>
+      <Char IX="0"><Font>0</Font><Color>RGB(23,32,51)</Color><Size>0.115</Size></Char><Para IX="0"><HorzAlign>1</HorzAlign><SpBefore>0</SpBefore><SpAfter>0</SpAfter></Para>
+      <Text>«activity»&#10;3. Publish&#10;immutable workflow version&#10;catalog snapshot + content hash</Text>
+      <Geom IX="0"><MoveTo IX="1"><X>0</X><Y>0</Y></MoveTo><LineTo IX="2"><X>2.5500</X><Y>0</Y></LineTo><LineTo IX="3"><X>2.5500</X><Y>1.6000</Y></LineTo><LineTo IX="4"><X>0</X><Y>1.6000</Y></LineTo><LineTo IX="5"><X>0</X><Y>0</Y></LineTo></Geom>
+    </Shape><Shape ID="30" NameU="create" Type="Shape">
+      <XForm><PinX>10.4250</PinX><PinY>12.8000</PinY><Width>2.5500</Width><Height>1.6000</Height><LocPinX>1.2750</LocPinX><LocPinY>0.8000</LocPinY><Angle>0</Angle></XForm>
+      <Line><LineWeight>0.018</LineWeight><LineColor>RGB(102,112,133)</LineColor><LinePattern>1</LinePattern></Line>
+      <Fill><FillForegnd>RGB(255,255,255)</FillForegnd><FillPattern>1</FillPattern></Fill>
+      <Char IX="0"><Font>0</Font><Color>RGB(23,32,51)</Color><Size>0.115</Size></Char><Para IX="0"><HorzAlign>1</HorzAlign><SpBefore>0</SpBefore><SpAfter>0</SpAfter></Para>
+      <Text>«activity»&#10;4. Create run&#10;owner + RunConfig snapshot&#10;900 s default; bounded values&#10;clear fixture fallback for live</Text>
+      <Geom IX="0"><MoveTo IX="1"><X>0</X><Y>0</Y></MoveTo><LineTo IX="2"><X>2.5500</X><Y>0</Y></LineTo><LineTo IX="3"><X>2.5500</X><Y>1.6000</Y></LineTo><LineTo IX="4"><X>0</X><Y>1.6000</Y></LineTo><LineTo IX="5"><X>0</X><Y>0</Y></LineTo></Geom>
+    </Shape><Shape ID="31" NameU="collect" Type="Shape">
+      <XForm><PinX>13.3250</PinX><PinY>12.8000</PinY><Width>2.5500</Width><Height>1.6000</Height><LocPinX>1.2750</LocPinX><LocPinY>0.8000</LocPinY><Angle>0</Angle></XForm>
+      <Line><LineWeight>0.018</LineWeight><LineColor>RGB(102,112,133)</LineColor><LinePattern>1</LinePattern></Line>
+      <Fill><FillForegnd>RGB(255,255,255)</FillForegnd><FillPattern>1</FillPattern></Fill>
+      <Char IX="0"><Font>0</Font><Color>RGB(23,32,51)</Color><Size>0.115</Size></Char><Para IX="0"><HorzAlign>1</HorzAlign><SpBefore>0</SpBefore><SpAfter>0</SpAfter></Para>
+      <Text>«activity»&#10;5. Collect evidence&#10;parallel real-provider chains&#10;classify HTTP/network failures&#10;normalize + time guard + Frankfurter FX</Text>
+      <Geom IX="0"><MoveTo IX="1"><X>0</X><Y>0</Y></MoveTo><LineTo IX="2"><X>2.5500</X><Y>0</Y></LineTo><LineTo IX="3"><X>2.5500</X><Y>1.6000</Y></LineTo><LineTo IX="4"><X>0</X><Y>1.6000</Y></LineTo><LineTo IX="5"><X>0</X><Y>0</Y></LineTo></Geom>
+    </Shape><Shape ID="32" NameU="analyze" Type="Shape">
+      <XForm><PinX>16.2250</PinX><PinY>12.8000</PinY><Width>2.5500</Width><Height>1.6000</Height><LocPinX>1.2750</LocPinX><LocPinY>0.8000</LocPinY><Angle>0</Angle></XForm>
+      <Line><LineWeight>0.018</LineWeight><LineColor>RGB(102,112,133)</LineColor><LinePattern>1</LinePattern></Line>
+      <Fill><FillForegnd>RGB(255,255,255)</FillForegnd><FillPattern>1</FillPattern></Fill>
+      <Char IX="0"><Font>0</Font><Color>RGB(23,32,51)</Color><Size>0.115</Size></Char><Para IX="0"><HorzAlign>1</HorzAlign><SpBefore>0</SpBefore><SpAfter>0</SpAfter></Para>
+      <Text>«activity»&#10;6. Analyze&#10;selected specialist agents&#10;typed EvidenceBundle inputs&#10;structured, protected outputs</Text>
+      <Geom IX="0"><MoveTo IX="1"><X>0</X><Y>0</Y></MoveTo><LineTo IX="2"><X>2.5500</X><Y>0</Y></LineTo><LineTo IX="3"><X>2.5500</X><Y>1.6000</Y></LineTo><LineTo IX="4"><X>0</X><Y>1.6000</Y></LineTo><LineTo IX="5"><X>0</X><Y>0</Y></LineTo></Geom>
+    </Shape><Shape ID="33" NameU="debate" Type="Shape">
+      <XForm><PinX>19.1250</PinX><PinY>12.8000</PinY><Width>2.5500</Width><Height>1.6000</Height><LocPinX>1.2750</LocPinX><LocPinY>0.8000</LocPinY><Angle>0</Angle></XForm>
+      <Line><LineWeight>0.018</LineWeight><LineColor>RGB(102,112,133)</LineColor><LinePattern>1</LinePattern></Line>
+      <Fill><FillForegnd>RGB(255,255,255)</FillForegnd><FillPattern>1</FillPattern></Fill>
+      <Char IX="0"><Font>0</Font><Color>RGB(23,32,51)</Color><Size>0.115</Size></Char><Para IX="0"><HorzAlign>1</HorzAlign><SpBefore>0</SpBefore><SpAfter>0</SpAfter></Para>
+      <Text>«activity»&#10;7. Debate&#10;bull/bear/rebuttal/proposal&#10;bounded control loop only&#10;upstream agents not multiplied</Text>
+      <Geom IX="0"><MoveTo IX="1"><X>0</X><Y>0</Y></MoveTo><LineTo IX="2"><X>2.5500</X><Y>0</Y></LineTo><LineTo IX="3"><X>2.5500</X><Y>1.6000</Y></LineTo><LineTo IX="4"><X>0</X><Y>1.6000</Y></LineTo><LineTo IX="5"><X>0</X><Y>0</Y></LineTo></Geom>
+    </Shape><Shape ID="34" NameU="risk" Type="Shape">
+      <XForm><PinX>22.0250</PinX><PinY>12.8000</PinY><Width>2.5500</Width><Height>1.6000</Height><LocPinX>1.2750</LocPinX><LocPinY>0.8000</LocPinY><Angle>0</Angle></XForm>
+      <Line><LineWeight>0.018</LineWeight><LineColor>RGB(102,112,133)</LineColor><LinePattern>1</LinePattern></Line>
+      <Fill><FillForegnd>RGB(255,255,255)</FillForegnd><FillPattern>1</FillPattern></Fill>
+      <Char IX="0"><Font>0</Font><Color>RGB(23,32,51)</Color><Size>0.115</Size></Char><Para IX="0"><HorzAlign>1</HorzAlign><SpBefore>0</SpBefore><SpAfter>0</SpAfter></Para>
+      <Text>«activity»&#10;8. Risk&#10;three risk views&#10;policy limits + deterministic fields</Text>
+      <Geom IX="0"><MoveTo IX="1"><X>0</X><Y>0</Y></MoveTo><LineTo IX="2"><X>2.5500</X><Y>0</Y></LineTo><LineTo IX="3"><X>2.5500</X><Y>1.6000</Y></LineTo><LineTo IX="4"><X>0</X><Y>1.6000</Y></LineTo><LineTo IX="5"><X>0</X><Y>0</Y></LineTo></Geom>
+    </Shape><Shape ID="35" NameU="decide" Type="Shape">
+      <XForm><PinX>24.9250</PinX><PinY>12.8000</PinY><Width>2.5500</Width><Height>1.6000</Height><LocPinX>1.2750</LocPinX><LocPinY>0.8000</LocPinY><Angle>0</Angle></XForm>
+      <Line><LineWeight>0.018</LineWeight><LineColor>RGB(102,112,133)</LineColor><LinePattern>1</LinePattern></Line>
+      <Fill><FillForegnd>RGB(255,255,255)</FillForegnd><FillPattern>1</FillPattern></Fill>
+      <Char IX="0"><Font>0</Font><Color>RGB(23,32,51)</Color><Size>0.115</Size></Char><Para IX="0"><HorzAlign>1</HorzAlign><SpBefore>0</SpBefore><SpAfter>0</SpAfter></Para>
+      <Text>«activity»&#10;9. Decide&#10;decision validation&#10;confidence + warnings + limitations</Text>
+      <Geom IX="0"><MoveTo IX="1"><X>0</X><Y>0</Y></MoveTo><LineTo IX="2"><X>2.5500</X><Y>0</Y></LineTo><LineTo IX="3"><X>2.5500</X><Y>1.6000</Y></LineTo><LineTo IX="4"><X>0</X><Y>1.6000</Y></LineTo><LineTo IX="5"><X>0</X><Y>0</Y></LineTo></Geom>
+    </Shape><Shape ID="36" NameU="report" Type="Shape">
+      <XForm><PinX>27.8250</PinX><PinY>12.8000</PinY><Width>2.5500</Width><Height>1.6000</Height><LocPinX>1.2750</LocPinX><LocPinY>0.8000</LocPinY><Angle>0</Angle></XForm>
+      <Line><LineWeight>0.018</LineWeight><LineColor>RGB(67,97,238)</LineColor><LinePattern>1</LinePattern></Line>
+      <Fill><FillForegnd>RGB(233,238,255)</FillForegnd><FillPattern>1</FillPattern></Fill>
+      <Char IX="0"><Font>0</Font><Color>RGB(23,32,51)</Color><Size>0.115</Size></Char><Para IX="0"><HorzAlign>1</HorzAlign><SpBefore>0</SpBefore><SpAfter>0</SpAfter></Para>
+      <Text>«activity»&#10;10. Report&#10;views + lineage&#10;JSON/HTML/PDF artifacts&#10;decision support; no broker</Text>
+      <Geom IX="0"><MoveTo IX="1"><X>0</X><Y>0</Y></MoveTo><LineTo IX="2"><X>2.5500</X><Y>0</Y></LineTo><LineTo IX="3"><X>2.5500</X><Y>1.6000</Y></LineTo><LineTo IX="4"><X>0</X><Y>1.6000</Y></LineTo><LineTo IX="5"><X>0</X><Y>0</Y></LineTo></Geom>
+    </Shape><Shape ID="37" NameU="gate_0" Type="Shape">
+      <XForm><PinX>1.7250</PinX><PinY>10.8250</PinY><Width>2.0500</Width><Height>0.7500</Height><LocPinX>1.0250</LocPinX><LocPinY>0.3750</LocPinY><Angle>0</Angle></XForm>
+      <Line><LineWeight>0.018</LineWeight><LineColor>RGB(152,162,179)</LineColor><LinePattern>1</LinePattern></Line>
+      <Fill><FillForegnd>RGB(242,244,247)</FillForegnd><FillPattern>1</FillPattern></Fill>
+      <Char IX="0"><Font>0</Font><Color>RGB(23,32,51)</Color><Size>0.115</Size></Char><Para IX="0"><HorzAlign>1</HorzAlign><SpBefore>0</SpBefore><SpAfter>0</SpAfter></Para>
+      <Text>«decision»&#10;Configuration accepted</Text>
+      <Geom IX="0"><MoveTo IX="1"><X>0</X><Y>0</Y></MoveTo><LineTo IX="2"><X>2.0500</X><Y>0</Y></LineTo><LineTo IX="3"><X>2.0500</X><Y>0.7500</Y></LineTo><LineTo IX="4"><X>0</X><Y>0.7500</Y></LineTo><LineTo IX="5"><X>0</X><Y>0</Y></LineTo></Geom>
+    </Shape><Shape ID="38" NameU="gate_1" Type="Shape">
+      <XForm><PinX>4.6250</PinX><PinY>10.8250</PinY><Width>2.0500</Width><Height>0.7500</Height><LocPinX>1.0250</LocPinX><LocPinY>0.3750</LocPinY><Angle>0</Angle></XForm>
+      <Line><LineWeight>0.018</LineWeight><LineColor>RGB(152,162,179)</LineColor><LinePattern>1</LinePattern></Line>
+      <Fill><FillForegnd>RGB(242,244,247)</FillForegnd><FillPattern>1</FillPattern></Fill>
+      <Char IX="0"><Font>0</Font><Color>RGB(23,32,51)</Color><Size>0.115</Size></Char><Para IX="0"><HorzAlign>1</HorzAlign><SpBefore>0</SpBefore><SpAfter>0</SpAfter></Para>
+      <Text>«decision»&#10;Graph valid</Text>
+      <Geom IX="0"><MoveTo IX="1"><X>0</X><Y>0</Y></MoveTo><LineTo IX="2"><X>2.0500</X><Y>0</Y></LineTo><LineTo IX="3"><X>2.0500</X><Y>0.7500</Y></LineTo><LineTo IX="4"><X>0</X><Y>0.7500</Y></LineTo><LineTo IX="5"><X>0</X><Y>0</Y></LineTo></Geom>
+    </Shape><Shape ID="39" NameU="gate_2" Type="Shape">
+      <XForm><PinX>7.5250</PinX><PinY>10.8250</PinY><Width>2.0500</Width><Height>0.7500</Height><LocPinX>1.0250</LocPinX><LocPinY>0.3750</LocPinY><Angle>0</Angle></XForm>
+      <Line><LineWeight>0.018</LineWeight><LineColor>RGB(152,162,179)</LineColor><LinePattern>1</LinePattern></Line>
+      <Fill><FillForegnd>RGB(242,244,247)</FillForegnd><FillPattern>1</FillPattern></Fill>
+      <Char IX="0"><Font>0</Font><Color>RGB(23,32,51)</Color><Size>0.115</Size></Char><Para IX="0"><HorzAlign>1</HorzAlign><SpBefore>0</SpBefore><SpAfter>0</SpAfter></Para>
+      <Text>«decision»&#10;Version frozen</Text>
+      <Geom IX="0"><MoveTo IX="1"><X>0</X><Y>0</Y></MoveTo><LineTo IX="2"><X>2.0500</X><Y>0</Y></LineTo><LineTo IX="3"><X>2.0500</X><Y>0.7500</Y></LineTo><LineTo IX="4"><X>0</X><Y>0.7500</Y></LineTo><LineTo IX="5"><X>0</X><Y>0</Y></LineTo></Geom>
+    </Shape><Shape ID="40" NameU="gate_3" Type="Shape">
+      <XForm><PinX>10.4250</PinX><PinY>10.8250</PinY><Width>2.0500</Width><Height>0.7500</Height><LocPinX>1.0250</LocPinX><LocPinY>0.3750</LocPinY><Angle>0</Angle></XForm>
+      <Line><LineWeight>0.018</LineWeight><LineColor>RGB(152,162,179)</LineColor><LinePattern>1</LinePattern></Line>
+      <Fill><FillForegnd>RGB(242,244,247)</FillForegnd><FillPattern>1</FillPattern></Fill>
+      <Char IX="0"><Font>0</Font><Color>RGB(23,32,51)</Color><Size>0.115</Size></Char><Para IX="0"><HorzAlign>1</HorzAlign><SpBefore>0</SpBefore><SpAfter>0</SpAfter></Para>
+      <Text>«decision»&#10;Run owned</Text>
+      <Geom IX="0"><MoveTo IX="1"><X>0</X><Y>0</Y></MoveTo><LineTo IX="2"><X>2.0500</X><Y>0</Y></LineTo><LineTo IX="3"><X>2.0500</X><Y>0.7500</Y></LineTo><LineTo IX="4"><X>0</X><Y>0.7500</Y></LineTo><LineTo IX="5"><X>0</X><Y>0</Y></LineTo></Geom>
+    </Shape><Shape ID="41" NameU="gate_4" Type="Shape">
+      <XForm><PinX>13.3250</PinX><PinY>10.8250</PinY><Width>2.0500</Width><Height>0.7500</Height><LocPinX>1.0250</LocPinX><LocPinY>0.3750</LocPinY><Angle>0</Angle></XForm>
+      <Line><LineWeight>0.018</LineWeight><LineColor>RGB(152,162,179)</LineColor><LinePattern>1</LinePattern></Line>
+      <Fill><FillForegnd>RGB(242,244,247)</FillForegnd><FillPattern>1</FillPattern></Fill>
+      <Char IX="0"><Font>0</Font><Color>RGB(23,32,51)</Color><Size>0.115</Size></Char><Para IX="0"><HorzAlign>1</HorzAlign><SpBefore>0</SpBefore><SpAfter>0</SpAfter></Para>
+      <Text>«decision»&#10;Evidence usable</Text>
+      <Geom IX="0"><MoveTo IX="1"><X>0</X><Y>0</Y></MoveTo><LineTo IX="2"><X>2.0500</X><Y>0</Y></LineTo><LineTo IX="3"><X>2.0500</X><Y>0.7500</Y></LineTo><LineTo IX="4"><X>0</X><Y>0.7500</Y></LineTo><LineTo IX="5"><X>0</X><Y>0</Y></LineTo></Geom>
+    </Shape><Shape ID="42" NameU="gate_5" Type="Shape">
+      <XForm><PinX>16.2250</PinX><PinY>10.8250</PinY><Width>2.0500</Width><Height>0.7500</Height><LocPinX>1.0250</LocPinX><LocPinY>0.3750</LocPinY><Angle>0</Angle></XForm>
+      <Line><LineWeight>0.018</LineWeight><LineColor>RGB(152,162,179)</LineColor><LinePattern>1</LinePattern></Line>
+      <Fill><FillForegnd>RGB(242,244,247)</FillForegnd><FillPattern>1</FillPattern></Fill>
+      <Char IX="0"><Font>0</Font><Color>RGB(23,32,51)</Color><Size>0.115</Size></Char><Para IX="0"><HorzAlign>1</HorzAlign><SpBefore>0</SpBefore><SpAfter>0</SpAfter></Para>
+      <Text>«decision»&#10;Roles complete</Text>
+      <Geom IX="0"><MoveTo IX="1"><X>0</X><Y>0</Y></MoveTo><LineTo IX="2"><X>2.0500</X><Y>0</Y></LineTo><LineTo IX="3"><X>2.0500</X><Y>0.7500</Y></LineTo><LineTo IX="4"><X>0</X><Y>0.7500</Y></LineTo><LineTo IX="5"><X>0</X><Y>0</Y></LineTo></Geom>
+    </Shape><Shape ID="43" NameU="gate_6" Type="Shape">
+      <XForm><PinX>19.1250</PinX><PinY>10.8250</PinY><Width>2.0500</Width><Height>0.7500</Height><LocPinX>1.0250</LocPinX><LocPinY>0.3750</LocPinY><Angle>0</Angle></XForm>
+      <Line><LineWeight>0.018</LineWeight><LineColor>RGB(152,162,179)</LineColor><LinePattern>1</LinePattern></Line>
+      <Fill><FillForegnd>RGB(242,244,247)</FillForegnd><FillPattern>1</FillPattern></Fill>
+      <Char IX="0"><Font>0</Font><Color>RGB(23,32,51)</Color><Size>0.115</Size></Char><Para IX="0"><HorzAlign>1</HorzAlign><SpBefore>0</SpBefore><SpAfter>0</SpAfter></Para>
+      <Text>«decision»&#10;Loop bound reached</Text>
+      <Geom IX="0"><MoveTo IX="1"><X>0</X><Y>0</Y></MoveTo><LineTo IX="2"><X>2.0500</X><Y>0</Y></LineTo><LineTo IX="3"><X>2.0500</X><Y>0.7500</Y></LineTo><LineTo IX="4"><X>0</X><Y>0.7500</Y></LineTo><LineTo IX="5"><X>0</X><Y>0</Y></LineTo></Geom>
+    </Shape><Shape ID="44" NameU="gate_7" Type="Shape">
+      <XForm><PinX>22.0250</PinX><PinY>10.8250</PinY><Width>2.0500</Width><Height>0.7500</Height><LocPinX>1.0250</LocPinX><LocPinY>0.3750</LocPinY><Angle>0</Angle></XForm>
+      <Line><LineWeight>0.018</LineWeight><LineColor>RGB(152,162,179)</LineColor><LinePattern>1</LinePattern></Line>
+      <Fill><FillForegnd>RGB(242,244,247)</FillForegnd><FillPattern>1</FillPattern></Fill>
+      <Char IX="0"><Font>0</Font><Color>RGB(23,32,51)</Color><Size>0.115</Size></Char><Para IX="0"><HorzAlign>1</HorzAlign><SpBefore>0</SpBefore><SpAfter>0</SpAfter></Para>
+      <Text>«decision»&#10;Risk set complete</Text>
+      <Geom IX="0"><MoveTo IX="1"><X>0</X><Y>0</Y></MoveTo><LineTo IX="2"><X>2.0500</X><Y>0</Y></LineTo><LineTo IX="3"><X>2.0500</X><Y>0.7500</Y></LineTo><LineTo IX="4"><X>0</X><Y>0.7500</Y></LineTo><LineTo IX="5"><X>0</X><Y>0</Y></LineTo></Geom>
+    </Shape><Shape ID="45" NameU="gate_8" Type="Shape">
+      <XForm><PinX>24.9250</PinX><PinY>10.8250</PinY><Width>2.0500</Width><Height>0.7500</Height><LocPinX>1.0250</LocPinX><LocPinY>0.3750</LocPinY><Angle>0</Angle></XForm>
+      <Line><LineWeight>0.018</LineWeight><LineColor>RGB(152,162,179)</LineColor><LinePattern>1</LinePattern></Line>
+      <Fill><FillForegnd>RGB(242,244,247)</FillForegnd><FillPattern>1</FillPattern></Fill>
+      <Char IX="0"><Font>0</Font><Color>RGB(23,32,51)</Color><Size>0.115</Size></Char><Para IX="0"><HorzAlign>1</HorzAlign><SpBefore>0</SpBefore><SpAfter>0</SpAfter></Para>
+      <Text>«decision»&#10;Decision valid</Text>
+      <Geom IX="0"><MoveTo IX="1"><X>0</X><Y>0</Y></MoveTo><LineTo IX="2"><X>2.0500</X><Y>0</Y></LineTo><LineTo IX="3"><X>2.0500</X><Y>0.7500</Y></LineTo><LineTo IX="4"><X>0</X><Y>0.7500</Y></LineTo><LineTo IX="5"><X>0</X><Y>0</Y></LineTo></Geom>
+    </Shape><Shape ID="46" NameU="gate_9" Type="Shape">
+      <XForm><PinX>27.8250</PinX><PinY>10.8250</PinY><Width>2.0500</Width><Height>0.7500</Height><LocPinX>1.0250</LocPinX><LocPinY>0.3750</LocPinY><Angle>0</Angle></XForm>
+      <Line><LineWeight>0.018</LineWeight><LineColor>RGB(152,162,179)</LineColor><LinePattern>1</LinePattern></Line>
+      <Fill><FillForegnd>RGB(242,244,247)</FillForegnd><FillPattern>1</FillPattern></Fill>
+      <Char IX="0"><Font>0</Font><Color>RGB(23,32,51)</Color><Size>0.115</Size></Char><Para IX="0"><HorzAlign>1</HorzAlign><SpBefore>0</SpBefore><SpAfter>0</SpAfter></Para>
+      <Text>«decision»&#10;Archive written</Text>
+      <Geom IX="0"><MoveTo IX="1"><X>0</X><Y>0</Y></MoveTo><LineTo IX="2"><X>2.0500</X><Y>0</Y></LineTo><LineTo IX="3"><X>2.0500</X><Y>0.7500</Y></LineTo><LineTo IX="4"><X>0</X><Y>0.7500</Y></LineTo><LineTo IX="5"><X>0</X><Y>0</Y></LineTo></Geom>
+    </Shape><Shape ID="47" NameU="ready" Type="Shape">
+      <XForm><PinX>4.0000</PinX><PinY>7.6500</PinY><Width>4.6000</Width><Height>1.3000</Height><LocPinX>2.3000</LocPinX><LocPinY>0.6500</LocPinY><Angle>0</Angle></XForm>
+      <Line><LineWeight>0.018</LineWeight><LineColor>RGB(152,162,179)</LineColor><LinePattern>1</LinePattern></Line>
+      <Fill><FillForegnd>RGB(255,255,255)</FillForegnd><FillPattern>1</FillPattern></Fill>
+      <Char IX="0"><Font>0</Font><Color>RGB(23,32,51)</Color><Size>0.115</Size></Char><Para IX="0"><HorzAlign>1</HorzAlign><SpBefore>0</SpBefore><SpAfter>0</SpAfter></Para>
+      <Text>«component»&#10;Stable ready-set scheduler&#10;sorted node IDs; max_parallel_nodes</Text>
+      <Geom IX="0"><MoveTo IX="1"><X>0</X><Y>0</Y></MoveTo><LineTo IX="2"><X>4.6000</X><Y>0</Y></LineTo><LineTo IX="3"><X>4.6000</X><Y>1.3000</Y></LineTo><LineTo IX="4"><X>0</X><Y>1.3000</Y></LineTo><LineTo IX="5"><X>0</X><Y>0</Y></LineTo></Geom>
+    </Shape><Shape ID="48" NameU="event" Type="Shape">
+      <XForm><PinX>9.4500</PinX><PinY>7.6500</PinY><Width>4.6000</Width><Height>1.3000</Height><LocPinX>2.3000</LocPinX><LocPinY>0.6500</LocPinY><Angle>0</Angle></XForm>
+      <Line><LineWeight>0.018</LineWeight><LineColor>RGB(152,162,179)</LineColor><LinePattern>1</LinePattern></Line>
+      <Fill><FillForegnd>RGB(255,255,255)</FillForegnd><FillPattern>1</FillPattern></Fill>
+      <Char IX="0"><Font>0</Font><Color>RGB(23,32,51)</Color><Size>0.115</Size></Char><Para IX="0"><HorzAlign>1</HorzAlign><SpBefore>0</SpBefore><SpAfter>0</SpAfter></Para>
+      <Text>«component»&#10;Monotonic event protocol&#10;sequence, run/node IDs, status, trace</Text>
+      <Geom IX="0"><MoveTo IX="1"><X>0</X><Y>0</Y></MoveTo><LineTo IX="2"><X>4.6000</X><Y>0</Y></LineTo><LineTo IX="3"><X>4.6000</X><Y>1.3000</Y></LineTo><LineTo IX="4"><X>0</X><Y>1.3000</Y></LineTo><LineTo IX="5"><X>0</X><Y>0</Y></LineTo></Geom>
+    </Shape><Shape ID="49" NameU="checkpoint" Type="Shape">
+      <XForm><PinX>14.9000</PinX><PinY>7.6500</PinY><Width>4.6000</Width><Height>1.3000</Height><LocPinX>2.3000</LocPinX><LocPinY>0.6500</LocPinY><Angle>0</Angle></XForm>
+      <Line><LineWeight>0.018</LineWeight><LineColor>RGB(152,162,179)</LineColor><LinePattern>1</LinePattern></Line>
+      <Fill><FillForegnd>RGB(255,255,255)</FillForegnd><FillPattern>1</FillPattern></Fill>
+      <Char IX="0"><Font>0</Font><Color>RGB(23,32,51)</Color><Size>0.115</Size></Char><Para IX="0"><HorzAlign>1</HorzAlign><SpBefore>0</SpBefore><SpAfter>0</SpAfter></Para>
+      <Text>«component»&#10;Checkpoint writer&#10;completed outputs + loop state</Text>
+      <Geom IX="0"><MoveTo IX="1"><X>0</X><Y>0</Y></MoveTo><LineTo IX="2"><X>4.6000</X><Y>0</Y></LineTo><LineTo IX="3"><X>4.6000</X><Y>1.3000</Y></LineTo><LineTo IX="4"><X>0</X><Y>1.3000</Y></LineTo><LineTo IX="5"><X>0</X><Y>0</Y></LineTo></Geom>
+    </Shape><Shape ID="50" NameU="failure" Type="Shape">
+      <XForm><PinX>20.3500</PinX><PinY>7.6500</PinY><Width>4.6000</Width><Height>1.3000</Height><LocPinX>2.3000</LocPinX><LocPinY>0.6500</LocPinY><Angle>0</Angle></XForm>
+      <Line><LineWeight>0.018</LineWeight><LineColor>RGB(152,162,179)</LineColor><LinePattern>1</LinePattern></Line>
+      <Fill><FillForegnd>RGB(255,255,255)</FillForegnd><FillPattern>1</FillPattern></Fill>
+      <Char IX="0"><Font>0</Font><Color>RGB(23,32,51)</Color><Size>0.115</Size></Char><Para IX="0"><HorzAlign>1</HorzAlign><SpBefore>0</SpBefore><SpAfter>0</SpAfter></Para>
+      <Text>«component»&#10;Failure classifier&#10;retry / fallback / degraded / failed</Text>
+      <Geom IX="0"><MoveTo IX="1"><X>0</X><Y>0</Y></MoveTo><LineTo IX="2"><X>4.6000</X><Y>0</Y></LineTo><LineTo IX="3"><X>4.6000</X><Y>1.3000</Y></LineTo><LineTo IX="4"><X>0</X><Y>1.3000</Y></LineTo><LineTo IX="5"><X>0</X><Y>0</Y></LineTo></Geom>
+    </Shape><Shape ID="51" NameU="resume" Type="Shape">
+      <XForm><PinX>25.8000</PinX><PinY>7.6500</PinY><Width>4.6000</Width><Height>1.3000</Height><LocPinX>2.3000</LocPinX><LocPinY>0.6500</LocPinY><Angle>0</Angle></XForm>
+      <Line><LineWeight>0.018</LineWeight><LineColor>RGB(152,162,179)</LineColor><LinePattern>1</LinePattern></Line>
+      <Fill><FillForegnd>RGB(255,255,255)</FillForegnd><FillPattern>1</FillPattern></Fill>
+      <Char IX="0"><Font>0</Font><Color>RGB(23,32,51)</Color><Size>0.115</Size></Char><Para IX="0"><HorzAlign>1</HorzAlign><SpBefore>0</SpBefore><SpAfter>0</SpAfter></Para>
+      <Text>«component»&#10;Resume planner&#10;skip completed; recompute remaining</Text>
+      <Geom IX="0"><MoveTo IX="1"><X>0</X><Y>0</Y></MoveTo><LineTo IX="2"><X>4.6000</X><Y>0</Y></LineTo><LineTo IX="3"><X>4.6000</X><Y>1.3000</Y></LineTo><LineTo IX="4"><X>0</X><Y>1.3000</Y></LineTo><LineTo IX="5"><X>0</X><Y>0</Y></LineTo></Geom>
+    </Shape><Shape ID="52" NameU="recoverable" Type="Shape">
+      <XForm><PinX>5.2500</PinX><PinY>3.5000</PinY><Width>8.1000</Width><Height>1.8000</Height><LocPinX>4.0500</LocPinX><LocPinY>0.9000</LocPinY><Angle>0</Angle></XForm>
+      <Line><LineWeight>0.018</LineWeight><LineColor>RGB(217,83,103)</LineColor><LinePattern>1</LinePattern></Line>
+      <Fill><FillForegnd>RGB(255,236,239)</FillForegnd><FillPattern>1</FillPattern></Fill>
+      <Char IX="0"><Font>0</Font><Color>RGB(23,32,51)</Color><Size>0.115</Size></Char><Para IX="0"><HorzAlign>1</HorzAlign><SpBefore>0</SpBefore><SpAfter>0</SpAfter></Para>
+      <Text>«state»&#10;RECOVERABLE&#10;Transient provider/model error -&gt; bounded retry&#10;Provider chain -&gt; next real provider&#10;Optional node -&gt; degraded run + warning</Text>
+      <Geom IX="0"><MoveTo IX="1"><X>0</X><Y>0</Y></MoveTo><LineTo IX="2"><X>8.1000</X><Y>0</Y></LineTo><LineTo IX="3"><X>8.1000</X><Y>1.8000</Y></LineTo><LineTo IX="4"><X>0</X><Y>1.8000</Y></LineTo><LineTo IX="5"><X>0</X><Y>0</Y></LineTo></Geom>
+    </Shape><Shape ID="53" NameU="resumable" Type="Shape">
+      <XForm><PinX>15.0000</PinX><PinY>3.5000</PinY><Width>8.1000</Width><Height>1.8000</Height><LocPinX>4.0500</LocPinX><LocPinY>0.9000</LocPinY><Angle>0</Angle></XForm>
+      <Line><LineWeight>0.018</LineWeight><LineColor>RGB(67,97,238)</LineColor><LinePattern>1</LinePattern></Line>
+      <Fill><FillForegnd>RGB(233,238,255)</FillForegnd><FillPattern>1</FillPattern></Fill>
+      <Char IX="0"><Font>0</Font><Color>RGB(23,32,51)</Color><Size>0.115</Size></Char><Para IX="0"><HorzAlign>1</HorzAlign><SpBefore>0</SpBefore><SpAfter>0</SpAfter></Para>
+      <Text>«state»&#10;RESUMABLE&#10;Persist checkpoint -&gt; restore completed outputs&#10;Reset incomplete nodes to pending&#10;Resume readiness -&gt; continue remaining nodes</Text>
+      <Geom IX="0"><MoveTo IX="1"><X>0</X><Y>0</Y></MoveTo><LineTo IX="2"><X>8.1000</X><Y>0</Y></LineTo><LineTo IX="3"><X>8.1000</X><Y>1.8000</Y></LineTo><LineTo IX="4"><X>0</X><Y>1.8000</Y></LineTo><LineTo IX="5"><X>0</X><Y>0</Y></LineTo></Geom>
+    </Shape><Shape ID="54" NameU="terminal" Type="Shape">
+      <XForm><PinX>24.7500</PinX><PinY>3.5000</PinY><Width>8.1000</Width><Height>1.8000</Height><LocPinX>4.0500</LocPinX><LocPinY>0.9000</LocPinY><Angle>0</Angle></XForm>
+      <Line><LineWeight>0.018</LineWeight><LineColor>RGB(102,112,133)</LineColor><LinePattern>1</LinePattern></Line>
+      <Fill><FillForegnd>RGB(242,244,247)</FillForegnd><FillPattern>1</FillPattern></Fill>
+      <Char IX="0"><Font>0</Font><Color>RGB(23,32,51)</Color><Size>0.115</Size></Char><Para IX="0"><HorzAlign>1</HorzAlign><SpBefore>0</SpBefore><SpAfter>0</SpAfter></Para>
+      <Text>«state»&#10;TERMINAL&#10;Required node failure -&gt; FAILED&#10;Safe-point cancellation -&gt; CANCELLED&#10;All required paths -&gt; COMPLETED / DEGRADED</Text>
+      <Geom IX="0"><MoveTo IX="1"><X>0</X><Y>0</Y></MoveTo><LineTo IX="2"><X>8.1000</X><Y>0</Y></LineTo><LineTo IX="3"><X>8.1000</X><Y>1.8000</Y></LineTo><LineTo IX="4"><X>0</X><Y>1.8000</Y></LineTo><LineTo IX="5"><X>0</X><Y>0</Y></LineTo></Geom>
+    </Shape><Shape ID="55" NameU="diagram_title" Type="Shape">
+      <XForm><PinX>15.0000</PinX><PinY>15.0900</PinY><Width>29.5200</Width><Height>0.5800</Height><LocPinX>14.7600</LocPinX><LocPinY>0.2900</LocPinY><Angle>0</Angle></XForm>
+      <Line><LineWeight>0.018</LineWeight><LineColor>RGB(255,255,255)</LineColor><LinePattern>1</LinePattern></Line>
+      <Fill><FillForegnd>RGB(255,255,255)</FillForegnd><FillPattern>1</FillPattern></Fill>
+      <Char IX="0"><Font>0</Font><Color>RGB(23,32,51)</Color><Size>0.115</Size></Char><Para IX="0"><HorzAlign>1</HorzAlign><SpBefore>0</SpBefore><SpAfter>0</SpAfter></Para>
+      <Text>Figure 16 - Analysis pipeline: stages, gates, parallelism, and recovery&#10;A stage advances only when contracts and policy gates pass; current configuration and provider semantics are explicit.</Text>
+      <Geom IX="0"><MoveTo IX="1"><X>0</X><Y>0</Y></MoveTo><LineTo IX="2"><X>29.5200</X><Y>0</Y></LineTo><LineTo IX="3"><X>29.5200</X><Y>0.5800</Y></LineTo><LineTo IX="4"><X>0</X><Y>0.5800</Y></LineTo><LineTo IX="5"><X>0</X><Y>0</Y></LineTo></Geom>
+    </Shape></Shapes><Connects/>
+ </Page></Pages>
+</VisioDocument>

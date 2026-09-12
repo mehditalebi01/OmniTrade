@@ -1,0 +1,42 @@
+@startuml
+title Supplement 24 - Timing diagram: run, node, event, and UI state
+skinparam shadowing false
+skinparam linetype ortho
+skinparam componentStyle rectangle
+left to right direction
+rectangle "RunStatus" as label_run #F2F4F7
+rectangle "QUEUED" as run_0 #FFFFFF
+rectangle "RUNNING / wave 1" as run_1 #FFFFFF
+rectangle "PAUSING" as run_2 #FFFFFF
+rectangle "PAUSED" as run_3 #FFFFFF
+rectangle "RUNNING / resumed" as run_4 #FFFFFF
+rectangle "SUCCEEDED" as run_5 #FFFFFF
+rectangle "NodeRun" as label_node #F2F4F7
+rectangle "PENDING / wave 1" as node_0 #FFFFFF
+rectangle "RUNNING / wave 1" as node_1 #FFFFFF
+rectangle "SUCCEEDED / wave 1" as node_2 #FFFFFF
+rectangle "retained immutable" as node_3 #FFFFFF
+rectangle "PENDING / remaining" as node_4 #FFFFFF
+rectangle "SUCCEEDED / remaining" as node_5 #FFFFFF
+rectangle "Checkpoint" as label_checkpoint #F2F4F7
+rectangle "none" as checkpoint_0 #FFFFFF
+rectangle "wave 1" as checkpoint_1 #FFFFFF
+rectangle "pause-safe" as checkpoint_2 #FFFFFF
+rectangle "stable" as checkpoint_3 #FFFFFF
+rectangle "restored" as checkpoint_4 #FFFFFF
+rectangle "final" as checkpoint_5 #FFFFFF
+rectangle "Visible events" as label_events #F2F4F7
+rectangle "queued" as events_0 #FFFFFF
+rectangle "started" as events_1 #FFFFFF
+rectangle "pausing" as events_2 #FFFFFF
+rectangle "paused" as events_3 #FFFFFF
+rectangle "resumed" as events_4 #FFFFFF
+rectangle "completed" as events_5 #FFFFFF
+rectangle "Run History / Report" as label_ui #F2F4F7
+rectangle "queued" as ui_0 #FFFFFF
+rectangle "live / wave 1" as ui_1 #FFFFFF
+rectangle "pausing" as ui_2 #FFFFFF
+rectangle "paused" as ui_3 #FFFFFF
+rectangle "live / resumed" as ui_4 #FFFFFF
+rectangle "report ready" as ui_5 #FFFFFF
+@enduml

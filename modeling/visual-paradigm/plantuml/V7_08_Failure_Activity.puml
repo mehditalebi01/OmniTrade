@@ -1,0 +1,43 @@
+@startuml
+title CCL-04/05 - UML activity: failure, degradation, checkpoint, and recovery
+skinparam shadowing false
+start
+:Receive node result or control event;
+if (Duplicate event ID?) then (yes)
+  :Ignore repeated effect and keep audit record;
+  stop
+endif
+if (Pause request?) then (yes)
+  :Finish active batch;
+  :Persist checkpoint and PAUSED event;
+  stop
+endif
+if (Cancel request?) then (yes)
+  :Stop pending work at safe boundary;
+  :Persist final CANCELLED state;
+  stop
+endif
+if (Node succeeded?) then (yes)
+  :Persist output and mark SUCCEEDED;
+elseif (Retryable and attempts remain?) then (yes)
+  :Record retry event and bounded backoff;
+  :Return node to ready execution;
+  stop
+elseif (Optional and degradation allowed?) then (yes)
+  :Mark DEGRADED and disclose reason;
+  :Skip only impossible dependants;
+else (required failure)
+  :Mark FAILED and stop required path;
+endif
+:Persist events and checkpoint;
+if (Worker / transport interruption?) then (yes)
+  :Load latest checkpoint and terminal events;
+  :Keep completed states; reset unfinished states;
+  if (Late terminal event exists?) then (yes)
+    :Reconcile final state and rebuild report;
+  else (no)
+    :Queue legal resume;
+  endif
+endif
+stop
+@enduml

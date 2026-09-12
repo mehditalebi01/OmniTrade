@@ -1,0 +1,44 @@
+@startuml
+title OmniTrade AI - UML timing diagram for pause and resume
+robust "Run" as Run
+robust "Ready batch" as Batch
+robust "Checkpoint" as Checkpoint
+robust "Event stream" as Events
+robust "Agent Room" as UI
+@0
+Run is Queued
+Batch is Idle
+Checkpoint is Previous
+Events is Connected
+UI is Queued
+@10
+Run is Running
+Batch is Executing
+UI is Running
+@25
+Events is Reconnecting
+@30
+Events is Connected
+@40
+Run is Pausing
+UI is Pausing
+@55
+Batch is Complete
+Checkpoint is Writing
+@60
+Checkpoint is Durable
+Run is Paused
+UI is Paused
+@120
+Run is Queued
+UI is Queued
+@130
+Run is Running
+Batch is Executing
+UI is Running
+@170
+Batch is Complete
+Checkpoint is Durable
+Run is Degraded
+UI is Degraded
+@enduml

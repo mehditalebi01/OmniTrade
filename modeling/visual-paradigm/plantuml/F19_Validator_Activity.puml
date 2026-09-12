@@ -1,0 +1,36 @@
+@startuml
+title Figure 19 - Validator activity for publication and run preparation
+skinparam shadowing false
+skinparam linetype ortho
+skinparam componentStyle rectangle
+left to right direction
+rectangle "Start" as v_start #15233A
+rectangle "Load WorkflowDefinition\nindex nodes; normalize reverse adjacency" as load #FFFFFF
+rectangle "Check graph boundary\nexactly one start and one end" as boundary #FFFFFF
+rectangle "Validate analysis configuration\nall analyst/depth/risk/report/reasoning\nlanguage/currency/provider-chain combinations\nclamped numeric ranges and required connection fields" as config #FFFFFF
+rectangle "Validate catalog and node config\nknown type from 31-node catalog\nrequired per-node configuration" as catalog #FFFFFF
+rectangle "Check typed ports\nsource/target compatibility\nrequired input cardinality" as ports #FFFFFF
+rectangle "Check reachability\nevery required node reachable from start" as reach #FFFFFF
+rectangle "Check cycles and declared loops\nKahn cycle check\nonly declared bounded control loops accepted" as cycle #FFFFFF
+rectangle "Check joins and side effects\njoin completeness\neffect restrictions + idempotency" as joins #FFFFFF
+rectangle "Check budgets and evidence policy\nactual model nodes x retry allowance\nresearch depth does not multiply whole graph\nlive fetch has no fixture fallback" as budget #FFFFFF
+rectangle "Issues?\nordered by stable issue ID" as issues #FFF4D8
+rectangle "Invalid definition\nreturn ordered errors and warnings\ndo not persist publication or create run" as invalid #FFECEF
+rectangle "Valid definition\nallow immutable publication\nallow run snapshot only after request validation" as valid #E9EEFF
+rectangle "End" as end_bad #15233A
+rectangle "End" as end_ok #15233A
+v_start --> load : 
+load --> boundary : 
+boundary --> config : 
+config --> catalog : 
+catalog --> ports : 
+ports --> reach : 
+reach --> cycle : 
+cycle --> joins : 
+joins --> budget : 
+budget --> issues : 
+issues --> invalid : yes
+issues --> valid : no
+invalid --> end_bad : 
+valid --> end_ok : 
+@enduml

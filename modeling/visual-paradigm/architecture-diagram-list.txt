@@ -1,0 +1,5 @@
+Architecture 1 - OmniTrade main web information system architecture
+Architecture 2 - Decomposition of the three CONTROL subsystems
+Architecture 3 - Dominant and supporting architectural styles
+Architecture 4 - Architectural pattern realization map
+Architecture 5 - Architecture principles and quality-attribute traceability

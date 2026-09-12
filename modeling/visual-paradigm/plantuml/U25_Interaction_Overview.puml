@@ -1,0 +1,28 @@
+@startuml
+title Supplement 25 - Interaction overview: end-to-end analysis control
+skinparam shadowing false
+skinparam linetype ortho
+skinparam componentStyle rectangle
+left to right direction
+rectangle "Start" as start #15233A
+rectangle "ref Profile + Connections\nload defaults/policy\nverify provider/model session" as profile #E9EEFF
+rectangle "ref Configure + Validate\nnew analysis + workflow version\ntyped request and graph gates" as configure #FFF4D8
+rectangle "ref Execute ready waves\nevidence, specialists, debate\nrisk, checkpoints, events" as execute #F2EDFF
+rectangle "Pause requested?" as pause #FFF4D8
+rectangle "ref Durable pause\nPAUSING\ncheckpoint\nPAUSED" as durable #E5F8F5
+rectangle "Resume?" as resume #FFF4D8
+rectangle "Terminal analysis?" as complete #FFF4D8
+rectangle "ref Report + Run History\nseparate confidence/support\nlineage + artifacts\nmerged durable/live events" as report #EAF8EF
+rectangle "End" as end #15233A
+start --> profile : 
+profile --> configure : 
+configure --> execute : 
+execute --> pause : 
+pause --> durable : yes
+durable --> resume : 
+resume ..> execute : yes: recheck + restore
+pause --> complete : no
+complete ..> execute : no: next ready wave
+complete --> report : yes
+report --> end : 
+@enduml

@@ -1,0 +1,44 @@
+@startuml
+title Figure 21 - Run lifecycle and resumable outcomes
+skinparam shadowing false
+skinparam linetype ortho
+skinparam componentStyle rectangle
+left to right direction
+rectangle "QUEUED\naccepted; background task pending" as queued #E9EEFF
+rectangle "RUNNING\nvalidated; ready waves execute\npause/cancel probes active" as running #E9EEFF
+rectangle "DEGRADED\noptional failure or limit warning\nreport remains available" as degraded #FFF4D8
+rectangle "SUCCEEDED\nrequired paths complete\nreport available" as succeeded #EAF8EF
+rectangle "FAILED\nvalidation, required failure\nor deadlock" as failed #FFECEF
+rectangle "PAUSING\npause accepted\nfinish safe point + checkpoint" as pausing #FFF0EB
+rectangle "PAUSED\ndurable checkpoint stable\nresume rechecks connections" as paused #E5F8F5
+rectangle "CANCELLING\ncancel requested" as cancelling #FFF0EB
+rectangle "CANCELLED\ncancellation probe observed" as cancelled #F2F4F7
+rectangle "INTERRUPTED\nworker/process loss\nresume from checkpoint" as interrupted #F2F4F7
+rectangle "PENDING\nnot yet eligible" as pending #E5F8F5
+rectangle "READY\nparents terminal\ninputs available" as ready #E5F8F5
+rectangle "RUNNING\nattempt + timeout active" as nrun #E5F8F5
+rectangle "SUCCEEDED\ntyped output emitted" as nsucc #EAF8EF
+rectangle "DEGRADED\noptional failure\nwarning output" as ndeg #FFF4D8
+rectangle "FAILED\nattempts exhausted\nrequired may fail run" as nfail #FFECEF
+rectangle "SKIPPED\nunselected or removed by policy" as skipped #F2F4F7
+rectangle "CANCELLED\nrun cancellation probe" as ncancel #F2F4F7
+queued --> running : background execution starts
+running --> degraded : optional failure
+running --> succeeded : required success
+running --> failed : required failure / deadlock
+running --> pausing : pause requested
+pausing --> paused : safe checkpoint written
+paused ..> running : resume: recheck + restore
+running --> cancelling : cancel requested
+cancelling --> cancelled : probe observed
+running ..> interrupted : worker/process loss
+interrupted ..> running : resume after interruption
+pending --> ready : parents terminal
+ready --> nrun : selected in bounded wave
+nrun --> nsucc : valid typed output
+nrun --> ndeg : optional failure
+nrun --> nfail : attempts exhausted
+nfail ..> nrun : retry below max_attempts
+pending --> skipped : configuration removes node
+nrun --> ncancel : cancellation probe
+@enduml

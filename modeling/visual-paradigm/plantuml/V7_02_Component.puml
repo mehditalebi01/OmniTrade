@@ -1,0 +1,41 @@
+@startuml
+title OmniTrade AI - UML component design with interfaces
+left to right direction
+skinparam shadowing false
+skinparam linetype ortho
+skinparam componentStyle uml2
+actor Analyst
+component "Web GUI" as GUI
+component "Public API" as API
+component "Workflow Designer" as Designer
+component "Workflow Runtime" as Runtime
+component "Evidence Service" as Evidence
+component "Model Gateway" as Model
+component "Report & Lineage" as Report
+component "Ownership Repository" as Repo
+component "Event Transport" as Events
+component "Artifact Store" as Artifacts
+component "External Evidence Adapters" as ExtEvidence
+component "External Model Adapters" as ExtModel
+Analyst --> GUI
+GUI ..> API : <<IUserAPI>>
+API ..> Designer : <<IWorkflowDraft>>
+API ..> Runtime : <<IRunCommand>>
+GUI ..> Events : <<IRunEvent>>
+Runtime ..> Events : <<IRunEvent>> publish
+Runtime ..> Evidence : <<IEvidence>>
+Runtime ..> Model : <<IModel>>
+Runtime ..> Report : <<IReport>>
+API ..> Repo : <<IRepository>>
+Designer ..> Repo : <<IRepository>>
+Runtime ..> Repo : <<IRepository>>
+Evidence ..> Repo : <<IRepository>>
+Report ..> Repo : <<IRepository>>
+Evidence ..> ExtEvidence : <<adapter>>
+Model ..> ExtModel : <<adapter>>
+Report ..> Artifacts : <<IArtifact>>
+note bottom of Runtime
+Owns validation, readiness, joins, failure policy,
+budgets, checkpoints, and legal state transitions.
+end note
+@enduml

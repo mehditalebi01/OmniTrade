@@ -1,0 +1,30 @@
+@startuml
+title CCL-01 - UML activity: typed graph validation
+skinparam shadowing false
+skinparam linetype ortho
+start
+:Load definition and catalog;
+:Index nodes and edges;
+fork
+  :Check unique IDs and one start/end;
+fork again
+  :Traverse reachability;
+fork again
+  :Check source/target port types;
+fork again
+  :Check bounded loops and side effects;
+fork again
+  :Check join cardinality and required evidence;
+fork again
+  :Estimate calls, tokens, runtime, and concurrency;
+end fork
+:Sort issues by stable code and location;
+if (Any error?) then (yes)
+  :Return invalid result;
+  :Block publication / run creation;
+else (no)
+  :Return valid result with warnings;
+  :Allow immutable publication;
+endif
+stop
+@enduml

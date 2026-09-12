@@ -1,0 +1,53 @@
+@startuml
+title OmniTrade AI - UML deployment diagram
+skinparam shadowing false
+skinparam linetype ortho
+node "User workstation" as Workstation {
+  artifact "Web browser" as Browser
+}
+node "Docker host" as Host {
+  node "frontend container" as Frontend {
+    artifact "Nginx + React build"
+  }
+  node "api container" as API {
+    artifact "FastAPI API"
+  }
+  node "workflow container" as Workflow {
+    artifact "Workflow worker"
+  }
+  node "evidence container" as Evidence {
+    artifact "Evidence service"
+  }
+  node "model-gateway container" as Model {
+    artifact "Model gateway"
+  }
+  node "report container" as Report {
+    artifact "Report service"
+  }
+  database "PostgreSQL container\n+ persistent volume" as Postgres
+  node "Redis Streams container\n+ persistent volume" as Redis
+  folder "Artifact volume" as Artifacts
+  node "one-shot migrate job" as Migrate {
+    artifact "Alembic migrations"
+  }
+}
+cloud "External evidence services" as DataCloud
+cloud "External model services" as ModelCloud
+Browser --> Frontend : HTTP :5173
+Frontend --> API : /api/v1 + SSE
+API --> Workflow : internal HTTP
+Workflow --> Evidence : typed node task
+Workflow --> Model : typed node task
+Workflow --> Report : typed node task
+API --> Postgres : SQL
+Workflow --> Postgres : SQL
+Evidence --> Postgres : SQL
+Model --> Postgres : SQL
+Report --> Postgres : SQL
+API --> Redis : events / controls
+Workflow --> Redis : events / controls
+Evidence --> DataCloud : HTTPS
+Model --> ModelCloud : HTTPS
+Report --> Artifacts : write + hash
+Migrate --> Postgres : upgrade before service health
+@enduml

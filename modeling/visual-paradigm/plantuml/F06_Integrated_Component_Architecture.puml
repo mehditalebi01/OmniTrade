@@ -1,0 +1,42 @@
+@startuml
+title Figure 6 - Integrated component architecture
+skinparam shadowing false
+skinparam linetype ortho
+skinparam componentStyle rectangle
+left to right direction
+rectangle "React / Nginx frontend :5173\nOverview + New Analysis\nAgent Room + Reports + Runs\nWorkflow Lab + Profile + Connections\nnumeric controls clamp contract ranges\napi.ts formats nested validation errors" as ui #E9EEFF
+rectangle "FastAPI API :8000\nauth/profile/connections/catalog\nworkflow CRUD/validate/publish\nrun create/cancel/resume\nSSE events/activity/lineage\nreport history/export" as api #E5F8F5
+rectangle "SessionConnectionStore\nsecret input + verification\nruntime dictionaries only\nnot persisted" as session #FFF0EB
+rectangle "Workflow service :8001\ninternal_validate\nWorkflowRuntime.run\ndistributed executors\ncheckpoint + final status" as workflow #E5F8F5
+rectangle "Evidence service :8002\nprovider-chain routing\nnormalization/calculation\nevidence time policy\nProviderError → safe HTTP 502 detail" as evidence #FFF4D8
+rectangle "Model gateway :8003\ntyped model client\nJSON validation + retry\nprotected-field merge" as model #F2EDFF
+rectangle "Report service :8004\ndetailed report assembly\nPDF/JSON artifact\nSHA-256 metadata" as report #E9EEFF
+rectangle "remote_executor routing\n31 NodeSpec types\nevidence/model/report groups\nNodeTask ↔ NodeResult\nnon-success detail → RuntimeError" as router #F2F4F7
+rectangle "PostgreSQL 16\nusers + profiles\nworkflow/version + run\nevents + evidence + model calls\nreports + artifacts" as postgres #F2F4F7
+rectangle "Redis Streams 7.4\nrun event transport\nconsumer groups\nprogress + completion events" as redis #F2F4F7
+rectangle "Artifact volume\nJSON/PDF report files\npath + SHA-256" as artifact #F2F4F7
+rectangle "External data APIs\nYahoo, Alpha Vantage, FRED\nPolymarket, StockTwits, Reddit\nFrankfurter.dev historical FX" as providers #FFF4D8
+rectangle "External model APIs\nOpenAI-compatible, Anthropic, Gemini\nAzure OpenAI, AWS Bedrock\nor deterministic fixture" as models #F2EDFF
+rectangle "Alembic migrate job\nupgrade head before services\nPostgres health dependency" as migration #F2F4F7
+ui --> api : HTTPS /api/v1 JWT + JSON
+api --> session : credentials verification state
+api --> workflow : WorkflowTask HTTP JSON
+workflow --> router : NodeTask
+router --> evidence : evidence nodes :8002
+router --> model : agent/model nodes :8003
+router --> report : report node :8004
+api --> postgres : repositories / transactions
+workflow --> postgres : 
+evidence --> postgres : 
+model --> postgres : 
+report --> postgres : 
+api ..> redis : RunEvent stream
+workflow ..> redis : 
+evidence ..> redis : 
+model ..> redis : 
+report ..> redis : 
+evidence --> providers : HTTPS raw provider payload
+model --> models : prompt → model text
+report --> artifact : write + hash
+migration --> postgres : schema before startup
+@enduml

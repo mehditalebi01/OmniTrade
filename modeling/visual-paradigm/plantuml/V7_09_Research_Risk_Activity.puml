@@ -1,0 +1,34 @@
+@startuml
+title CCL-06 - UML activity: bounded research, risk fan-out, and decision
+skinparam shadowing false
+start
+:Join selected typed specialist reports;
+:Initialize round = 1 and depth = configured bound;
+repeat
+  fork
+    :Bull researcher builds positive case\nfrom evidence and prior counterpoints;
+  fork again
+    :Bear researcher builds negative case\nfrom evidence and prior counterpoints;
+  end fork
+  :Validate schemas and evidence references;
+  :Calculate directional support and\nevidence confidence separately;
+  :Store round outputs and increment round;
+repeat while (round <= depth?) is (yes)
+:Research manager summarizes agreement and conflict;
+:Create typed decision proposal;
+fork
+  :Aggressive risk view;
+fork again
+  :Balanced risk view;
+fork again
+  :Conservative risk view;
+end fork
+:Join three risk views;
+:Apply user loss, position, horizon,\nexperience, sector, and currency policy;
+if (Decision contract and hard limits valid?) then (yes)
+  :Accept final decision-support result;
+else (no)
+  :Return explicit failure or safe HOLD / NO_DECISION;
+endif
+stop
+@enduml

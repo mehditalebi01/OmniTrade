@@ -1,0 +1,173 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2600" height="1220" viewBox="0 0 2600 1220">
+  <defs>
+    <style>
+      .title{font:700 34px Arial;fill:#17233d}.boundary{fill:#f7fbff;stroke:#334155;stroke-width:3}
+      .main{fill:#d9f1fb;stroke:#17233d;stroke-width:3}.sub{fill:#ffffff;stroke:#64748b;stroke-width:2}
+      .mainText{font:700 24px Arial;fill:#17233d}.subText{font:19px Arial;fill:#17233d}
+      .actorText{font:22px Arial;fill:#17233d}.assoc{fill:none;stroke:#334155;stroke-width:2.5}
+      .dep{fill:none;stroke:#6d5bd0;stroke-width:2.2;stroke-dasharray:9 7}
+      .include{font:17px Arial;fill:#5b4bc4}
+      .assocLabel{font:17px Arial;fill:#334155;paint-order:stroke;stroke:white;stroke-width:5px;stroke-linejoin:round}
+    </style>
+    <marker id="depArrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#6d5bd0"/>
+    </marker>
+  </defs>
+  <rect width="2600" height="1220" fill="white"/>
+  <text class="title" x="1300" y="42" text-anchor="middle">OmniTrade AI - Page-Centered UML Use-Case Model</text>
+  <rect class="boundary" x="235" y="58" width="2315" height="1125" rx="5"/>
+
+  <!-- One system actor -->
+  <g transform="translate(88 515)">
+    <circle cx="0" cy="0" r="18" fill="#7dd3fc" stroke="#17233d" stroke-width="3"/>
+    <line class="assoc" x1="0" y1="18" x2="0" y2="82"/>
+    <line class="assoc" x1="-34" y1="48" x2="34" y2="48"/>
+    <line class="assoc" x1="0" y1="82" x2="-29" y2="126"/>
+    <line class="assoc" x1="0" y1="82" x2="29" y2="126"/>
+    <text class="actorText" x="0" y="166" text-anchor="middle">Analyzer</text>
+  </g>
+
+  <!-- Analyzer associations to the five upper page use cases -->
+  <path class="assoc" d="M122 548 H150 V70 H450 V147"/>
+  <path class="assoc" d="M122 551 H165 V84 H880 V147"/>
+  <path class="assoc" d="M122 554 H180 V98 H1310 V147"/>
+  <path class="assoc" d="M122 557 H195 V112 H1740 V147"/>
+  <path class="assoc" d="M122 560 H210 V126 H2170 V147"/>
+  <text class="assocLabel" x="468" y="65">authenticate</text>
+  <text class="assocLabel" x="898" y="79">view status</text>
+  <text class="assocLabel" x="1328" y="93">configure and start</text>
+  <text class="assocLabel" x="1758" y="107">monitor and control</text>
+  <text class="assocLabel" x="2188" y="121">inspect and recover</text>
+
+  <!-- Analyzer associations to the five lower page use cases -->
+  <path class="assoc" d="M122 564 H150 V646 H450 V687"/>
+  <path class="assoc" d="M122 567 H165 V655 H880 V687"/>
+  <path class="assoc" d="M122 570 H180 V664 H1310 V687"/>
+  <path class="assoc" d="M122 573 H195 V673 H1740 V687"/>
+  <path class="assoc" d="M122 576 H210 V682 H2170 V687"/>
+  <text class="assocLabel" x="468" y="640">review and export</text>
+  <text class="assocLabel" x="898" y="649">design and publish</text>
+  <text class="assocLabel" x="1328" y="658">manage policy</text>
+  <text class="assocLabel" x="1758" y="667">verify access</text>
+  <text class="assocLabel" x="2188" y="676">read guidance</text>
+
+  <!-- Authentication -->
+  <g transform="translate(450 195)">
+    <ellipse class="main" cx="0" cy="0" rx="165" ry="48"/>
+    <text class="mainText" x="0" y="8" text-anchor="middle">Authentication</text>
+    <ellipse class="sub" cx="0" cy="150" rx="145" ry="34"/><text class="subText" x="0" y="7" text-anchor="middle" transform="translate(0 150)">Sign in</text>
+    <ellipse class="sub" cx="0" cy="280" rx="145" ry="34"/><text class="subText" x="0" y="7" text-anchor="middle" transform="translate(0 280)">Validate session</text>
+    <ellipse class="sub" cx="0" cy="410" rx="145" ry="34"/><text class="subText" x="0" y="7" text-anchor="middle" transform="translate(0 410)">Sign out</text>
+    <path class="dep" marker-end="url(#depArrow)" d="M0 48 V116"/><text class="include" x="8" y="91">«include»</text>
+    <path class="dep" marker-end="url(#depArrow)" d="M165 0 H185 V280 H145"/><text class="include" x="174" y="145" text-anchor="middle" transform="rotate(90 174 145)">«include»</text>
+    <path class="dep" marker-end="url(#depArrow)" d="M-165 0 H-185 V410 H-145"/><text class="include" x="-174" y="214" text-anchor="middle" transform="rotate(-90 -174 214)">«include»</text>
+  </g>
+
+  <!-- Overview -->
+  <g transform="translate(880 195)">
+    <ellipse class="main" cx="0" cy="0" rx="165" ry="48"/>
+    <text class="mainText" x="0" y="8" text-anchor="middle">Overview Page</text>
+    <ellipse class="sub" cx="0" cy="150" rx="145" ry="34"/><text class="subText" x="0" y="157" text-anchor="middle">View system status</text>
+    <ellipse class="sub" cx="0" cy="280" rx="145" ry="34"/><text class="subText" x="0" y="287" text-anchor="middle">View recent runs</text>
+    <ellipse class="sub" cx="0" cy="410" rx="145" ry="34"/><text class="subText" x="0" y="417" text-anchor="middle">Inspect readiness</text>
+    <path class="dep" marker-end="url(#depArrow)" d="M0 48 V116"/><text class="include" x="8" y="91">«include»</text>
+    <path class="dep" marker-end="url(#depArrow)" d="M165 0 H185 V280 H145"/><text class="include" x="174" y="145" text-anchor="middle" transform="rotate(90 174 145)">«include»</text>
+    <path class="dep" marker-end="url(#depArrow)" d="M-165 0 H-185 V410 H-145"/><text class="include" x="-174" y="214" text-anchor="middle" transform="rotate(-90 -174 214)">«include»</text>
+  </g>
+
+  <!-- New Analysis -->
+  <g transform="translate(1310 195)">
+    <ellipse class="main" cx="0" cy="0" rx="165" ry="48"/>
+    <text class="mainText" x="0" y="8" text-anchor="middle">New Analysis Page</text>
+    <ellipse class="sub" cx="0" cy="150" rx="145" ry="34"/><text class="subText" x="0" y="144" text-anchor="middle"><tspan x="0">Choose instrument,</tspan><tspan x="0" dy="22">data, and models</tspan></text>
+    <ellipse class="sub" cx="0" cy="280" rx="145" ry="34"/><text class="subText" x="0" y="287" text-anchor="middle">Configure analysis policy</text>
+    <ellipse class="sub" cx="0" cy="410" rx="145" ry="34"/><text class="subText" x="0" y="417" text-anchor="middle">Validate and start run</text>
+    <path class="dep" marker-end="url(#depArrow)" d="M0 48 V116"/><text class="include" x="8" y="91">«include»</text>
+    <path class="dep" marker-end="url(#depArrow)" d="M165 0 H185 V280 H145"/><text class="include" x="174" y="145" text-anchor="middle" transform="rotate(90 174 145)">«include»</text>
+    <path class="dep" marker-end="url(#depArrow)" d="M-165 0 H-185 V410 H-145"/><text class="include" x="-174" y="214" text-anchor="middle" transform="rotate(-90 -174 214)">«include»</text>
+  </g>
+
+  <!-- Agent Room -->
+  <g transform="translate(1740 195)">
+    <ellipse class="main" cx="0" cy="0" rx="165" ry="48"/>
+    <text class="mainText" x="0" y="8" text-anchor="middle">Agent Room Page</text>
+    <ellipse class="sub" cx="0" cy="150" rx="145" ry="34"/><text class="subText" x="0" y="157" text-anchor="middle">Watch agent work</text>
+    <ellipse class="sub" cx="0" cy="280" rx="145" ry="34"/><text class="subText" x="0" y="274" text-anchor="middle"><tspan x="0">Inspect collaboration</tspan><tspan x="0" dy="22">and points of view</tspan></text>
+    <ellipse class="sub" cx="0" cy="410" rx="145" ry="34"/><text class="subText" x="0" y="417" text-anchor="middle">Control or recover run</text>
+    <path class="dep" marker-end="url(#depArrow)" d="M0 48 V116"/><text class="include" x="8" y="91">«include»</text>
+    <path class="dep" marker-end="url(#depArrow)" d="M165 0 H185 V280 H145"/><text class="include" x="174" y="145" text-anchor="middle" transform="rotate(90 174 145)">«include»</text>
+    <path class="dep" marker-end="url(#depArrow)" d="M-165 0 H-185 V410 H-145"/><text class="include" x="-174" y="214" text-anchor="middle" transform="rotate(-90 -174 214)">«include»</text>
+  </g>
+
+  <!-- Run History -->
+  <g transform="translate(2170 195)">
+    <ellipse class="main" cx="0" cy="0" rx="165" ry="48"/>
+    <text class="mainText" x="0" y="8" text-anchor="middle">Run History Page</text>
+    <ellipse class="sub" cx="0" cy="150" rx="145" ry="34"/><text class="subText" x="0" y="157" text-anchor="middle">Filter owned runs</text>
+    <ellipse class="sub" cx="0" cy="280" rx="145" ry="34"/><text class="subText" x="0" y="287" text-anchor="middle">Reopen run</text>
+    <ellipse class="sub" cx="0" cy="410" rx="145" ry="34"/><text class="subText" x="0" y="417" text-anchor="middle">Resume recoverable run</text>
+    <path class="dep" marker-end="url(#depArrow)" d="M0 48 V116"/><text class="include" x="8" y="91">«include»</text>
+    <path class="dep" marker-end="url(#depArrow)" d="M165 0 H185 V280 H145"/><text class="include" x="174" y="145" text-anchor="middle" transform="rotate(90 174 145)">«include»</text>
+    <path class="dep" marker-end="url(#depArrow)" d="M-165 0 H-185 V410 H-145"/><text class="include" x="-174" y="214" text-anchor="middle" transform="rotate(-90 -174 214)">«include»</text>
+  </g>
+
+  <!-- Reports -->
+  <g transform="translate(450 735)">
+    <ellipse class="main" cx="0" cy="0" rx="165" ry="48"/>
+    <text class="mainText" x="0" y="8" text-anchor="middle">Reports Page</text>
+    <ellipse class="sub" cx="0" cy="150" rx="145" ry="34"/><text class="subText" x="0" y="157" text-anchor="middle">Review full report</text>
+    <ellipse class="sub" cx="0" cy="280" rx="145" ry="34"/><text class="subText" x="0" y="287" text-anchor="middle">Inspect claim lineage</text>
+    <ellipse class="sub" cx="0" cy="410" rx="145" ry="34"/><text class="subText" x="0" y="1138" text-anchor="middle" transform="translate(0 -735)">Export JSON, HTML, or PDF</text>
+    <path class="dep" marker-end="url(#depArrow)" d="M0 48 V116"/><text class="include" x="8" y="91">«include»</text>
+    <path class="dep" marker-end="url(#depArrow)" d="M165 0 H185 V280 H145"/><text class="include" x="174" y="145" text-anchor="middle" transform="rotate(90 174 145)">«include»</text>
+    <path class="dep" marker-end="url(#depArrow)" d="M-165 0 H-185 V410 H-145"/><text class="include" x="-174" y="214" text-anchor="middle" transform="rotate(-90 -174 214)">«include»</text>
+  </g>
+
+  <!-- Workflow Lab -->
+  <g transform="translate(880 735)">
+    <ellipse class="main" cx="0" cy="0" rx="165" ry="48"/>
+    <text class="mainText" x="0" y="8" text-anchor="middle">Workflow Lab Page</text>
+    <ellipse class="sub" cx="0" cy="150" rx="145" ry="34"/><text class="subText" x="0" y="157" text-anchor="middle">Edit node graph</text>
+    <ellipse class="sub" cx="0" cy="280" rx="145" ry="34"/><text class="subText" x="0" y="287" text-anchor="middle">Validate and publish graph</text>
+    <ellipse class="sub" cx="0" cy="410" rx="145" ry="34"/><text class="subText" x="0" y="404" text-anchor="middle"><tspan x="0">Undo, reset, and</tspan><tspan x="0" dy="22">customize nodes</tspan></text>
+    <path class="dep" marker-end="url(#depArrow)" d="M0 48 V116"/><text class="include" x="8" y="91">«include»</text>
+    <path class="dep" marker-end="url(#depArrow)" d="M165 0 H185 V280 H145"/><text class="include" x="174" y="145" text-anchor="middle" transform="rotate(90 174 145)">«include»</text>
+    <path class="dep" marker-end="url(#depArrow)" d="M-165 0 H-185 V410 H-145"/><text class="include" x="-174" y="214" text-anchor="middle" transform="rotate(-90 -174 214)">«include»</text>
+  </g>
+
+  <!-- Profile -->
+  <g transform="translate(1310 735)">
+    <ellipse class="main" cx="0" cy="0" rx="165" ry="48"/>
+    <text class="mainText" x="0" y="8" text-anchor="middle">Profile Page</text>
+    <ellipse class="sub" cx="0" cy="150" rx="145" ry="34"/><text class="subText" x="0" y="157" text-anchor="middle">Set risk limits</text>
+    <ellipse class="sub" cx="0" cy="280" rx="145" ry="34"/><text class="subText" x="0" y="287" text-anchor="middle">Set investment context</text>
+    <ellipse class="sub" cx="0" cy="410" rx="145" ry="34"/><text class="subText" x="0" y="417" text-anchor="middle">Set analysis defaults</text>
+    <path class="dep" marker-end="url(#depArrow)" d="M0 48 V116"/><text class="include" x="8" y="91">«include»</text>
+    <path class="dep" marker-end="url(#depArrow)" d="M165 0 H185 V280 H145"/><text class="include" x="174" y="145" text-anchor="middle" transform="rotate(90 174 145)">«include»</text>
+    <path class="dep" marker-end="url(#depArrow)" d="M-165 0 H-185 V410 H-145"/><text class="include" x="-174" y="214" text-anchor="middle" transform="rotate(-90 -174 214)">«include»</text>
+  </g>
+
+  <!-- Connections -->
+  <g transform="translate(1740 735)">
+    <ellipse class="main" cx="0" cy="0" rx="165" ry="48"/>
+    <text class="mainText" x="0" y="8" text-anchor="middle">Connections Page</text>
+    <ellipse class="sub" cx="0" cy="150" rx="145" ry="34"/><text class="subText" x="0" y="157" text-anchor="middle">Enter session credentials</text>
+    <ellipse class="sub" cx="0" cy="280" rx="145" ry="34"/><text class="subText" x="0" y="287" text-anchor="middle">Verify services</text>
+    <ellipse class="sub" cx="0" cy="410" rx="145" ry="34"/><text class="subText" x="0" y="417" text-anchor="middle">Discover valid capabilities</text>
+    <path class="dep" marker-end="url(#depArrow)" d="M0 48 V116"/><text class="include" x="8" y="91">«include»</text>
+    <path class="dep" marker-end="url(#depArrow)" d="M165 0 H185 V280 H145"/><text class="include" x="174" y="145" text-anchor="middle" transform="rotate(90 174 145)">«include»</text>
+    <path class="dep" marker-end="url(#depArrow)" d="M-165 0 H-185 V410 H-145"/><text class="include" x="-174" y="214" text-anchor="middle" transform="rotate(-90 -174 214)">«include»</text>
+  </g>
+
+  <!-- How to Use -->
+  <g transform="translate(2170 735)">
+    <ellipse class="main" cx="0" cy="0" rx="165" ry="48"/>
+    <text class="mainText" x="0" y="8" text-anchor="middle">How to Use Page</text>
+    <ellipse class="sub" cx="0" cy="150" rx="145" ry="34"/><text class="subText" x="0" y="157" text-anchor="middle">Browse topic guide</text>
+    <ellipse class="sub" cx="0" cy="280" rx="145" ry="34"/><text class="subText" x="0" y="287" text-anchor="middle">Open complete guide</text>
+    <ellipse class="sub" cx="0" cy="410" rx="145" ry="34"/><text class="subText" x="0" y="404" text-anchor="middle"><tspan x="0">Follow setup-to-report</tspan><tspan x="0" dy="22">steps</tspan></text>
+    <path class="dep" marker-end="url(#depArrow)" d="M0 48 V116"/><text class="include" x="8" y="91">«include»</text>
+    <path class="dep" marker-end="url(#depArrow)" d="M165 0 H185 V280 H145"/><text class="include" x="174" y="145" text-anchor="middle" transform="rotate(90 174 145)">«include»</text>
+    <path class="dep" marker-end="url(#depArrow)" d="M-165 0 H-185 V410 H-145"/><text class="include" x="-174" y="214" text-anchor="middle" transform="rotate(-90 -174 214)">«include»</text>
+  </g>
+</svg>

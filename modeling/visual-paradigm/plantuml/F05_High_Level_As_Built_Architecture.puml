@@ -1,0 +1,78 @@
+@startuml
+title Figure 5 - OmniTrade high-level as-built architecture
+skinparam shadowing false
+skinparam linetype ortho
+skinparam componentStyle rectangle
+left to right direction
+rectangle "Profile panel\ndefault ticker/model/providers\nhorizon + experience\nmax loss + position\nexcluded sectors" as profile #E9EEFF
+rectangle "Connections panel\ndata/model provider\nkey/URL/region/model IDs\nverify + discover models\nsecrets session-only" as connections #E9EEFF
+rectangle "Workflow Lab\n31 typed node types\nports + edges + loop flag\ntimeouts/retry/failure policy\nbudget + publish version" as workflow_lab #E9EEFF
+rectangle "New Analysis\nticker + as-of\nanalysts + depth + risk\n5 provider chains\nquick/deep models\nfreshness + output options\nbudget default 900s; ranges clamped" as analysis #E9EEFF
+rectangle "FastAPI boundary\nauthenticate owner\nvalidate request DTO\nresolve published workflow\n202 Accepted + run ID" as api #E5F8F5
+rectangle "Run composer\nPydantic range/enum/chain validation\ncopy profile policy + run configuration\nfilter unselected analysts\noverride timeout/depth/freshness\nclear fixture fallback on live fetch\nbind verified connections" as composer #E5F8F5
+rectangle "Immutable workflow snapshot\ndefinition + content hash\nschema/version + budget\n33 nodes / 48 edges default" as version #E5F8F5
+rectangle "Run + trace context\nconfiguration + investor policy\ntrace_id + status\nruntime/provider/model budgets" as run #E5F8F5
+rectangle "WorkflowValidator\nstart/end + reachability\nknown nodes/config\ntyped ports + required inputs\nbounded-cycle + budget safety\ncount actual model nodes × retries\ndo not multiply full graph by depth" as validator #FFF0EB
+rectangle "Wave scheduler\nparents terminal → READY\nstable sort + parallel cap\nasync wave execution\ncancel/deadlock detection" as scheduler #FFF0EB
+rectangle "Node execution policy\ntyped input aggregation\ntimeout + retry/backoff\nfallback provider\nrequired/optional classification" as executor #FFF0EB
+rectangle "Checkpoint + recovery\nsave after every wave\nnode states + event IDs\nresume without duplicate work\nreconcile late completion" as recovery #FFF0EB
+rectangle "Data providers\nYahoo: market/fund/news/sentiment\nAlpha: market/fund/news/sent/macro\nFRED: rates (DGS10)\nPolymarket: macro/prediction text\nStockTwits/Reddit: sentiment\nFrankfurter.dev: historical FX conversion" as data_providers #FFF4D8
+rectangle "Provider-chain router\ncapability + user order\nfirst real-provider success\nclassify HTTP / connection errors\nno fixture fallback for live fetch\nprovider budget + historical FX" as provider_router #FFF0EB
+rectangle "Five fetch nodes (parallel)\nmarket → RAW_MARKET\nfundamentals → RAW_FUNDAMENTALS\nnews/macro/sentiment → RAW_TEXT\ntimestamp + provider + source URL\nprovider failure becomes safe 502 detail" as fetch #FFF4D8
+rectangle "Normalization\nnumeric/schema coercion\nunits + base currency\ntext + metadata cleaning\ncontent hash + quality flags" as normalize #E8F7FF
+rectangle "Deterministic calculations\nmomentum + SMA20/SMA50\nRSI14 + annualized volatility\nsignal score\nprofit/debt/value ratios" as calc #E5F8F5
+rectangle "Evidence join\ncollection port compatibility\nrequired/optional branches\nmerge normalized + calculated items" as evidence_join #E5F8F5
+rectangle "Evidence time/quality guard\nas_of reproducibility\nreject future data\nreject stale > configured hours\ndegrade only when allowed" as time_guard #E5F8F5
+rectangle "Evidence lineage\nEvidenceItem + hash\nprovider + URL + timestamps\nclaim evidence_refs\nquality flags" as evidence_store #F2F4F7
+rectangle "Third-party model APIs\nOpenAI-compatible families\nAnthropic / Gemini / Azure\nAWS Bedrock (incl. Anthropic)\nOllama or deterministic fixture" as model_providers #F2EDFF
+rectangle "Typed model gateway\nclient routing + prompt\nJSON extraction + validation\nretry invalid output\nmerge narrative only\nprotect scores/action/lineage" as model_gateway #F2EDFF
+rectangle "Four specialist agents\nmarket / fundamental\nnews / sentiment\nEvidenceSet → AgentReport\nclaims + risks + evidence refs" as analysts #F2EDFF
+rectangle "Bull + Bear + Manager\nparallel positive/negative cases\ncompare conflicts + agreement\nposition scores\ntyped ResearchCase(s)" as research #EAF8EF
+rectangle "Bounded debate\nround limit = research_depth\nexplicit typed loop dependency\nrepeat control node only\ndo not multiply all model agents\nstop flag + convergence; never unbounded" as debate #FFF0EB
+rectangle "Proposal builder\ncase-balance thresholds\nBUY/HOLD/SELL\nconfidence + conditions\nevidence lineage" as proposal #FFECEF
+rectangle "Three risk agents\naggressive / balanced / conservative\nproposal + InvestorPolicy\nreward/loss/uncertainty views" as risks #FFECEF
+rectangle "Decision validator\njoin 3 risk views\nevidence/claim consistency\nloss + position + sector limits\nNO_DECISION + warnings when unsafe" as decision #E9EEFF
+rectangle "Report service\ndecision + agents + debate + risk\nsettings + trace + node statuses\nJSON/PDF + disclaimer" as report #E9EEFF
+rectangle "Event stream / Agent Room\nnode/run state events\nRedis Streams + activity API\n400 ms UI polling / SSE endpoint" as events #E5F8F5
+rectangle "PostgreSQL + artifacts\nrun/event/evidence/model call rows\nworkflow/version/profile rows\nartifact volume + SHA-256" as persistence #F2F4F7
+rectangle "Reports / Runs UI\nfinal action + confidence\nagent/debate/risk views\nlineage + export\nno brokerage execution" as ui_output #E9EEFF
+profile --> composer : UserProfile InvestorPolicy + defaults
+connections --> composer : verified runtime settings (no secrets persisted)
+workflow_lab --> version : validate + publish WorkflowDefinition
+analysis --> api : POST /runs RunRequest JSON
+api --> composer : owner + request
+version --> run : workflow_version_id
+composer --> run : configured definition + policy + budgets
+run --> validator : definition + catalog
+validator --> scheduler : valid graph
+scheduler --> executor : ready node wave
+executor --> recovery : state + event after node
+recovery ..> scheduler : checkpointed next wave / resume
+executor --> fetch : NodeTask: fetch_* provider chain + ticker + as_of
+data_providers --> provider_router : HTTPS request / response provider-native JSON
+provider_router --> fetch : first successful payload errors retained for degradation
+fetch --> normalize : RAW_* typed ports
+normalize --> calc : normalized market/fundamentals
+normalize --> evidence_join : normalized text/market/fundamentals
+calc --> evidence_join : technical + ratio Evidence
+evidence_join --> time_guard : EvidenceSet hashes + quality flags
+time_guard --> evidence_store : accepted evidence + lineage
+time_guard --> analysts : EvidenceSet selected analyst nodes
+model_providers --> model_gateway : prompt → text response provider auth stays in gateway
+model_gateway --> analysts : typed completion validated AgentReport
+model_gateway --> research : typed research narrative
+model_gateway ..> debate : optional narrative help protected loop state
+analysts --> research : SPECIALIST_REPORTS claims + evidence refs
+research --> debate : RESEARCH_CASES round + position scores
+debate ..> research : typed loop dependency runtime repeats control node only
+debate --> proposal : final cases
+proposal --> risks : Proposal + InvestorPolicy
+risks --> decision : RISK_VIEWS
+decision --> report : Decision + claims + warnings
+recovery ..> events : RunEvent stream trace_id + node state
+report --> events : report.ready event
+events --> persistence : append events / status
+report --> persistence : JSON/PDF artifact + SHA-256
+report --> ui_output : GET report/history/export
+events --> ui_output : activity polling / SSE
+@enduml

@@ -1,0 +1,48 @@
+{
+  "source_revision": "c90900f0b38c169cfd50678c7baba84ae15ebf77",
+  "source_system": "web-based information system",
+  "dominant_style": "layered web information system",
+  "supporting_styles": [
+    "client-server",
+    "service-oriented",
+    "pipes-and-filters",
+    "event-driven",
+    "repository"
+  ],
+  "catalog_node_types": 31,
+  "default_workflow_nodes": 33,
+  "default_workflow_edges": 48,
+  "diagrams": [
+    {
+      "id": "A01_Main_Web_Information_System_Architecture",
+      "title": "Architecture 1 - OmniTrade main web information system architecture",
+      "nodes": 36,
+      "edges": 38
+    },
+    {
+      "id": "A02_Control_Subsystem_Decomposition",
+      "title": "Architecture 2 - Decomposition of the three CONTROL subsystems",
+      "nodes": 18,
+      "edges": 17
+    },
+    {
+      "id": "A03_Architecture_Style",
+      "title": "Architecture 3 - Dominant and supporting architectural styles",
+      "nodes": 10,
+      "edges": 9
+    },
+    {
+      "id": "A04_Architecture_Pattern_Realization",
+      "title": "Architecture 4 - Architectural pattern realization map",
+      "nodes": 20,
+      "edges": 15
+    },
+    {
+      "id": "A05_Architecture_Principles",
+      "title": "Architecture 5 - Architecture principles and quality-attribute traceability",
+      "nodes": 16,
+      "edges": 12
+    }
+  ],
+  "reference_note": "Course PDF was used for terminology and classification only; implementation claims come from the current repository."
+}

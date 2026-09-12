@@ -1,0 +1,31 @@
+@startuml
+title OmniTrade AI - UML communication diagram for one analysis
+left to right direction
+skinparam shadowing false
+skinparam linetype ortho
+object ":NewAnalysisUI" as UI
+object ":RunAPI" as API
+object ":WorkflowValidator" as Validator
+object ":ReadinessScheduler" as Scheduler
+object ":EvidenceGateway" as Evidence
+object ":SpecialistPool" as Specialists
+object ":ResearchCoordinator" as Research
+object ":RiskCoordinator" as Risk
+object ":ReportBuilder" as Report
+object ":Repository/EventLog" as Repo
+UI --> API : 1: createRun(configuration)
+API --> Validator : 1.1: validate(version, configuration)
+Validator --> Repo : 1.2: save immutable run snapshot
+API --> Scheduler : 2: execute(run)
+Scheduler --> Evidence : 2.1*: collect selected evidence roles
+Evidence --> Repo : 2.2*: save normalized evidence/events
+Scheduler --> Specialists : 3*: execute selected specialists
+Specialists --> Research : 4: join typed reports
+Research --> Risk : 5: proposal + bull/bear cases
+Risk --> Report : 6: validated decision + role outputs
+Report --> Repo : 6.1: save report/lineage/artifact hashes
+Repo --> UI : 7*: stream events and expose report
+note bottom
+Numbers show message order; * marks repeated or parallel messages.
+end note
+@enduml

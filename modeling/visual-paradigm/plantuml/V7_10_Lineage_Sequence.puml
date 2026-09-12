@@ -1,0 +1,40 @@
+@startuml
+title CCL-08 - UML sequence: claim lineage and multi-format report
+skinparam shadowing false
+participant "Workflow Runtime" as Runtime
+participant "Report Service" as Report
+database "Run / Node Repository" as RunRepo
+database "Evidence Repository" as EvidenceRepo
+participant "Lineage Builder" as Lineage
+participant "Artifact Renderer" as Renderer
+collections "Artifact Store" as Store
+participant "Reports UI" as UI
+Runtime -> Report : buildReport(runId, terminalNodeStates)
+Report -> RunRepo : load run, version, configuration, role outputs
+RunRepo --> Report : immutable run context + executed role set
+Report -> EvidenceRepo : load normalized evidence and provider metadata
+EvidenceRepo --> Report : evidence IDs, times, currency, hashes
+Report -> Lineage : link claims -> node outputs -> evidence -> providers
+loop every material claim
+  Lineage -> Lineage : resolve evidence refs and content hashes
+  alt reference found
+    Lineage -> Lineage : mark supported
+  else missing reference
+    Lineage -> Lineage : mark unsupported and add warning
+  end
+end
+Lineage --> Report : lineage graph + completeness
+Report -> Renderer : one typed report model
+par JSON
+  Renderer -> Renderer : serialize canonical JSON
+else HTML
+  Renderer -> Renderer : render readable HTML
+else PDF
+  Renderer -> Renderer : render report PDF
+end
+Renderer -> Store : write artifacts and SHA-256 hashes
+Store --> Report : artifact metadata
+Report -> RunRepo : persist report, claims, lineage, artifacts
+UI -> Report : get owned report/history/lineage/export
+Report --> UI : same report model and selected artifact
+@enduml

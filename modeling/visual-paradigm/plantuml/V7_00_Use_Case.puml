@@ -1,0 +1,94 @@
+@startuml
+title OmniTrade AI - page-centered UML use-case model
+left to right direction
+skinparam shadowing false
+skinparam linetype ortho
+skinparam packageStyle rectangle
+actor "Analyzer" as Analyzer
+
+rectangle "OmniTrade AI decision-support system" {
+  usecase "Authentication" as AUTH
+  usecase "Overview page" as OVERVIEW
+  usecase "New Analysis page" as ANALYSIS
+  usecase "Agent Room page" as AGENTS
+  usecase "Run History page" as HISTORY
+  usecase "Reports page" as REPORTS
+  usecase "Workflow Lab page" as WORKFLOW
+  usecase "Profile page" as PROFILE
+  usecase "Connections page" as CONNECTIONS
+  usecase "How to Use page" as GUIDE
+
+  usecase "Sign in" as AUTH1
+  usecase "Validate session" as AUTH2
+  usecase "Sign out" as AUTH3
+  usecase "View system status" as O1
+  usecase "View recent runs" as O2
+  usecase "Inspect readiness" as O3
+  usecase "Choose instrument, data, and models" as A1
+  usecase "Configure analysis policy" as A2
+  usecase "Validate and start run" as A3
+  usecase "Watch agent work" as G1
+  usecase "Inspect collaboration and points of view" as G2
+  usecase "Control or recover run" as G3
+  usecase "Filter owned runs" as H1
+  usecase "Reopen run" as H2
+  usecase "Resume recoverable run" as H3
+  usecase "Review full report" as R1
+  usecase "Inspect claim lineage" as R2
+  usecase "Export JSON, HTML, or PDF" as R3
+  usecase "Edit node graph" as W1
+  usecase "Validate and publish graph" as W2
+  usecase "Undo, reset, and customize nodes" as W3
+  usecase "Set risk limits" as P1
+  usecase "Set investment context" as P2
+  usecase "Set analysis defaults" as P3
+  usecase "Enter session credentials" as C1
+  usecase "Verify services" as C2
+  usecase "Discover valid capabilities" as C3
+  usecase "Browse topic guide" as U1
+  usecase "Open complete guide" as U2
+  usecase "Follow setup-to-report steps" as U3
+}
+
+Analyzer --> AUTH : authenticate
+Analyzer --> OVERVIEW : view status
+Analyzer --> ANALYSIS : configure and start
+Analyzer --> AGENTS : monitor and control
+Analyzer --> HISTORY : inspect and recover
+Analyzer --> REPORTS : review and export
+Analyzer --> WORKFLOW : design and publish
+Analyzer --> PROFILE : manage policy
+Analyzer --> CONNECTIONS : verify access
+Analyzer --> GUIDE : read guidance
+
+AUTH ..> AUTH1 : <<include>>
+AUTH ..> AUTH2 : <<include>>
+AUTH ..> AUTH3 : <<include>>
+OVERVIEW ..> O1 : <<include>>
+OVERVIEW ..> O2 : <<include>>
+OVERVIEW ..> O3 : <<include>>
+ANALYSIS ..> A1 : <<include>>
+ANALYSIS ..> A2 : <<include>>
+ANALYSIS ..> A3 : <<include>>
+AGENTS ..> G1 : <<include>>
+AGENTS ..> G2 : <<include>>
+AGENTS ..> G3 : <<include>>
+HISTORY ..> H1 : <<include>>
+HISTORY ..> H2 : <<include>>
+HISTORY ..> H3 : <<include>>
+REPORTS ..> R1 : <<include>>
+REPORTS ..> R2 : <<include>>
+REPORTS ..> R3 : <<include>>
+WORKFLOW ..> W1 : <<include>>
+WORKFLOW ..> W2 : <<include>>
+WORKFLOW ..> W3 : <<include>>
+PROFILE ..> P1 : <<include>>
+PROFILE ..> P2 : <<include>>
+PROFILE ..> P3 : <<include>>
+CONNECTIONS ..> C1 : <<include>>
+CONNECTIONS ..> C2 : <<include>>
+CONNECTIONS ..> C3 : <<include>>
+GUIDE ..> U1 : <<include>>
+GUIDE ..> U2 : <<include>>
+GUIDE ..> U3 : <<include>>
+@enduml

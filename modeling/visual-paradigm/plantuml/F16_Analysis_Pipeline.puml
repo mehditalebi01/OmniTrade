@@ -1,0 +1,57 @@
+@startuml
+title Figure 16 - Analysis pipeline: stages, gates, parallelism, and recovery
+skinparam shadowing false
+skinparam linetype ortho
+skinparam componentStyle rectangle
+left to right direction
+rectangle "1. Configure\nticker/date/roles/depth\nrisk/report/reasoning/currency\nbudgets/retries/freshness/concurrency" as configure #E9EEFF
+rectangle "2. Validate\nPydantic bounds + enum matrix\ntypes/ports/reachability/cycles\nloops/joins/side effects/budget" as validate #FFFFFF
+rectangle "3. Publish\nimmutable workflow version\ncatalog snapshot + content hash" as publish #FFFFFF
+rectangle "4. Create run\nowner + RunConfig snapshot\n900 s default; bounded values\nclear fixture fallback for live" as create #FFFFFF
+rectangle "5. Collect evidence\nparallel real-provider chains\nclassify HTTP/network failures\nnormalize + time guard + Frankfurter FX" as collect #FFFFFF
+rectangle "6. Analyze\nselected specialist agents\ntyped EvidenceBundle inputs\nstructured, protected outputs" as analyze #FFFFFF
+rectangle "7. Debate\nbull/bear/rebuttal/proposal\nbounded control loop only\nupstream agents not multiplied" as debate #FFFFFF
+rectangle "8. Risk\nthree risk views\npolicy limits + deterministic fields" as risk #FFFFFF
+rectangle "9. Decide\ndecision validation\nconfidence + warnings + limitations" as decide #FFFFFF
+rectangle "10. Report\nviews + lineage\nJSON/HTML/PDF artifacts\ndecision support; no broker" as report #E9EEFF
+rectangle "Configuration accepted" as gate_0 #F2F4F7
+rectangle "Graph valid" as gate_1 #F2F4F7
+rectangle "Version frozen" as gate_2 #F2F4F7
+rectangle "Run owned" as gate_3 #F2F4F7
+rectangle "Evidence usable" as gate_4 #F2F4F7
+rectangle "Roles complete" as gate_5 #F2F4F7
+rectangle "Loop bound reached" as gate_6 #F2F4F7
+rectangle "Risk set complete" as gate_7 #F2F4F7
+rectangle "Decision valid" as gate_8 #F2F4F7
+rectangle "Archive written" as gate_9 #F2F4F7
+rectangle "Stable ready-set scheduler\nsorted node IDs; max_parallel_nodes" as ready #FFFFFF
+rectangle "Monotonic event protocol\nsequence, run/node IDs, status, trace" as event #FFFFFF
+rectangle "Checkpoint writer\ncompleted outputs + loop state" as checkpoint #FFFFFF
+rectangle "Failure classifier\nretry / fallback / degraded / failed" as failure #FFFFFF
+rectangle "Resume planner\nskip completed; recompute remaining" as resume #FFFFFF
+rectangle "RECOVERABLE\nTransient provider/model error -> bounded retry\nProvider chain -> next real provider\nOptional node -> degraded run + warning" as recoverable #FFECEF
+rectangle "RESUMABLE\nPersist checkpoint -> restore completed outputs\nReset incomplete nodes to pending\nResume readiness -> continue remaining nodes" as resumable #E9EEFF
+rectangle "TERMINAL\nRequired node failure -> FAILED\nSafe-point cancellation -> CANCELLED\nAll required paths -> COMPLETED / DEGRADED" as terminal #F2F4F7
+configure --> validate : 
+validate --> publish : 
+publish --> create : 
+create --> collect : 
+collect --> analyze : 
+analyze --> debate : 
+debate --> risk : 
+risk --> decide : 
+decide --> report : 
+configure ..> gate_0 : 
+validate ..> gate_1 : 
+publish ..> gate_2 : 
+create ..> gate_3 : 
+collect ..> gate_4 : 
+analyze ..> gate_5 : 
+debate ..> gate_6 : 
+risk ..> gate_7 : 
+decide ..> gate_8 : 
+report ..> gate_9 : 
+failure --> recoverable : classified failure
+resume --> resumable : checkpoint/recovery
+ready --> terminal : terminal selection
+@enduml

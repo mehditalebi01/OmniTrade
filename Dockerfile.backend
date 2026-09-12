@@ -1,0 +1,9 @@
+FROM python:3.12-slim
+WORKDIR /app
+ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
+COPY pyproject.toml README.md ./
+COPY omnitrade ./omnitrade
+COPY alembic.ini ./
+COPY migrations ./migrations
+RUN pip install --no-cache-dir .
+CMD ["uvicorn", "omnitrade.api:app", "--host", "0.0.0.0", "--port", "8000"]

@@ -1,0 +1,54 @@
+@startuml
+title Figure 1 - Expanded use-case model of the implemented product boundary
+skinparam shadowing false
+skinparam linetype ortho
+skinparam componentStyle rectangle
+left to right direction
+rectangle "Registered analyst\nOwns profile, workflows, runs, reports" as actor_user #E9EEFF
+rectangle "Student maintainer / operator\nDeploys, verifies, diagnoses, resumes" as actor_maint #F2EDFF
+rectangle "Professor / reviewer\nEvaluates process, owned complexity, evidence" as actor_professor #FFF4D8
+rectangle "Market / news / macro providers\nyfinance, Alpha Vantage, Finnhub\nFRED, Polygon, NewsAPI, Frankfurter" as actor_data #EAF8EF
+rectangle "Model API providers\nAWS Bedrock, Anthropic, OpenAI-compatible\nUser connection selects approved model" as actor_model #F2EDFF
+rectangle "Authenticate and maintain session\nLogin/logout\nOwnership-scoped requests" as uc_auth #E9EEFF
+rectangle "Manage profile\nAnalysis defaults and investor policy\nName/email are identity only" as uc_profile #E9EEFF
+rectangle "Configure provider and model connections\nProvider chains and credentials\nModel/provider routing policy" as uc_connections #EAF8EF
+rectangle "Configure a new analysis\nTicker/date/analysts/depth\nrisk/report/reasoning/currency\nbudgets, retries, freshness, concurrency" as uc_analysis #E8F7FF
+rectangle "Design workflow in Workflow Lab\nEdit typed 31-node catalog graph\nValidate, publish immutable version" as uc_workflow #F2EDFF
+rectangle "Deploy and verify release\nCompose health, migrations, tests\nDeterministic providers/models in CI" as uc_ops #FFF4D8
+rectangle "Validate configuration and graph\nPydantic bounds and enum matrix\ntypes, ports, reachability, cycles\ndeclared loops, joins, side effects, budget" as uc_validate #FFF4D8
+rectangle "Create and start an analysis run\nPersist owner/config/version snapshot\nClear fixture fallback for live providers" as uc_run #E9EEFF
+rectangle "Use Run History and Agent Room\nObserve, pause, cancel, or resume\nCheckpoint restores completed outputs" as uc_monitor #F2EDFF
+rectangle "Review explainable decision report\nDecision, confidence, warnings\nspecialists, debate, risk views" as uc_report #EAF8EF
+rectangle "Inspect lineage and export output\nEvidence IDs, citations, hashes\nJSON / HTML / PDF artifacts" as uc_lineage #E5F8F5
+rectangle "Acquire and normalize live evidence\nReal-provider fallback chains\nHTTP/connection failure classification\nschema, time guard, quality, FX" as uc_evidence #EAF8EF
+rectangle "Execute specialist and debate agents\nMarket/fundamental/news/sentiment\nbull/bear bounded debate\ncontrol node repeats; agents are not multiplied" as uc_agents #F2EDFF
+rectangle "Apply risk policy and decision validation\nAggressive/balanced/conservative views\nprotected fields and deterministic checks" as uc_risk #FFF0EB
+rectangle "Assemble report and archive trace\nClaim-to-evidence lineage\nwarnings/limitations and run identifiers\ndecision support only" as uc_assemble #E5F8F5
+rectangle "Define investment policy\nhorizon + experience\nmax loss + max position\nexcluded sectors" as uc_policy #FFF0EB
+rectangle "Select default AI models\nverified provider\nquick model + deep model\nprefills New Analysis" as uc_model_defaults #F2EDFF
+actor_user --> uc_auth : session
+actor_user --> uc_profile : defaults/policy
+actor_user --> uc_analysis : analysis request
+actor_maint --> uc_workflow : owned graph
+actor_maint --> uc_ops : release evidence
+actor_professor --> uc_report : inspect result
+actor_professor --> uc_lineage : audit evidence
+actor_data --> uc_evidence : typed HTTP responses
+actor_model --> uc_agents : prompt / structured draft
+uc_analysis ..> uc_validate : <<include>> validation
+uc_workflow ..> uc_validate : <<include>> publish checks
+uc_validate --> uc_run : accepted snapshot
+uc_run --> uc_evidence : RunConfig + trace_id
+uc_evidence --> uc_agents : EvidenceBundle
+uc_agents --> uc_risk : proposal + debate
+uc_risk --> uc_assemble : validated decision
+uc_run --> uc_monitor : events/checkpoints
+uc_assemble --> uc_report : Report + artifacts
+uc_report ..> uc_lineage : <<include>>
+uc_monitor ..> uc_workflow : <<extend>> resume failed/interrupted
+uc_profile ..> uc_policy : <<include>>
+uc_profile ..> uc_model_defaults : <<include>>
+uc_connections ..> uc_model_defaults : verified models
+uc_policy ..> uc_risk : deep-copied into run; used by risk agents
+uc_model_defaults ..> uc_analysis : prefill; user may override
+@enduml

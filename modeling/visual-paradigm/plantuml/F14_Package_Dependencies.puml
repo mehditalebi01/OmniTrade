@@ -1,0 +1,40 @@
+@startuml
+title Figure 14 - Package and module dependency model
+skinparam shadowing false
+skinparam linetype ortho
+skinparam componentStyle rectangle
+left to right direction
+rectangle "React pages and components\nLogin, Overview, New Analysis\nAgent Room, Reports, Workflow Lab\nProfile, Connections" as p_pages #E9EEFF
+rectangle "api.ts\ntyped HTTP methods\nnested backend error formatting" as p_api_ts #E9EEFF
+rectangle "types.ts\nrequest/response and UI view types" as p_types_ts #E9EEFF
+rectangle "React Flow workflow canvas\ncatalog palette + typed graph lifecycle" as p_react_flow #E9EEFF
+rectangle "api.py\nauthentication, ownership, public /api/v1 routes\nRunConfig validation and live fallback clearing" as p_api #F2EDFF
+rectangle "services.py\nworkflow/run/evidence/model/report orchestration\nProviderError -> safe HTTP 502" as p_services #F2EDFF
+rectangle "contracts.py\nPydantic domain and boundary contracts" as p_contracts #FFF4D8
+rectangle "storage.py + db.py + migrations\nowner-scoped repositories\nPostgreSQL persistence and immutable versions" as p_storage #E5F8F5
+rectangle "engine/runtime.py\nstable ready set, bounded parallel batch\nretry/fallback, failure, checkpoint, resume" as p_runtime #FFF0EB
+rectangle "engine/validator.py\ntypes, ports, reachability, cycle/loop\njoins, side effects, evidence, actual model-call budget" as p_validator #FFF0EB
+rectangle "engine/catalog.py\n31 node types\ngroups, ports, required config, side effects" as p_catalog #FFF0EB
+rectangle "engine/executors.py\nnode dispatch and typed executor boundary" as p_executors #FFF0EB
+rectangle "providers.py + connections.py\nreal-provider chains, no fixture live\nclassification, normalization, Frankfurter FX" as p_providers #EAF8EF
+rectangle "model_gateway.py + remote_executor.py\napproved model routing, structured draft\ndownstream error detail preserved" as p_model #F2EDFF
+rectangle "reporting.py\nJSON/HTML/PDF assembly\nwarnings, evidence, lineage, artifacts" as p_reporting #E5F8F5
+p_pages --> p_api_ts : calls
+p_api_ts --> p_types_ts : uses
+p_react_flow --> p_api_ts : workflow API
+p_api_ts --> p_api : /api/v1 JSON
+p_api --> p_services : delegates
+p_api --> p_contracts : validates request
+p_services --> p_storage : repositories
+p_services --> p_runtime : execute
+p_services --> p_providers : evidence request
+p_api --> p_model : connection/model routing
+p_runtime --> p_validator : validate before schedule
+p_runtime --> p_catalog : node definitions
+p_runtime --> p_executors : dispatch
+p_validator --> p_catalog : catalog rules
+p_executors --> p_providers : adapter call
+p_executors --> p_model : model call
+p_services --> p_reporting : assemble output
+p_reporting --> p_storage : persist artifacts
+@enduml

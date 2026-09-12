@@ -1,0 +1,43 @@
+@startuml
+title Figure 20 - Deterministic readiness scheduler activity
+skinparam shadowing false
+skinparam linetype ortho
+skinparam componentStyle rectangle
+left to right direction
+rectangle "Start / Resume" as s_start #15233A
+rectangle "Create or restore NodeRun states\ncompleted outputs remain immutable\nload loop state and latest checkpoint" as restore #FFFFFF
+rectangle "Check cancellation signal\nbefore each batch and after each completion" as cancel_check #FFFFFF
+rectangle "Compute ready set\npending nodes whose required predecessors are acceptable" as ready #FFFFFF
+rectangle "Sort and cap batch\nstable node identifier\nmax_parallel_nodes" as sort #FFFFFF
+rectangle "Assemble typed inputs\nstable edge order + execution context" as inputs #FFFFFF
+rectangle "Execute batch\nasync gather with timeout\nbounded retry and real-provider fallback" as execute #FFFFFF
+rectangle "Classify results\nsucceeded / degraded / failed / interrupted" as classify #FFFFFF
+rectangle "Persist events + checkpoint\nmonotonic sequence\ncompleted outputs + loop state" as persist #FFFFFF
+rectangle "Cancel requested?" as cancel #FFF4D8
+rectangle "Ready set empty?" as ready_empty #FFF4D8
+rectangle "Terminal?" as terminal_dec #FFF4D8
+rectangle "CANCELLED\nsafe cancellation point\ncheckpoint remains resumable" as cancelled #E9EEFF
+rectangle "FAILED / INTERRUPTED\nrequired failure or recovery process stop\nstable reason and trace retained" as interrupted #FFECEF
+rectangle "COMPLETED / DEGRADED\nall required paths terminal\noptional failure may remain with warning" as completed #EAF8EF
+rectangle "End" as s_end #15233A
+s_start --> restore : 
+restore --> cancel_check : 
+cancel_check --> ready : 
+ready --> sort : 
+sort --> inputs : 
+inputs --> execute : 
+execute --> classify : 
+classify --> persist : 
+cancel_check --> cancel : 
+cancel --> cancelled : yes
+cancel --> ready : no
+ready --> ready_empty : 
+ready_empty --> interrupted : yes: deadlock or required failure
+ready_empty --> sort : no
+persist --> terminal_dec : 
+terminal_dec --> completed : yes
+terminal_dec --> ready : no - recompute readiness
+cancelled --> s_end : 
+interrupted --> s_end : 
+completed --> s_end : 
+@enduml

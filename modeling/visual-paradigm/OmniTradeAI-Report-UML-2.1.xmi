@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML">
+<uml:Model xmi:id="id_863f04c96d455499b73362b181893153" name="OmniTradeAI">
+<packagedElement xmi:type="uml:Package" xmi:id="id_ff627a205f3053d29ee99ce374a06fca" name="L3 Domain Contracts">
+<packagedElement xmi:type="uml:Class" xmi:id="id_774ca505a4ba5c06826ea97566d7ce25" name="WorkflowDefinition [entity]"/>
+<packagedElement xmi:type="uml:Class" xmi:id="id_1fb196f6cb7659f49287065615adfc92" name="NodeDefinition [entity]"/>
+<packagedElement xmi:type="uml:Class" xmi:id="id_c3c8f4c081b8566ba1723c185c9b4414" name="EdgeDefinition [entity]"/>
+<packagedElement xmi:type="uml:Class" xmi:id="id_d1f85782ea865e57a5a52ea6924a31fc" name="WorkflowVersion [entity]"/>
+<packagedElement xmi:type="uml:Class" xmi:id="id_c94cd5cafeea5782837ab1f419acf8b4" name="Run [entity]"/>
+<packagedElement xmi:type="uml:Class" xmi:id="id_910af38364875349b978cb0ce96a29ed" name="NodeRun [entity]"/>
+<packagedElement xmi:type="uml:Component" xmi:id="id_fa831c7b31d85fe4a2215c15e4387fa7" name="RunEvent [event]"/>
+<packagedElement xmi:type="uml:Class" xmi:id="id_9700d8212738542194a51ffd89301a1f" name="Checkpoint [entity]"/>
+<packagedElement xmi:type="uml:Class" xmi:id="id_a03f9b4b5bb351308e83e9a8bfd2d6d2" name="Artifact [entity]"/>
+<packagedElement xmi:type="uml:Class" xmi:id="id_f39a6baa503b509c825121cb659498c8" name="EvidenceItem [entity]"/>
+<packagedElement xmi:type="uml:Class" xmi:id="id_881628bd91165e7f9fb7a0cfea776d7c" name="Claim [entity]"/>
+<packagedElement xmi:type="uml:Class" xmi:id="id_d8a2c85a83195e2e872dc841702bb31a" name="AgentReport [entity]"/>
+<packagedElement xmi:type="uml:Class" xmi:id="id_dfa9cfdc3858502dbd71b8e36bfb081a" name="Decision [entity]"/>
+<packagedElement xmi:type="uml:Class" xmi:id="id_c17e5a52f6c55d12a2d8f4666d92c6e4" name="RunConfiguration [value object]"/>
+<packagedElement xmi:type="uml:Class" xmi:id="id_f85b0f8fb4c759d3ae062c75150474e3" name="Budget [value object]"/>
+<packagedElement xmi:type="uml:Class" xmi:id="id_73dd0e6d151a5d028900bc28ba011be3" name="InvestorPolicy [value object]"/>
+</packagedElement>
+<packagedElement xmi:type="uml:Package" xmi:id="id_d1cda75d761b5e92a8b1ae1eee063fe3" name="L3 Engine Kernel">
+<packagedElement xmi:type="uml:Component" xmi:id="id_cda83982fffd5e3aa00a804b1f4e50b7" name="WorkflowTask / Run [input]"/>
+<packagedElement xmi:type="uml:Component" xmi:id="id_f9bb30e853055a2b88fe6201da5ce27a" name="Node catalog (31 types) [registry]"/>
+<packagedElement xmi:type="uml:Component" xmi:id="id_70ad8dbb29a953179097b001d20ee83a" name="WorkflowValidator [service]"/>
+<packagedElement xmi:type="uml:Class" xmi:id="id_a23e1e65de7a55fb9a7c09236662ce08" name="ValidationResult [contract]"/>
+<packagedElement xmi:type="uml:Component" xmi:id="id_979adad2b9445dc9921ecab3ed92303b" name="Initialize / restore [scheduler phase]"/>
+<packagedElement xmi:type="uml:Component" xmi:id="id_8d5f10776cab5ba19a4a24b27bb186b6" name="Readiness resolver [algorithm]"/>
+<packagedElement xmi:type="uml:Component" xmi:id="id_76213d35c0fc54b2af496184dab5cdd0" name="Bounded parallel wave [algorithm]"/>
+<packagedElement xmi:type="uml:Component" xmi:id="id_137daa7ed5f75ff79ef1d1f5ae653150" name="Wave outcome classifier [decision]"/>
+<packagedElement xmi:type="uml:Component" xmi:id="id_34851c027fb95156bb187d6a26086eba" name="Checkpoint after each wave [persistence]"/>
+<packagedElement xmi:type="uml:Component" xmi:id="id_816f723b849e534db6cd92650195f799" name="Execute one node [executor]"/>
+<packagedElement xmi:type="uml:Component" xmi:id="id_4b62be62186e5e318e99aa810d309dcc" name="Retry / fallback policy [policy]"/>
+<packagedElement xmi:type="uml:Component" xmi:id="id_6a1b99f85bf75897acc6737db0a964d1" name="Local or remote executor [strategy]"/>
+<packagedElement xmi:type="uml:Component" xmi:id="id_f7482690d99d559d9285c7c7a776e829" name="Event + state update [observable]"/>
+</packagedElement>
+<packagedElement xmi:type="uml:Package" xmi:id="id_6d8e61d68eeb51ccb979dcfc325ad876" name="L3 Adapters">
+<packagedElement xmi:type="uml:Component" xmi:id="id_0256b52e1c15585e86dc778c8544cc00" name="NodeProvider protocol [interface]"/>
+<packagedElement xmi:type="uml:Component" xmi:id="id_c13c64d83c0352ae99ef939dcb010784" name="fetch_from_chain [owned router]"/>
+<packagedElement xmi:type="uml:Component" xmi:id="id_54c8e82201f25d77870c57d0bae54a86" name="Yahoo Finance [adapter]"/>
+<packagedElement xmi:type="uml:Component" xmi:id="id_e08ed7cd149c535ea2e5d300f69c28c9" name="Alpha Vantage [adapter]"/>
+<packagedElement xmi:type="uml:Component" xmi:id="id_30940e6b2acf53139e98fa826d1407ba" name="FRED [adapter]"/>
+<packagedElement xmi:type="uml:Component" xmi:id="id_7bcf970230a45515ab23730c863f4579" name="Polymarket [adapter]"/>
+<packagedElement xmi:type="uml:Component" xmi:id="id_4b86df92389d545e80ec731855a8847b" name="StockTwits [adapter]"/>
+<packagedElement xmi:type="uml:Component" xmi:id="id_49555528c8755f918728909b7e7121ed" name="Reddit feeds [adapter]"/>
+<packagedElement xmi:type="uml:Component" xmi:id="id_1f14080d47e254d6a633d64fbc7cfa75" name="ModelClient protocol [interface]"/>
+<packagedElement xmi:type="uml:Component" xmi:id="id_d5d2a67705005de9814eaac7a4af1bcb" name="Typed model gateway [owned gateway]"/>
+<packagedElement xmi:type="uml:Component" xmi:id="id_7de7f71e2cf5534c89b26e96b8171f78" name="OpenAI-compatible [adapter]"/>
+<packagedElement xmi:type="uml:Component" xmi:id="id_e3451baf8e565935b1ddf693870c7531" name="AnthropicClient [adapter]"/>
+<packagedElement xmi:type="uml:Component" xmi:id="id_a6aaf350489754c487453f5d7139819c" name="GeminiClient [adapter]"/>
+<packagedElement xmi:type="uml:Component" xmi:id="id_3101f42740125452aab29b3d0197cc90" name="AzureOpenAIClient [adapter]"/>
+<packagedElement xmi:type="uml:Component" xmi:id="id_d1e7d8150a9e5ea3b3ac266e7065a3a6" name="BedrockClient [adapter]"/>
+<packagedElement xmi:type="uml:Component" xmi:id="id_34e7c34c46005b9e950f14f8557546d6" name="DeterministicFakeModel [adapter]"/>
+</packagedElement>
+<packagedElement xmi:type="uml:Package" xmi:id="id_8667cd551e8b53a8bf0c5caad85b79e2" name="L2 Evidence Subsystem">
+<packagedElement xmi:type="uml:Component" xmi:id="id_8ef050f1ca175113882273b66cb24a22" name="Market chain [providers]"/>
+<packagedElement xmi:type="uml:Component" xmi:id="id_586a3bd2c1b05fb497b951144c3906a2" name="Fundamental chain [providers]"/>
+<packagedElement xmi:type="uml:Component" xmi:id="id_2c3ba0c8262d5a3985f9e29b4a37b26f" name="News chain [providers]"/>
+<packagedElement xmi:type="uml:Component" xmi:id="id_910cb08b5bf95579acba751c189caa7c" name="Macro chain [providers]"/>
+<packagedElement xmi:type="uml:Component" xmi:id="id_4516a65af9e052539be65b1f564fae86" name="Sentiment chain [providers]"/>
+<packagedElement xmi:type="uml:Component" xmi:id="id_1f142cc450755e3e8167633d15eb51cf" name="fetch_market [workflow node]"/>
+<packagedElement xmi:type="uml:Component" xmi:id="id_bf9ba25b0252515eb4798ba5f32696b6" name="fetch_fundamentals [workflow node]"/>
+<packagedElement xmi:type="uml:Component" xmi:id="id_ee6b71b0d042558c80bf1bab792d5dfc" name="fetch_news [workflow node]"/>
+<packagedElement xmi:type="uml:Component" xmi:id="id_ccbc5d53d2a45604a4c4a861e4ad59b9" name="fetch_macro [workflow node]"/>
+<packagedElement xmi:type="uml:Component" xmi:id="id_d00eeb0795cb5d068371da12af4c9c6f" name="fetch_sentiment [workflow node]"/>
+<packagedElement xmi:type="uml:Component" xmi:id="id_311e9478ec6357fdb5d2ad41b3dff99f" name="normalize_market [workflow node]"/>
+<packagedElement xmi:type="uml:Component" xmi:id="id_3c4d728dd20f528b93d3ab5797dea251" name="technical_indicators [algorithm]"/>
+<packagedElement xmi:type="uml:Component" xmi:id="id_7f4676ee111552458687174d908846eb" name="normalize_fundamentals [workflow node]"/>
+<packagedElement xmi:type="uml:Component" xmi:id="id_a66a24deb4a15ba19963b6fdfc9bc3e3" name="fundamental_ratios [algorithm]"/>
+<packagedElement xmi:type="uml:Component" xmi:id="id_928816fa228f579f8cbdf5a6c2287e48" name="normalize_text (news) [workflow node]"/>
+<packagedElement xmi:type="uml:Component" xmi:id="id_225c75c5c1045a168a3c574e338cd387" name="normalize_text (macro) [workflow node]"/>
+<packagedElement xmi:type="uml:Component" xmi:id="id_e265376a371c564085c1b5ac96a12420" name="normalize_text (sentiment) [workflow node]"/>
+<packagedElement xmi:type="uml:Component" xmi:id="id_89d1b5d7d9765a4f9353c349e374c244" name="evidence_join [join]"/>
+<packagedElement xmi:type="uml:Component" xmi:id="id_93a012291c435c3d8c9a3b86e01f9f2f" name="time_guard [quality gate]"/>
+<packagedElement xmi:type="uml:Component" xmi:id="id_8dfb72c288be5a2fb54e7292f601260c" name="Market Analyst [agent]"/>
+<packagedElement xmi:type="uml:Component" xmi:id="id_59cd6860b30c5ae1b460d8fb9cf0e22f" name="Fundamental Analyst [agent]"/>
+<packagedElement xmi:type="uml:Component" xmi:id="id_e2249fb1d4b55952a04c0553f5d10cc5" name="News Analyst [agent]"/>
+<packagedElement xmi:type="uml:Component" xmi:id="id_33144649fd6b5498b2092f572d17118f" name="Sentiment Analyst [agent]"/>
+</packagedElement>
+<packagedElement xmi:type="uml:Package" xmi:id="id_360889a369c15f48a0b88f17ef25f0c7" name="L2 Agent Subsystem">
+<packagedElement xmi:type="uml:Component" xmi:id="id_2be42e49ba2b5da8a78bbb38ac6c683d" name="Market Analyst [agent node]"/>
+<packagedElement xmi:type="uml:Component" xmi:id="id_7dba5619ec445f13bbdc90de64f80254" name="Fundamental Analyst [agent node]"/>
+<packagedElement xmi:type="uml:Component" xmi:id="id_e8ec2b76b7f25f95ba5e144a10bbaf4e" name="News Analyst [agent node]"/>
+<packagedElement xmi:type="uml:Component" xmi:id="id_a392d68cc4a751ba81fd12f2f5a058a2" name="Sentiment Analyst [agent node]"/>
+<packagedElement xmi:type="uml:Component" xmi:id="id_4fcecc8e82a65db2b0b92f1f209fbd40" name="Specialist-report fan-in [typed join]"/>
+<packagedElement xmi:type="uml:Component" xmi:id="id_f18ece4b3ba05ca2bb1c63d11a067c48" name="Bull Researcher [agent node]"/>
+<packagedElement xmi:type="uml:Component" xmi:id="id_1634f5cc979e5411a193974a02d3802c" name="Bear Researcher [agent node]"/>
+<packagedElement xmi:type="uml:Component" xmi:id="id_8eb17f9bfa3e53439771aa66855f9583" name="Research Manager [agent node]"/>
+<packagedElement xmi:type="uml:Component" xmi:id="id_4c1a5e8de7df5c5a9210326f27429be9" name="Bounded debate controller [owned algorithm]"/>
+<packagedElement xmi:type="uml:Component" xmi:id="id_19b80ea0d85b5d008f5348c5b3c825f3" name="Proposal Builder [owned algorithm + agent]"/>
+<packagedElement xmi:type="uml:Component" xmi:id="id_7daa531cb9be5a9ca0e2e370092e94bd" name="Aggressive Risk [agent node]"/>
+<packagedElement xmi:type="uml:Component" xmi:id="id_10bb3c5072c75f239abecd8c31efaa16" name="Balanced Risk [agent node]"/>
+<packagedElement xmi:type="uml:Component" xmi:id="id_1db66a712ffd5bf1b45037b3636ef2d0" name="Conservative Risk [agent node]"/>
+<packagedElement xmi:type="uml:Component" xmi:id="id_8cc5d540238c5248bdd384f5a531d9b9" name="Risk-view join [typed join]"/>
+<packagedElement xmi:type="uml:Component" xmi:id="id_ef99f3390fae5986b325ce5fbe5ac731" name="Decision Validator [owned policy gate]"/>
+<packagedElement xmi:type="uml:Component" xmi:id="id_3555c2cd79265fbd919d0b3b5d0f4b5c" name="Report Renderer [output node]"/>
+</packagedElement>
+<packagedElement xmi:type="uml:Package" xmi:id="id_94df6c47feca568e9f1377e362c87b2c" name="L1 Application Services">
+<packagedElement xmi:type="uml:Component" xmi:id="id_3b7f2eab2ec75e01ba7e2da161dd5a91" name="React / Nginx frontend :5173 [container]"/>
+<packagedElement xmi:type="uml:Component" xmi:id="id_383363cbf2bf522eb701a7c099675f23" name="FastAPI API :8000 [container]"/>
+<packagedElement xmi:type="uml:Component" xmi:id="id_6da11da05a4e526880a8a97ae5e17688" name="SessionConnectionStore [in-process store]"/>
+<packagedElement xmi:type="uml:Component" xmi:id="id_73a44a59e7615a2a9dddab7d2a3b08fa" name="Workflow service :8001 [container]"/>
+<packagedElement xmi:type="uml:Component" xmi:id="id_f9316e89c9d155e9ba5c619b3f751c51" name="Evidence service :8002 [container]"/>
+<packagedElement xmi:type="uml:Component" xmi:id="id_aeaffae4145555f0ba442f96d769a874" name="Model gateway :8003 [container]"/>
+<packagedElement xmi:type="uml:Component" xmi:id="id_113e7be191f250cc883eeb35285a5f92" name="Report service :8004 [container]"/>
+<packagedElement xmi:type="uml:Component" xmi:id="id_e3603dcd8b9a5ac080a710241f7b2218" name="remote_executor routing [adapter]"/>
+<packagedElement xmi:type="uml:Component" xmi:id="id_a01cd6ec4e8657b59f12820e60de6f4a" name="PostgreSQL 16 [database]"/>
+<packagedElement xmi:type="uml:Component" xmi:id="id_b324b8c2debc57eda7ff0e9920c3044e" name="Redis Streams 7.4 [event bus]"/>
+<packagedElement xmi:type="uml:Component" xmi:id="id_ae7899af0541506e81bd4a145bee42e4" name="Artifact volume [storage]"/>
+<packagedElement xmi:type="uml:Component" xmi:id="id_af228b057da8544182010022eb3b7642" name="External data APIs [external]"/>
+<packagedElement xmi:type="uml:Component" xmi:id="id_aa88ed5d52005b1db872b3eeaa2b4c43" name="External model APIs [external]"/>
+<packagedElement xmi:type="uml:Component" xmi:id="id_41594d33e46f57de8416ba18d283c448" name="Alembic migrate job [job]"/>
+</packagedElement>
+<packagedElement xmi:type="uml:Package" xmi:id="id_e10624e8150c50a89151fa432f572de7" name="L1 Deployment">
+<packagedElement xmi:type="uml:Component" xmi:id="id_1c8f2591d5625b808bca53115e6fb6af" name="Browser [device]"/>
+<packagedElement xmi:type="uml:Component" xmi:id="id_7fc16b7875c65d75ab164eca1a6b8432" name="frontend [container]"/>
+<packagedElement xmi:type="uml:Component" xmi:id="id_f37c3d17f23a51cbb448afc4cf8cb634" name="api [container]"/>
+<packagedElement xmi:type="uml:Component" xmi:id="id_ae6c363c96e85a01972429c968adaef6" name="workflow [container]"/>
+<packagedElement xmi:type="uml:Component" xmi:id="id_1cf225eea3505302b83848a730c60466" name="evidence [container]"/>
+<packagedElement xmi:type="uml:Component" xmi:id="id_bc88662734b352898ce977f67fa61e20" name="model-gateway [container]"/>
+<packagedElement xmi:type="uml:Component" xmi:id="id_1c8455ad206e589496ac97f093fbe77b" name="report [container]"/>
+<packagedElement xmi:type="uml:Component" xmi:id="id_c02e9ab7c68e511d8bcb51c960a1a573" name="postgres:16-alpine [container]"/>
+<packagedElement xmi:type="uml:Component" xmi:id="id_7654ca265fd9559193b913aa4feada62" name="redis:7.4-alpine [container]"/>
+<packagedElement xmi:type="uml:Component" xmi:id="id_5f1ff07f64925e7eafa84f9c30078ba3" name="migrate job [job]"/>
+<packagedElement xmi:type="uml:Component" xmi:id="id_d9bb8056fe8b54678ab1d3bfad21a61e" name="artifacts volume [volume]"/>
+<packagedElement xmi:type="uml:Component" xmi:id="id_a3f77d849cac58eba987ef06ada1a169" name="Data APIs [external]"/>
+<packagedElement xmi:type="uml:Component" xmi:id="id_49cb7590d85b5ad29612a13cc495f85a" name="Model APIs [external]"/>
+</packagedElement>
+<packagedElement xmi:type="uml:Package" xmi:id="id_e3236e18ea465ef2a0f176048a6cbdff" name="L0 System Context">
+<packagedElement xmi:type="uml:Component" xmi:id="id_ff69245c93955e5c8c6a0d1b00a0aa9a" name="Profile panel [user input]"/>
+<packagedElement xmi:type="uml:Component" xmi:id="id_2bc544d74f6c540f83fbe62140731d7c" name="Connections panel [user input]"/>
+<packagedElement xmi:type="uml:Component" xmi:id="id_e3f78d0d90fb51d69c9f2c25ff559408" name="Workflow Lab [user input]"/>
+<packagedElement xmi:type="uml:Component" xmi:id="id_56d1ac4369c5533a96e6fbc1f0db5818" name="New Analysis [user input]"/>
+<packagedElement xmi:type="uml:Component" xmi:id="id_ab9dbbc930e75a66ac630d59673aace5" name="FastAPI boundary [API :8000]"/>
+<packagedElement xmi:type="uml:Component" xmi:id="id_ccfa41d7b59556949d82a3bb9a46e111" name="Run composer [owned service]"/>
+<packagedElement xmi:type="uml:Component" xmi:id="id_8c0806efda8f5be48dce9c9bb5b8a040" name="Immutable workflow snapshot [domain]"/>
+<packagedElement xmi:type="uml:Component" xmi:id="id_a11bc2ffcdd350c9bbe8e85ebd957118" name="Run + trace context [domain]"/>
+<packagedElement xmi:type="uml:Component" xmi:id="id_95b7c49a9437546495197a542ca7f115" name="WorkflowValidator [owned algorithm]"/>
+<packagedElement xmi:type="uml:Component" xmi:id="id_0b26eadfb1cb5d388928c61a89e71b34" name="Wave scheduler [owned algorithm]"/>
+<packagedElement xmi:type="uml:Component" xmi:id="id_8323a3c80dfa5b4a932fcbee53ef3eae" name="Node execution policy [owned algorithm]"/>
+<packagedElement xmi:type="uml:Component" xmi:id="id_588ccd09476b5bc587f6ab7ab5450380" name="Checkpoint + recovery [owned algorithm]"/>
+<packagedElement xmi:type="uml:Component" xmi:id="id_b651daf5fdb95ec9aaf58ed15281a80d" name="Data providers [external systems]"/>
+<packagedElement xmi:type="uml:Component" xmi:id="id_898ead32aae351f58f3f36a5c9a2a481" name="Provider-chain router [owned adapter]"/>
+<packagedElement xmi:type="uml:Component" xmi:id="id_dd1832a24aec56fab63acafe4d719573" name="Five fetch nodes (parallel) [workflow subsystem]"/>
+<packagedElement xmi:type="uml:Component" xmi:id="id_1e97ade54b1153488804c88f1821c23d" name="Normalization [owned computation]"/>
+<packagedElement xmi:type="uml:Component" xmi:id="id_e3ae06c6c43452e7996d93da48a62205" name="Deterministic calculations [owned algorithms]"/>
+<packagedElement xmi:type="uml:Component" xmi:id="id_8929c20a566854419c7fe1e030780344" name="Evidence join [owned join]"/>
+<packagedElement xmi:type="uml:Component" xmi:id="id_314b84d6bcd65a75afe2e885d2b1dd82" name="Evidence time/quality guard [owned policy]"/>
+<packagedElement xmi:type="uml:Component" xmi:id="id_0801b2c4d95d5076bf0a255662c8a787" name="Evidence lineage [persistent contract]"/>
+<packagedElement xmi:type="uml:Component" xmi:id="id_fce075d719575973a39ea2307d6af265" name="Third-party model APIs [external systems]"/>
+<packagedElement xmi:type="uml:Component" xmi:id="id_d1515506825851b392b4c3f9ada1df54" name="Typed model gateway [owned boundary]"/>
+<packagedElement xmi:type="uml:Component" xmi:id="id_f42083611a755f12b5daa04e8f593249" name="Four specialist agents [agent subsystem]"/>
+<packagedElement xmi:type="uml:Component" xmi:id="id_7fc9d44a258152c894ddea025fcec681" name="Bull + Bear + Manager [agent subsystem]"/>
+<packagedElement xmi:type="uml:Component" xmi:id="id_4ee6c52d78bd5245b1b2314b2979c261" name="Bounded debate [owned algorithm]"/>
+<packagedElement xmi:type="uml:Component" xmi:id="id_2f2d984663e052e49a126501b841df99" name="Proposal builder [agent + algorithm]"/>
+<packagedElement xmi:type="uml:Component" xmi:id="id_cdfd853ef2705081b9985ec3c00688de" name="Three risk agents [agent subsystem]"/>
+<packagedElement xmi:type="uml:Component" xmi:id="id_7aa795cd97ca58fabc03950648c748f2" name="Decision validator [owned policy gate]"/>
+<packagedElement xmi:type="uml:Component" xmi:id="id_2694ff6e01d7553fa067c8898bf60bfd" name="Report service [output]"/>
+<packagedElement xmi:type="uml:Component" xmi:id="id_70489ecab45c535b900f0e34a31381aa" name="Event stream / Agent Room [observability]"/>
+<packagedElement xmi:type="uml:Component" xmi:id="id_bde47c268bd5500a9522687789f3598c" name="PostgreSQL + artifacts [infrastructure]"/>
+<packagedElement xmi:type="uml:Component" xmi:id="id_57efea7f79ed5b30b418e707968576e1" name="Reports / Runs UI [user output]"/>
+</packagedElement>
+<packagedElement xmi:type="uml:Dependency" xmi:id="id_06bcb886dc6558c0a19e8d751203988d" name="UserProfile / InvestorPolicy + defaults" client="id_ff69245c93955e5c8c6a0d1b00a0aa9a" supplier="id_ccfa41d7b59556949d82a3bb9a46e111"/>
+<packagedElement xmi:type="uml:Dependency" xmi:id="id_6842b6980a2e5a0c8dbfe066c5ecabe3" name="verified runtime settings / (no secrets persisted)" client="id_2bc544d74f6c540f83fbe62140731d7c" supplier="id_ccfa41d7b59556949d82a3bb9a46e111"/>
+<packagedElement xmi:type="uml:Dependency" xmi:id="id_b002090e5a365aa789aa3f32f8ca31df" name="validate + publish / WorkflowDefinition" client="id_e3f78d0d90fb51d69c9f2c25ff559408" supplier="id_8c0806efda8f5be48dce9c9bb5b8a040"/>
+<packagedElement xmi:type="uml:Dependency" xmi:id="id_6ced8b9886485ae18c7e861abe14f87b" name="POST /runs / RunRequest JSON" client="id_56d1ac4369c5533a96e6fbc1f0db5818" supplier="id_ab9dbbc930e75a66ac630d59673aace5"/>
+<packagedElement xmi:type="uml:Dependency" xmi:id="id_79bae151e29d5a93bdcbea5f175bc28c" name="owner + request" client="id_ab9dbbc930e75a66ac630d59673aace5" supplier="id_ccfa41d7b59556949d82a3bb9a46e111"/>
+<packagedElement xmi:type="uml:Dependency" xmi:id="id_3a581ec89ce55af0854e740539b78ce5" name="workflow_version_id" client="id_8c0806efda8f5be48dce9c9bb5b8a040" supplier="id_a11bc2ffcdd350c9bbe8e85ebd957118"/>
+<packagedElement xmi:type="uml:Dependency" xmi:id="id_80f4430e30e3515b84b7b6ce59e76079" name="configured definition / + policy + budgets" client="id_ccfa41d7b59556949d82a3bb9a46e111" supplier="id_a11bc2ffcdd350c9bbe8e85ebd957118"/>
+<packagedElement xmi:type="uml:Dependency" xmi:id="id_f942cf00db2a570dab7036a74b2963f9" name="definition + catalog" client="id_a11bc2ffcdd350c9bbe8e85ebd957118" supplier="id_70ad8dbb29a953179097b001d20ee83a"/>
+<packagedElement xmi:type="uml:Dependency" xmi:id="id_76af4e7e902d5f37927cd8b671d4a06f" name="valid graph" client="id_70ad8dbb29a953179097b001d20ee83a" supplier="id_0b26eadfb1cb5d388928c61a89e71b34"/>
+<packagedElement xmi:type="uml:Dependency" xmi:id="id_4c9dc6d5661a5326bc9a4d4a4b534988" name="ready node wave" client="id_0b26eadfb1cb5d388928c61a89e71b34" supplier="id_8323a3c80dfa5b4a932fcbee53ef3eae"/>
+<packagedElement xmi:type="uml:Dependency" xmi:id="id_e9729e7ad1895be1be14221c4217098f" name="state + event after node" client="id_8323a3c80dfa5b4a932fcbee53ef3eae" supplier="id_588ccd09476b5bc587f6ab7ab5450380"/>
+<packagedElement xmi:type="uml:Dependency" xmi:id="id_49c073b525f7532192ea96d1fd0d4893" name="checkpointed next wave / resume" client="id_588ccd09476b5bc587f6ab7ab5450380" supplier="id_0b26eadfb1cb5d388928c61a89e71b34"/>
+<packagedElement xmi:type="uml:Dependency" xmi:id="id_45bcceefe9e5501fa16d088e4d18a0a8" name="NodeTask: fetch_* / provider chain + ticker + as_of" client="id_8323a3c80dfa5b4a932fcbee53ef3eae" supplier="id_dd1832a24aec56fab63acafe4d719573"/>
+<packagedElement xmi:type="uml:Dependency" xmi:id="id_0e41c067634e5d138b4ecdedf3bb147a" name="HTTPS request / response / provider-native JSON" client="id_b651daf5fdb95ec9aaf58ed15281a80d" supplier="id_898ead32aae351f58f3f36a5c9a2a481"/>
+<packagedElement xmi:type="uml:Dependency" xmi:id="id_e351c4bc6dec51fba0060a8c6f9eb327" name="first successful payload / errors retained for degradation" client="id_898ead32aae351f58f3f36a5c9a2a481" supplier="id_dd1832a24aec56fab63acafe4d719573"/>
+<packagedElement xmi:type="uml:Dependency" xmi:id="id_cb61134ee339588f8d3f99789579d135" name="RAW_* typed ports" client="id_dd1832a24aec56fab63acafe4d719573" supplier="id_1e97ade54b1153488804c88f1821c23d"/>
+<packagedElement xmi:type="uml:Dependency" xmi:id="id_e7fdd0c49dd4531087bf99482fb990bf" name="normalized market/fundamentals" client="id_1e97ade54b1153488804c88f1821c23d" supplier="id_e3ae06c6c43452e7996d93da48a62205"/>
+<packagedElement xmi:type="uml:Dependency" xmi:id="id_a1eb164b30e3596493e6ded20621f084" name="normalized text/market/fundamentals" client="id_1e97ade54b1153488804c88f1821c23d" supplier="id_8929c20a566854419c7fe1e030780344"/>
+<packagedElement xmi:type="uml:Dependency" xmi:id="id_89fbcfb800e85633937e471c0e4c3269" name="technical + ratio Evidence" client="id_e3ae06c6c43452e7996d93da48a62205" supplier="id_8929c20a566854419c7fe1e030780344"/>
+<packagedElement xmi:type="uml:Dependency" xmi:id="id_3f3ba69fc9bd529f96e7ab0da10d3545" name="EvidenceSet / hashes + quality flags" client="id_8929c20a566854419c7fe1e030780344" supplier="id_314b84d6bcd65a75afe2e885d2b1dd82"/>
+<packagedElement xmi:type="uml:Dependency" xmi:id="id_81d92a8e34835f84afbbfe867fe6567d" name="accepted evidence + lineage" client="id_314b84d6bcd65a75afe2e885d2b1dd82" supplier="id_0801b2c4d95d5076bf0a255662c8a787"/>
+<packagedElement xmi:type="uml:Dependency" xmi:id="id_600c329f8ce2577aa38d5f0fdd32b3b4" name="EvidenceSet / selected analyst nodes" client="id_314b84d6bcd65a75afe2e885d2b1dd82" supplier="id_f42083611a755f12b5daa04e8f593249"/>
+<packagedElement xmi:type="uml:Dependency" xmi:id="id_0ef06c270751543faffd7dcd807b9d68" name="prompt → text response / provider auth stays in gateway" client="id_fce075d719575973a39ea2307d6af265" supplier="id_d5d2a67705005de9814eaac7a4af1bcb"/>
+<packagedElement xmi:type="uml:Dependency" xmi:id="id_258d02a127ce5e2ba5b3b6add69fbfe3" name="typed completion / validated AgentReport" client="id_d5d2a67705005de9814eaac7a4af1bcb" supplier="id_f42083611a755f12b5daa04e8f593249"/>
+<packagedElement xmi:type="uml:Dependency" xmi:id="id_069ff9ea91fa590782777d5d774e5abc" name="typed research narrative" client="id_d5d2a67705005de9814eaac7a4af1bcb" supplier="id_7fc9d44a258152c894ddea025fcec681"/>
+<packagedElement xmi:type="uml:Dependency" xmi:id="id_fa9d606f2276566184df1efd8714d268" name="optional narrative help / protected loop state" client="id_d5d2a67705005de9814eaac7a4af1bcb" supplier="id_4ee6c52d78bd5245b1b2314b2979c261"/>
+<packagedElement xmi:type="uml:Dependency" xmi:id="id_5ce23738907e533e8c4a5a3a464f4d6a" name="SPECIALIST_REPORTS / claims + evidence refs" client="id_f42083611a755f12b5daa04e8f593249" supplier="id_7fc9d44a258152c894ddea025fcec681"/>
+<packagedElement xmi:type="uml:Dependency" xmi:id="id_eb58445840665079ad78073dad61b04a" name="RESEARCH_CASES / round + position scores" client="id_7fc9d44a258152c894ddea025fcec681" supplier="id_4ee6c52d78bd5245b1b2314b2979c261"/>
+<packagedElement xmi:type="uml:Dependency" xmi:id="id_3929da5d8b5e5391b98a12e2cc3e5a3e" name="typed loop dependency / runtime repeats control node only" client="id_4ee6c52d78bd5245b1b2314b2979c261" supplier="id_7fc9d44a258152c894ddea025fcec681"/>
+<packagedElement xmi:type="uml:Dependency" xmi:id="id_e542ff9d9c9252668450153b1313d93c" name="final cases" client="id_4ee6c52d78bd5245b1b2314b2979c261" supplier="id_2f2d984663e052e49a126501b841df99"/>
+<packagedElement xmi:type="uml:Dependency" xmi:id="id_0e885ee5d64f52fca6ab5db3e9d645a2" name="Proposal + InvestorPolicy" client="id_2f2d984663e052e49a126501b841df99" supplier="id_cdfd853ef2705081b9985ec3c00688de"/>
+<packagedElement xmi:type="uml:Dependency" xmi:id="id_3c6dfa23c55d514895424f924a21a8fd" name="RISK_VIEWS" client="id_cdfd853ef2705081b9985ec3c00688de" supplier="id_7aa795cd97ca58fabc03950648c748f2"/>
+<packagedElement xmi:type="uml:Dependency" xmi:id="id_842fe012a0245da78ab28573064395c4" name="Decision + claims + warnings" client="id_7aa795cd97ca58fabc03950648c748f2" supplier="id_2694ff6e01d7553fa067c8898bf60bfd"/>
+<packagedElement xmi:type="uml:Dependency" xmi:id="id_153ff1b9584b5cf1a7979caa7edccfd9" name="RunEvent stream / trace_id + node state" client="id_588ccd09476b5bc587f6ab7ab5450380" supplier="id_70489ecab45c535b900f0e34a31381aa"/>
+<packagedElement xmi:type="uml:Dependency" xmi:id="id_849de362df17555a99a569ba2406d4c7" name="report.ready event" client="id_2694ff6e01d7553fa067c8898bf60bfd" supplier="id_70489ecab45c535b900f0e34a31381aa"/>
+<packagedElement xmi:type="uml:Dependency" xmi:id="id_1dd62c767aaf56adaae12be1d9f92894" name="append events / status" client="id_70489ecab45c535b900f0e34a31381aa" supplier="id_bde47c268bd5500a9522687789f3598c"/>
+<packagedElement xmi:type="uml:Dependency" xmi:id="id_9637fd706deb5d6d90e7da7f36ecb5a2" name="JSON/PDF artifact + SHA-256" client="id_2694ff6e01d7553fa067c8898bf60bfd" supplier="id_bde47c268bd5500a9522687789f3598c"/>
+<packagedElement xmi:type="uml:Dependency" xmi:id="id_e0429de4454d50a0980e62169eddbe09" name="GET report/history/export" client="id_2694ff6e01d7553fa067c8898bf60bfd" supplier="id_57efea7f79ed5b30b418e707968576e1"/>
+<packagedElement xmi:type="uml:Dependency" xmi:id="id_34249a150b505a93b243e1e49fb16217" name="activity polling / SSE" client="id_70489ecab45c535b900f0e34a31381aa" supplier="id_57efea7f79ed5b30b418e707968576e1"/>
+<packagedElement xmi:type="uml:Dependency" xmi:id="id_743d141a733f52a68aad641ac2b88228" name="HTTPS /api/v1 / JWT + JSON" client="id_3b7f2eab2ec75e01ba7e2da161dd5a91" supplier="id_383363cbf2bf522eb701a7c099675f23"/>
+<packagedElement xmi:type="uml:Dependency" xmi:id="id_5c8b54fb960d59718a6c3c044b498ce7" name="credentials / verification state" client="id_383363cbf2bf522eb701a7c099675f23" supplier="id_6da11da05a4e526880a8a97ae5e17688"/>
+<packagedElement xmi:type="uml:Dependency" xmi:id="id_5da74704892057098d407a85b24c8430" name="WorkflowTask / HTTP JSON" client="id_383363cbf2bf522eb701a7c099675f23" supplier="id_73a44a59e7615a2a9dddab7d2a3b08fa"/>
+<packagedElement xmi:type="uml:Dependency" xmi:id="id_df0e94c9c4175be7b0b9b124781ac0d9" name="NodeTask" client="id_73a44a59e7615a2a9dddab7d2a3b08fa" supplier="id_e3603dcd8b9a5ac080a710241f7b2218"/>
+<packagedElement xmi:type="uml:Dependency" xmi:id="id_dca65872e5eb5e2fa2b17ec5ce51651f" name="evidence nodes :8002" client="id_e3603dcd8b9a5ac080a710241f7b2218" supplier="id_f9316e89c9d155e9ba5c619b3f751c51"/>
+<packagedElement xmi:type="uml:Dependency" xmi:id="id_d935d5544ea65b519011239bbae2c0d9" name="agent/model nodes :8003" client="id_e3603dcd8b9a5ac080a710241f7b2218" supplier="id_aeaffae4145555f0ba442f96d769a874"/>
+<packagedElement xmi:type="uml:Dependency" xmi:id="id_3b857a9659fa57b890e494177df6cb11" name="report node :8004" client="id_e3603dcd8b9a5ac080a710241f7b2218" supplier="id_113e7be191f250cc883eeb35285a5f92"/>
+<packagedElement xmi:type="uml:Dependency" xmi:id="id_588300e3b7435df6b63235201e97aea9" name="repositories / transactions" client="id_383363cbf2bf522eb701a7c099675f23" supplier="id_a01cd6ec4e8657b59f12820e60de6f4a"/>
+<packagedElement xmi:type="uml:Dependency" xmi:id="id_2653c6f41dad54c99c814284517de4e8" name="pg_1" client="id_73a44a59e7615a2a9dddab7d2a3b08fa" supplier="id_a01cd6ec4e8657b59f12820e60de6f4a"/>
+<packagedElement xmi:type="uml:Dependency" xmi:id="id_87a170e0af0d597e8a49e83d1df27a4f" name="pg_2" client="id_f9316e89c9d155e9ba5c619b3f751c51" supplier="id_a01cd6ec4e8657b59f12820e60de6f4a"/>
+<packagedElement xmi:type="uml:Dependency" xmi:id="id_d6a0f36faad6535d946f174c0fa0f645" name="pg_3" client="id_aeaffae4145555f0ba442f96d769a874" supplier="id_a01cd6ec4e8657b59f12820e60de6f4a"/>
+<packagedElement xmi:type="uml:Dependency" xmi:id="id_f54cc9cf9f5e5f85905e190f55e2f5a7" name="pg_4" client="id_113e7be191f250cc883eeb35285a5f92" supplier="id_a01cd6ec4e8657b59f12820e60de6f4a"/>
+<packagedElement xmi:type="uml:Dependency" xmi:id="id_0e607c0f4cc455df9ba53600402616a9" name="RunEvent stream" client="id_383363cbf2bf522eb701a7c099675f23" supplier="id_b324b8c2debc57eda7ff0e9920c3044e"/>
+<packagedElement xmi:type="uml:Dependency" xmi:id="id_0036545e4a475242b2c95f854ce292ee" name="redis_1" client="id_73a44a59e7615a2a9dddab7d2a3b08fa" supplier="id_b324b8c2debc57eda7ff0e9920c3044e"/>
+<packagedElement xmi:type="uml:Dependency" xmi:id="id_84798872157a51b3999f089972028458" name="redis_2" client="id_f9316e89c9d155e9ba5c619b3f751c51" supplier="id_b324b8c2debc57eda7ff0e9920c3044e"/>
+<packagedElement xmi:type="uml:Dependency" xmi:id="id_826d0be308b259778684b4a5a70ccdf9" name="redis_3" client="id_aeaffae4145555f0ba442f96d769a874" supplier="id_b324b8c2debc57eda7ff0e9920c3044e"/>
+<packagedElement xmi:type="uml:Dependency" xmi:id="id_638ce2879cf7576db667191b6d0f930c" name="redis_4" client="id_113e7be191f250cc883eeb35285a5f92" supplier="id_b324b8c2debc57eda7ff0e9920c3044e"/>
+<packagedElement xmi:type="uml:Dependency" xmi:id="id_eb8ac6deaa3d576996a631b11927b33d" name="HTTPS / raw provider payload" client="id_f9316e89c9d155e9ba5c619b3f751c51" supplier="id_af228b057da8544182010022eb3b7642"/>
+<packagedElement xmi:type="uml:Dependency" xmi:id="id_ae093e97da0c5a9096842c29d3302b0a" name="prompt → model text" client="id_aeaffae4145555f0ba442f96d769a874" supplier="id_aa88ed5d52005b1db872b3eeaa2b4c43"/>
+<packagedElement xmi:type="uml:Dependency" xmi:id="id_025f1a781967541d855e11ae92fed333" name="write + hash" client="id_113e7be191f250cc883eeb35285a5f92" supplier="id_ae7899af0541506e81bd4a145bee42e4"/>
+<packagedElement xmi:type="uml:Dependency" xmi:id="id_58d4b1719266508cb74b398ab8a60d55" name="schema before startup" client="id_41594d33e46f57de8416ba18d283c448" supplier="id_a01cd6ec4e8657b59f12820e60de6f4a"/>
+<packagedElement xmi:type="uml:Dependency" xmi:id="id_8e70d077c1135a969686d9d17ed746ce" name="contains 1..*" client="id_774ca505a4ba5c06826ea97566d7ce25" supplier="id_1fb196f6cb7659f49287065615adfc92"/>
+<packagedElement xmi:type="uml:Dependency" xmi:id="id_163784b277d553d69bd40bd51137b357" name="contains 0..*" client="id_774ca505a4ba5c06826ea97566d7ce25" supplier="id_c3c8f4c081b8566ba1723c185c9b4414"/>
+<packagedElement xmi:type="uml:Dependency" xmi:id="id_411e8e3abf4b5e949338fbc380fd84d7" name="snapshots" client="id_d1f85782ea865e57a5a52ea6924a31fc" supplier="id_774ca505a4ba5c06826ea97566d7ce25"/>
+<packagedElement xmi:type="uml:Dependency" xmi:id="id_14406ec538005898ad5bb87432bd95be" name="owns per node" client="id_c94cd5cafeea5782837ab1f419acf8b4" supplier="id_910af38364875349b978cb0ce96a29ed"/>
+<packagedElement xmi:type="uml:Dependency" xmi:id="id_c6a816b0053d5ffdad44e1d206d864da" name="emits" client="id_c94cd5cafeea5782837ab1f419acf8b4" supplier="id_fa831c7b31d85fe4a2215c15e4387fa7"/>
+<packagedElement xmi:type="uml:Dependency" xmi:id="id_8fa5f1e35a02550ebaa38ae331ba8d30" name="restores" client="id_9700d8212738542194a51ffd89301a1f" supplier="id_910af38364875349b978cb0ce96a29ed"/>
+<packagedElement xmi:type="uml:Dependency" xmi:id="id_f20be87d53d456ac963e289b7330409b" name="deduplicated by event_id" client="id_fa831c7b31d85fe4a2215c15e4387fa7" supplier="id_9700d8212738542194a51ffd89301a1f"/>
+<packagedElement xmi:type="uml:Dependency" xmi:id="id_e245e9e616ad5329a0bd116d93db727d" name="final report event" client="id_fa831c7b31d85fe4a2215c15e4387fa7" supplier="id_a03f9b4b5bb351308e83e9a8bfd2d6d2"/>
+<packagedElement xmi:type="uml:Dependency" xmi:id="id_3cd914d34c425629a322ac731b7b1af5" name="evidence_ids[]" client="id_f39a6baa503b509c825121cb659498c8" supplier="id_881628bd91165e7f9fb7a0cfea776d7c"/>
+<packagedElement xmi:type="uml:Dependency" xmi:id="id_1423ec0031335204a28a857de92fc0a5" name="supports" client="id_f39a6baa503b509c825121cb659498c8" supplier="id_d8a2c85a83195e2e872dc841702bb31a"/>
+<packagedElement xmi:type="uml:Dependency" xmi:id="id_1350ace4eac65ecebad1fee22fe9cbd8" name="claim_ids[]" client="id_d8a2c85a83195e2e872dc841702bb31a" supplier="id_dfa9cfdc3858502dbd71b8e36bfb081a"/>
+<packagedElement xmi:type="uml:Dependency" xmi:id="id_b109cbd63a175750a7520043c4047874" name="copied into run" client="id_c17e5a52f6c55d12a2d8f4666d92c6e4" supplier="id_c94cd5cafeea5782837ab1f419acf8b4"/>
+<packagedElement xmi:type="uml:Dependency" xmi:id="id_1c2183316cbd5cf88d78274be11bed52" name="default or override" client="id_f85b0f8fb4c759d3ae062c75150474e3" supplier="id_774ca505a4ba5c06826ea97566d7ce25"/>
+<packagedElement xmi:type="uml:Dependency" xmi:id="id_d7e1505f91d65b4fa81c6734f563387d" name="risk constraints" client="id_73dd0e6d151a5d028900bc28ba011be3" supplier="id_c94cd5cafeea5782837ab1f419acf8b4"/>
+<packagedElement xmi:type="uml:Dependency" xmi:id="id_feb75a73c71e5dcbb5555e5ede23a855" name="HTTP :5173" client="id_1c8f2591d5625b808bca53115e6fb6af" supplier="id_7fc16b7875c65d75ab164eca1a6b8432"/>
+<packagedElement xmi:type="uml:Dependency" xmi:id="id_8b7ef3e38923558f90f671c649990c25" name="/api/v1 reverse proxy" client="id_7fc16b7875c65d75ab164eca1a6b8432" supplier="id_f37c3d17f23a51cbb448afc4cf8cb634"/>
+<packagedElement xmi:type="uml:Dependency" xmi:id="id_e4823aec668358b3b30c2425f263ff74" name="HTTP :8001" client="id_f37c3d17f23a51cbb448afc4cf8cb634" supplier="id_ae6c363c96e85a01972429c968adaef6"/>
+<packagedElement xmi:type="uml:Dependency" xmi:id="id_1667523bc1bd5fe4b2f9f1a8102a25cd" name="HTTP :8002" client="id_ae6c363c96e85a01972429c968adaef6" supplier="id_1cf225eea3505302b83848a730c60466"/>
+<packagedElement xmi:type="uml:Dependency" xmi:id="id_3fb486a8bf635cb7b9d73a50966a487f" name="HTTP :8003" client="id_ae6c363c96e85a01972429c968adaef6" supplier="id_bc88662734b352898ce977f67fa61e20"/>
+<packagedElement xmi:type="uml:Dependency" xmi:id="id_c7a68de764105c9ea9be2f3b825deaf2" name="HTTP :8004" client="id_ae6c363c96e85a01972429c968adaef6" supplier="id_1c8455ad206e589496ac97f093fbe77b"/>
+<packagedElement xmi:type="uml:Dependency" xmi:id="id_43c75d630d7d5bdea5b2eb4a1cdb6f7f" name="Redis Streams" client="id_f37c3d17f23a51cbb448afc4cf8cb634" supplier="id_7654ca265fd9559193b913aa4feada62"/>
+<packagedElement xmi:type="uml:Dependency" xmi:id="id_d7c1180ee6415f729665d1bdef05fbd5" name="to_redis_1" client="id_ae6c363c96e85a01972429c968adaef6" supplier="id_7654ca265fd9559193b913aa4feada62"/>
+<packagedElement xmi:type="uml:Dependency" xmi:id="id_38832d87c47655fc833cfa257f26e49b" name="to_redis_2" client="id_1cf225eea3505302b83848a730c60466" supplier="id_7654ca265fd9559193b913aa4feada62"/>
+<packagedElement xmi:type="uml:Dependency" xmi:id="id_e862f7a763165ed98a12737ed923ff74" name="to_redis_3" client="id_bc88662734b352898ce977f67fa61e20" supplier="id_7654ca265fd9559193b913aa4feada62"/>
+<packagedElement xmi:type="uml:Dependency" xmi:id="id_435a0635c585597a9956c55c858885ca" name="to_redis_4" client="id_1c8455ad206e589496ac97f093fbe77b" supplier="id_7654ca265fd9559193b913aa4feada62"/>
+<packagedElement xmi:type="uml:Dependency" xmi:id="id_38f7e9a3e7a1530da809f60e03b850c5" name="SQLAlchemy" client="id_f37c3d17f23a51cbb448afc4cf8cb634" supplier="id_c02e9ab7c68e511d8bcb51c960a1a573"/>
+<packagedElement xmi:type="uml:Dependency" xmi:id="id_45eba94c294c5b9ab9f0c38bdaae27d5" name="to_pg_1" client="id_ae6c363c96e85a01972429c968adaef6" supplier="id_c02e9ab7c68e511d8bcb51c960a1a573"/>
+<packagedElement xmi:type="uml:Dependency" xmi:id="id_703c3691c29e5e138c978edf407702d8" name="to_pg_2" client="id_1cf225eea3505302b83848a730c60466" supplier="id_c02e9ab7c68e511d8bcb51c960a1a573"/>
+<packagedElement xmi:type="uml:Dependency" xmi:id="id_20a20fce479d5b11a81872e43958135f" name="to_pg_3" client="id_bc88662734b352898ce977f67fa61e20" supplier="id_c02e9ab7c68e511d8bcb51c960a1a573"/>
+<packagedElement xmi:type="uml:Dependency" xmi:id="id_78550bf2911e56eca717ce63b68d2f1c" name="to_pg_4" client="id_1c8455ad206e589496ac97f093fbe77b" supplier="id_c02e9ab7c68e511d8bcb51c960a1a573"/>
+<packagedElement xmi:type="uml:Dependency" xmi:id="id_c8996b5e60bd5539b2b0f3e797f53502" name="HTTPS" client="id_1cf225eea3505302b83848a730c60466" supplier="id_a3f77d849cac58eba987ef06ada1a169"/>
+<packagedElement xmi:type="uml:Dependency" xmi:id="id_ecf78aea43f250fa933f6bf624b6bb44" name="HTTPS" client="id_bc88662734b352898ce977f67fa61e20" supplier="id_49cb7590d85b5ad29612a13cc495f85a"/>
+<packagedElement xmi:type="uml:Dependency" xmi:id="id_cbf564b055dc50beb02e365542e8228d" name="write files" client="id_1c8455ad206e589496ac97f093fbe77b" supplier="id_d9bb8056fe8b54678ab1d3bfad21a61e"/>
+<packagedElement xmi:type="uml:Dependency" xmi:id="id_1ea33b7b0da757268b83496b989d6894" name="schema migration" client="id_5f1ff07f64925e7eafa84f9c30078ba3" supplier="id_c02e9ab7c68e511d8bcb51c960a1a573"/>
+<packagedElement xmi:type="uml:Package" xmi:id="id_679cf8e895d7594a9f65e5cd4a5ec11f" name="Workflow Node Catalog (31 owned node types)">
+<packagedElement xmi:type="uml:Component" xmi:id="id_d2b5c087903d5142b9eca4aa4e1d11a0" name="start [control]">
+<ownedComment xmi:id="id_2a5c2c236ff75f0382e53f9a537c40df"><body>Starts the workflow and sends the first control signal.</body></ownedComment>
+</packagedElement>
+<packagedElement xmi:type="uml:Component" xmi:id="id_62a0d2bf1f5158d5a2ce920fa3ce9fac" name="end [control]">
+<ownedComment xmi:id="id_f27329987288555fbceea6a1607c790c"><body>Closes the workflow after the final report is ready.</body></ownedComment>
+</packagedElement>
+<packagedElement xmi:type="uml:Component" xmi:id="id_48211190c0ee5847b09c8bd513b9e960" name="parallel_split [control]">
+<ownedComment xmi:id="id_85252484a7a458d6a54fe358fbb71f6d"><body>Opens several branches so data tasks can run at the same time.</body></ownedComment>
+</packagedElement>
+<packagedElement xmi:type="uml:Component" xmi:id="id_c3b590db94b85f63898dd5f81d953f43" name="join [control]">
+<ownedComment xmi:id="id_d5dcff58f045581d91636812c652c742"><body>Waits for connected evidence branches and combines their results.</body></ownedComment>
+</packagedElement>
+<packagedElement xmi:type="uml:Component" xmi:id="id_b7b61f811d62573e962b2d497498fe12" name="bounded_loop [control]">
+<ownedComment xmi:id="id_75b383a0ee0a5f729bac22ddb73bc3b5"><body>Repeats the research debate, but stops at the configured round limit.</body></ownedComment>
+</packagedElement>
+<packagedElement xmi:type="uml:Component" xmi:id="id_4fbc9904d0365950a6e3ee50e83af937" name="resolve_instrument [evidence]">
+<ownedComment xmi:id="id_485646747e775742b23b27e210142b58"><body>Checks the stock ticker and creates one verified instrument identity.</body></ownedComment>
+</packagedElement>
+<packagedElement xmi:type="uml:Component" xmi:id="id_d138af50eb9b5ac69bdc68ebd575e2a0" name="fetch_market [evidence]">
+<ownedComment xmi:id="id_61bac2d817b0584ea5541c1303ea72a1"><body>Collects raw price and volume data for the selected stock.</body></ownedComment>
+</packagedElement>
+<packagedElement xmi:type="uml:Component" xmi:id="id_24e5b51556415e61b928199fbed257cf" name="fetch_fundamentals [evidence]">
+<ownedComment xmi:id="id_534e3b024b9d515ca51342fe8a55bd8e"><body>Collects company statements and financial values.</body></ownedComment>
+</packagedElement>
+<packagedElement xmi:type="uml:Component" xmi:id="id_006402ab51485f549d3fa14fe402a131" name="fetch_news [evidence]">
+<ownedComment xmi:id="id_cf23a783480b5e38a8ca0db0f9fd17d2"><body>Collects recent company and market news from available providers.</body></ownedComment>
+</packagedElement>
+<packagedElement xmi:type="uml:Component" xmi:id="id_b474b21782ef5aaf88b682546a51119e" name="fetch_macro [evidence]">
+<ownedComment xmi:id="id_2042305b995555039c4240c2a97f75a8"><body>Collects economic information that may affect the stock or its sector.</body></ownedComment>
+</packagedElement>
+<packagedElement xmi:type="uml:Component" xmi:id="id_aab69e4182ff5b89a4d2447626860be6" name="fetch_sentiment [evidence]">
+<ownedComment xmi:id="id_bcd1a7304b265341b38478c2d90d93d8"><body>Collects public sentiment signals about the selected stock.</body></ownedComment>
+</packagedElement>
+<packagedElement xmi:type="uml:Component" xmi:id="id_2eea50f2f43159c0a9ffd6e42b39030d" name="normalize_market [normalization]">
+<ownedComment xmi:id="id_2f446420785a5a5eb19f1cc5e0e4b8fb"><body>Converts market data into one clean and consistent format.</body></ownedComment>
+</packagedElement>
+<packagedElement xmi:type="uml:Component" xmi:id="id_50927b2f517e52e398e9d85f5f084c39" name="normalize_fundamentals [normalization]">
+<ownedComment xmi:id="id_ba3d782d520a50debd173bfaffc4bc8d"><body>Cleans financial values and makes their units and currency consistent.</body></ownedComment>
+</packagedElement>
+<packagedElement xmi:type="uml:Component" xmi:id="id_8bb97792ed4a5784a205ed0d96a3f6a1" name="normalize_text [normalization]">
+<ownedComment xmi:id="id_3e609b5fa10a50169f99f53d589335b0"><body>Cleans text evidence and gives news, macro, or sentiment a common format.</body></ownedComment>
+</packagedElement>
+<packagedElement xmi:type="uml:Component" xmi:id="id_9a93f79daf175094bbfeed4df515905f" name="time_guard [normalization]">
+<ownedComment xmi:id="id_8f6cb26ce635520a8d6dba0340962066"><body>Rejects future or stale evidence before it reaches the analyst agents.</body></ownedComment>
+</packagedElement>
+<packagedElement xmi:type="uml:Component" xmi:id="id_140f636f93c5543dbdf20a1b8e7fee30" name="technical_indicators [calculation]">
+<ownedComment xmi:id="id_1f2426e060ae53039bdc6e7952140106"><body>Calculates technical signals from normalized market data.</body></ownedComment>
+</packagedElement>
+<packagedElement xmi:type="uml:Component" xmi:id="id_02692f24394e5a9e900b2c3a0887728a" name="fundamental_ratios [calculation]">
+<ownedComment xmi:id="id_40ba3fbfc936506bb41c8ce190a575f1"><body>Calculates financial ratios used to study company quality and value.</body></ownedComment>
+</packagedElement>
+<packagedElement xmi:type="uml:Component" xmi:id="id_6526df6a7e4f5c16bee7bfd64a671014" name="market_analyst [specialist]">
+<ownedComment xmi:id="id_e5451cee9e5b554e8e23c23cf388d302"><body>Explains price trends, technical signals, uncertainty, and market risks.</body></ownedComment>
+</packagedElement>
+<packagedElement xmi:type="uml:Component" xmi:id="id_b8ff5d71064757a1b9f3bc35bb264234" name="fundamental_analyst [specialist]">
+<ownedComment xmi:id="id_5aa63a6be8325e8c9a480cf5a8180867"><body>Explains the company&#x27;s financial strength, value, and weaknesses.</body></ownedComment>
+</packagedElement>
+<packagedElement xmi:type="uml:Component" xmi:id="id_56b212e9f3f154b5aedec74e1e3fc081" name="news_analyst [specialist]">
+<ownedComment xmi:id="id_7c5905f998c05047ae1c6aed612fbcc9"><body>Explains how recent news and economic events may affect the stock.</body></ownedComment>
+</packagedElement>
+<packagedElement xmi:type="uml:Component" xmi:id="id_11024ffb1f045be484d9841c79d04e4a" name="sentiment_analyst [specialist]">
+<ownedComment xmi:id="id_18e1c3466a8e5e7cb3760b5bf3b2cd0b"><body>Explains public mood and warns when sentiment evidence is weak or noisy.</body></ownedComment>
+</packagedElement>
+<packagedElement xmi:type="uml:Component" xmi:id="id_fc9a09bd321f5d73b0c29ff390a895ac" name="bull_researcher [research]">
+<ownedComment xmi:id="id_a780fbae606558e897bee9b967e3e7a7"><body>Builds the positive case using analyst reports and possible growth factors.</body></ownedComment>
+</packagedElement>
+<packagedElement xmi:type="uml:Component" xmi:id="id_719c6a1b974f5e79ae1ef8ac4f61252d" name="bear_researcher [research]">
+<ownedComment xmi:id="id_fe4732d5327857fb81d16a599331a6ed"><body>Builds the negative case using risks, weak evidence, and downside factors.</body></ownedComment>
+</packagedElement>
+<packagedElement xmi:type="uml:Component" xmi:id="id_b21bba07544b5a418eb00975dc39c98e" name="research_manager [research]">
+<ownedComment xmi:id="id_03ef46cce2115fddb729198b9d0630d9"><body>Compares both research cases and records their agreement and conflicts.</body></ownedComment>
+</packagedElement>
+<packagedElement xmi:type="uml:Component" xmi:id="id_9a3826a2d09450d09ee6ac74d737b0ed" name="proposal_builder [research]">
+<ownedComment xmi:id="id_e790a247502e5834a8d89ea90201bfe8"><body>Turns the research result into a clear BUY, HOLD, or SELL proposal.</body></ownedComment>
+</packagedElement>
+<packagedElement xmi:type="uml:Component" xmi:id="id_8e0cd0e181d05d01b19fa841f20b175d" name="aggressive_risk [risk]">
+<ownedComment xmi:id="id_d80ffb2a83495926a55c2e80c279cb28"><body>Reviews the proposal for a user who accepts higher risk for higher reward.</body></ownedComment>
+</packagedElement>
+<packagedElement xmi:type="uml:Component" xmi:id="id_2e92def8a3705f31b3deb3aa3f8bf9e8" name="balanced_risk [risk]">
+<ownedComment xmi:id="id_952f2e7af33a55a5830d85ad973722c4"><body>Reviews the proposal by balancing possible reward and possible loss.</body></ownedComment>
+</packagedElement>
+<packagedElement xmi:type="uml:Component" xmi:id="id_a943e63ec8aa59d6a7233fd419631835" name="conservative_risk [risk]">
+<ownedComment xmi:id="id_386770e7b83152788a679597ad87bf9f"><body>Reviews the proposal with strong focus on loss prevention and uncertainty.</body></ownedComment>
+</packagedElement>
+<packagedElement xmi:type="uml:Component" xmi:id="id_1742ae51c7d05f1ea2afb5bf607db4aa" name="risk_join [risk]">
+<ownedComment xmi:id="id_a4963b02c3e956b69966f7125b398d6d"><body>Combines the three risk views before the final decision check.</body></ownedComment>
+</packagedElement>
+<packagedElement xmi:type="uml:Component" xmi:id="id_99f193f732325d708f9226dbcd819eab" name="decision_validator [risk]">
+<ownedComment xmi:id="id_d3278d149ecd5506b62c758a77407275"><body>Checks that the decision agrees with evidence, risk rules, and confidence limits.</body></ownedComment>
+</packagedElement>
+<packagedElement xmi:type="uml:Component" xmi:id="id_9df9b554151153e0947a03c001ee9be3" name="report_renderer [output]">
+<ownedComment xmi:id="id_744bc635d9cd5e4a8709224a53262a22"><body>Builds the final readable report with agent views and evidence links.</body></ownedComment>
+</packagedElement>
+</packagedElement>
+</uml:Model>
+</xmi:XMI>

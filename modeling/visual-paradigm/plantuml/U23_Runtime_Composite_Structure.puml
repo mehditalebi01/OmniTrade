@@ -1,0 +1,22 @@
+@startuml
+title Supplement 23 - Composite structure: WorkflowRuntime internals
+skinparam shadowing false
+skinparam linetype ortho
+skinparam componentStyle rectangle
+left to right direction
+rectangle "runTaskPort\nWorkflowTask\nruntime connections\npause/cancel probes" as ingress #E9EEFF
+rectangle "validator: WorkflowValidator\nconfig + graph + budget\nstable issues" as validator #FFFFFF
+rectangle "planner: ReadinessResolver\nrestore/init NodeRuns\nstable ready set\nbounded parallel wave" as planner #FFFFFF
+rectangle "executor: NodeDispatcher\ntyped inputs\ntimeout/retry\nprovider/model/report adapters" as executor #FFFFFF
+rectangle "policy: FailureAndPauseController\nrequired/optional failure\nPAUSING -> checkpoint -> PAUSED\ncancel and interruption" as policy #FFFFFF
+rectangle "checkpoint: CheckpointWriter\nnode outputs + loop state\nevent IDs + sequence\nresume skips completed nodes" as checkpoint #FFFFFF
+rectangle "resultEventPort\nRunResult\nPostgres events/checkpoint\nRedis progress events" as egress #EAF8EF
+ingress --> validator : validate(task)
+validator --> planner : accepted definition
+planner --> executor : NodeTask[]
+executor --> policy : ExecutionResult[]
+policy --> checkpoint : wave outcome / pause
+checkpoint ..> planner : next wave or restored state
+checkpoint --> egress : checkpoint + events
+policy --> egress : terminal / paused result
+@enduml

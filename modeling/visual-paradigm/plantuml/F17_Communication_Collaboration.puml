@@ -1,0 +1,31 @@
+@startuml
+title Figure 17 - UML communication diagram for one analysis run
+skinparam shadowing false
+skinparam linetype ortho
+skinparam componentStyle rectangle
+left to right direction
+rectangle ":New Analysis UI\nbounded form + readable API errors" as comm_ui #E9EEFF
+rectangle ":API / RunService\nownership + RunConfig validation" as comm_api #F2EDFF
+rectangle ":Catalog + WorkflowValidator\nconfiguration, graph, budget" as comm_validator #FFF4D8
+rectangle ":Repository + EventLog\nrun/version/event/checkpoint" as comm_repo #E5F8F5
+rectangle ":Agent Room / Reports\nevents, state, report, lineage" as comm_room #E9EEFF
+rectangle ":Readiness Scheduler\nstable ready set + bounded batch" as comm_scheduler #FFF0EB
+rectangle ":Evidence Gateway\nreal provider chains + FX + quality" as comm_evidence #EAF8EF
+rectangle ":Specialist Pool\nmarket/fundamental/news/sentiment" as comm_specialists #F2EDFF
+rectangle ":Debate + Proposal\nbounded control loop; protected draft" as comm_debate #F2EDFF
+rectangle ":Risk + Decision\nthree views + deterministic validation" as comm_risk #FFF0EB
+rectangle ":Report Builder\nexplanation + evidence lineage + artifacts" as comm_report #E5F8F5
+comm_ui --> comm_api : 1 createRun(config, workflowVersion)
+comm_api --> comm_validator : 1.1 validate(config, graph, policy)
+comm_validator --> comm_repo : 1.2 persist snapshot + initial event
+comm_api --> comm_scheduler : 2 scheduleReady(run)
+comm_scheduler --> comm_evidence : 2.1 collect and normalize evidence
+comm_evidence --> comm_specialists : 2.2 execute selected specialists
+comm_evidence --> comm_repo : 2.3 append ordered events + checkpoint
+comm_specialists --> comm_debate : 3 bounded debate + proposal
+comm_debate --> comm_risk : 4 apply risk policy + validate
+comm_risk --> comm_report : 5 assemble report + trace
+comm_risk --> comm_repo : 5.1 persist report/artifacts/checkpoint
+comm_report --> comm_room : 6 expose report, lineage, activity
+comm_room --> comm_ui : 6.1 poll/stream visible state
+@enduml

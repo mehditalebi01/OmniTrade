@@ -1,0 +1,9 @@
+{
+  "status": "degraded",
+  "events": 126,
+  "checkpoints": 18,
+  "degraded_reasons": [
+    "sentiment: simulated optional source failure"
+  ],
+  "resumed_from": 12
+}

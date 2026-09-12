@@ -1,0 +1,86 @@
+sequenceDiagram
+  autonumber
+  actor User
+  participant GUI
+  participant API
+  participant Workflow
+  participant Evidence
+  participant Model
+  participant Report
+  User->>GUI: Start AAPL analysis
+  GUI->>API: POST run
+  API->>Workflow: run.requested
+  Workflow->>+Workflow: node.started: start
+  Workflow-->>-Workflow: node.succeeded: start
+  Workflow->>+Workflow: node.started: split
+  Workflow-->>-Workflow: node.succeeded: split
+  Workflow->>+Evidence: node.started: instrument
+  Evidence-->>-Workflow: node.succeeded: instrument
+  Workflow->>+Evidence: node.started: fundamentals
+  Evidence-->>-Workflow: node.succeeded: fundamentals
+  Workflow->>+Evidence: node.started: macro
+  Evidence-->>-Workflow: node.succeeded: macro
+  Workflow->>+Evidence: node.started: market
+  Workflow->>+Evidence: node.started: news
+  Evidence-->>-Workflow: node.succeeded: news
+  Workflow->>+Evidence: node.started: sentiment
+  Evidence-->>-Workflow: node.degraded: sentiment
+  Note over Workflow,Evidence: provider.fallback: market
+  Evidence-->>-Workflow: node.succeeded: market
+  Workflow->>+Evidence: node.started: norm_fund
+  Evidence-->>-Workflow: node.succeeded: norm_fund
+  Workflow->>+Evidence: node.started: norm_macro
+  Evidence-->>-Workflow: node.succeeded: norm_macro
+  Workflow->>+Evidence: node.started: norm_market
+  Evidence-->>-Workflow: node.succeeded: norm_market
+  Workflow->>+Evidence: node.started: norm_news
+  Evidence-->>-Workflow: node.succeeded: norm_news
+  Workflow->>+Evidence: node.started: norm_sentiment
+  Evidence-->>-Workflow: node.succeeded: norm_sentiment
+  Workflow->>+Evidence: node.started: ratios
+  Evidence-->>-Workflow: node.succeeded: ratios
+  Workflow->>+Evidence: node.started: technical
+  Evidence-->>-Workflow: node.succeeded: technical
+  Workflow->>+Workflow: node.started: evidence_join
+  Workflow-->>-Workflow: node.succeeded: evidence_join
+  Workflow->>+Evidence: node.started: time_guard
+  Evidence-->>-Workflow: node.succeeded: time_guard
+  Workflow->>+Model: node.started: fundamental_analyst
+  Model-->>-Workflow: node.succeeded: fundamental_analyst
+  Workflow->>+Evidence: node.started: market_analyst
+  Evidence-->>-Workflow: node.succeeded: market_analyst
+  Workflow->>+Evidence: node.started: news_analyst
+  Evidence-->>-Workflow: node.succeeded: news_analyst
+  Workflow->>+Evidence: node.started: sentiment_analyst
+  Evidence-->>-Workflow: node.succeeded: sentiment_analyst
+  Workflow->>+Model: node.started: bear
+  Model-->>-Workflow: node.succeeded: bear
+  Workflow->>+Model: node.started: bull
+  Model-->>-Workflow: node.succeeded: bull
+  Workflow->>+Model: node.started: research
+  Model-->>-Workflow: node.succeeded: research
+  Workflow->>+Model: node.started: debate
+  Note over Workflow,Model: node.loop_iteration: debate
+  Model-->>-Workflow: node.succeeded: debate
+  Workflow->>+Model: node.started: proposal
+  Note over Workflow,API: worker crash; latest checkpoint stays durable
+  Note over API,Workflow: resume from checkpoint
+  Workflow->>+Model: node.started: proposal
+  Model-->>-Workflow: node.succeeded: proposal
+  Workflow->>+Model: node.started: aggressive
+  Model-->>-Workflow: node.succeeded: aggressive
+  Workflow->>+Model: node.started: balanced
+  Model-->>-Workflow: node.succeeded: balanced
+  Workflow->>+Model: node.started: conservative
+  Model-->>-Workflow: node.succeeded: conservative
+  Workflow->>+Model: node.started: risk_join
+  Model-->>-Workflow: node.succeeded: risk_join
+  Workflow->>+Model: node.started: decision
+  Model-->>-Workflow: node.succeeded: decision
+  Workflow->>+Report: node.started: report
+  Report-->>-Workflow: node.succeeded: report
+  Workflow->>+Report: node.started: end
+  Report-->>-Workflow: node.succeeded: end
+  Workflow-->>API: final event
+  API-->>GUI: SSE update
+  GUI-->>User: report and lineage

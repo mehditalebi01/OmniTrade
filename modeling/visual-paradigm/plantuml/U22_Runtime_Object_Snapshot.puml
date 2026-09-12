@@ -1,0 +1,24 @@
+@startuml
+title Supplement 22 - Object diagram: one paused analysis snapshot
+skinparam shadowing false
+skinparam linetype ortho
+skinparam componentStyle rectangle
+left to right direction
+rectangle "user17: User\nid = user-17\nowns run/profile/workflow" as u #FFFFFF
+rectangle "activeProfile: UserProfile\ndefault model = bedrock/claude\nrisk profile = balanced" as p #FFFFFF
+rectangle "runPolicy: InvestorPolicy\nmaxLoss = 12%\nmaxPosition = 20%\nexcluded = tobacco" as ip #FFFFFF
+rectangle "workflowV7: WorkflowVersion\nversion = 7\nimmutable content hash" as wv #FFFFFF
+rectangle "nvdaRun: Run\nstatus = PAUSED\nticker = NVDA\ntrace_id = ..." as r #FFFFFF
+rectangle "checkpoint84: Checkpoint\nsequence = 84\ncompleted outputs retained\nloop state retained" as cp #FFFFFF
+rectangle "marketAgentRun: NodeRun\nstatus = SUCCEEDED\nattempt = 1\noutput hash = ..." as nr #FFFFFF
+rectangle "pauseEvent84: RunEvent\ntype = run.paused\nmonotonic sequence = 84" as ev #FFFFFF
+rectangle "decisionReport: Report\nnot yet available\nrequires SUCCEEDED/DEGRADED" as rep #FFFFFF
+u --> p : 1 owns
+p --> ip : 1 contains
+ip --> r : deep-copied at run creation
+wv --> r : snapshotted version
+r --> cp : latest 1
+cp --> nr : restores state
+nr --> ev : produces ordered events
+cp ..> rep : resume continues before report
+@enduml

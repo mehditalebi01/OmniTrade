@@ -1,0 +1,36 @@
+@startuml
+title OmniTrade AI - UML composite structure of WorkflowRuntime
+left to right direction
+skinparam shadowing false
+skinparam linetype ortho
+skinparam componentStyle uml2
+component "runtime:WorkflowRuntime" as Runtime {
+  portin "runTask" as In
+  portout "runResult" as Out
+  component "validator:WorkflowValidator" as Validator
+  component "planner:ReadinessResolver" as Planner
+  component "dispatcher:NodeDispatcher" as Dispatcher
+  component "policy:FailureController" as Policy
+  component "checkpoint:CheckpointWriter" as Checkpoint
+  component "eventer:EventPublisher" as Eventer
+  In --> Validator : WorkflowTask
+  Validator --> Planner : accepted graph
+  Planner --> Dispatcher : NodeTask batch
+  Dispatcher --> Policy : NodeResult batch
+  Policy --> Checkpoint : stable state
+  Checkpoint --> Planner : restored / next wave
+  Checkpoint --> Eventer : checkpoint event
+  Policy --> Eventer : node/run event
+  Eventer --> Out : RunResult + events
+}
+interface "IEvidence" as IEvidence
+interface "IModel" as IModel
+interface "IReport" as IReport
+interface "IRepository" as IRepository
+interface "IControlProbe" as IControl
+Dispatcher ..> IEvidence : required
+Dispatcher ..> IModel : required
+Dispatcher ..> IReport : required
+Checkpoint ..> IRepository : required
+Policy ..> IControl : required
+@enduml

@@ -1,0 +1,27 @@
+@startuml
+title Figure 3 - XP verification and Continuous Integration pipeline
+skinparam shadowing false
+skinparam linetype ortho
+skinparam componentStyle rectangle
+left to right direction
+rectangle "Story + acceptance\nobservable behavior\ncontract impact" as story #E9EEFF
+rectangle "Lead + reviewer\nsmall change\nshared ownership" as pair #FFFFFF
+rectangle "Unit + contract tests\nvalidator, runtime, providers\nreports and configuration matrix" as unit #FFFFFF
+rectangle "Static checks\nRuff + mypy\nTypeScript checks" as static #FFFFFF
+rectangle "Integration tests\nAPI, storage, events\ncheckpoint recovery" as integration #FFFFFF
+rectangle "Frontend verification\nVitest + production build\nPlaywright smoke path" as frontend #FFFFFF
+rectangle "Container checks\nCompose configuration\nhealth + migration startup" as container #FFFFFF
+rectangle "Integrated baseline\nreview evidence\nnext story feedback" as baseline #E9EEFF
+rectangle "Fast feedback\nUnit or contract failure\nstops the change." as fast #FFFFFF
+rectangle "Deterministic boundary\nRecorded providers + fake models\nremove live-service variance." as deterministic #FFFFFF
+rectangle "Regression control\nConfiguration matrix covers\noptions and provider chains." as regression #FFFFFF
+rectangle "Release evidence\nBuild, containers, migrations,\nand scenario artifacts stay inspectable." as release #FFFFFF
+story --> pair : 
+pair --> unit : 
+unit --> static : 
+static --> integration : 
+integration --> frontend : 
+frontend --> container : 
+container --> baseline : 
+baseline --> story : failed gate returns to the smallest responsible change; green baseline informs the next story
+@enduml

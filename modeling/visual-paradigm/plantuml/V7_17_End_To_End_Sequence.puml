@@ -1,0 +1,65 @@
+@startuml
+title OmniTrade AI - UML sequence from user input to explainable report
+skinparam shadowing false
+actor Analyst
+participant "Web GUI" as GUI
+participant "Public API" as API
+participant "Workflow Runtime" as Runtime
+participant "Evidence Service" as Evidence
+participant "Model Gateway" as Model
+participant "Report Service" as Report
+database "PostgreSQL" as DB
+queue "Event Stream" as Events
+
+Analyst -> GUI : configure ticker, process, providers, models, policy, budgets
+GUI -> API : createRun(configuration)
+API -> API : authenticate, authorize, resolve published version
+API -> Runtime : validate and execute immutable snapshot
+Runtime -> DB : save run and initial state
+Runtime -> Events : run.started
+par five evidence roles
+  Runtime -> Evidence : collect and normalize selected role
+  Evidence --> Runtime : accepted evidence / disclosed degradation
+else other evidence roles
+  Runtime -> Evidence : collect and normalize selected role
+  Evidence --> Runtime : accepted evidence / disclosed degradation
+end
+Runtime -> DB : checkpoint evidence states
+Runtime -> Events : node events + checkpoint
+par selected specialists
+  Runtime -> Model : typed specialist request
+  Model --> Runtime : schema-valid point of view
+else other selected specialists
+  Runtime -> Model : typed specialist request
+  Model --> Runtime : schema-valid point of view
+end
+loop configured research depth (1..4)
+  par opposing cases
+    Runtime -> Model : bull case with cited evidence/counterpoints
+    Model --> Runtime : typed bull case
+  else
+    Runtime -> Model : bear case with cited evidence/counterpoints
+    Model --> Runtime : typed bear case
+  end
+end
+par three risk attitudes
+  Runtime -> Model : aggressive risk view
+  Model --> Runtime : typed view
+else
+  Runtime -> Model : balanced risk view
+  Model --> Runtime : typed view
+else
+  Runtime -> Model : conservative risk view
+  Model --> Runtime : typed view
+end
+Runtime -> Runtime : apply profile limits and validate decision
+Runtime -> Report : executed states + decision + evidence refs
+Report -> DB : load evidence metadata and build claim lineage
+Report -> Report : render JSON / HTML / PDF and hash artifacts
+Report --> Runtime : report identity + lineage completeness
+Runtime -> DB : save terminal state, report, artifacts
+Runtime -> Events : run.completed or run.degraded
+GUI -> API : reconnect events / get owned report and lineage
+API --> GUI : live states + report + artifacts
+GUI --> Analyst : explainable decision support (no order)
+@enduml

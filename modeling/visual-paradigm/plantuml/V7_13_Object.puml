@@ -1,0 +1,42 @@
+@startuml
+title OmniTrade AI - UML object snapshot of one paused run
+skinparam shadowing false
+object "analyst17:User" as User {
+  username = demo
+}
+object "workflowV7:WorkflowVersion" as Version {
+  version = 7
+  contentHash = 8c4...
+}
+object "run42:Run" as Run {
+  ticker = NVDA
+  status = PAUSED
+  traceId = 71a...
+}
+object "checkpoint84:Checkpoint" as Checkpoint {
+  sequence = 84
+  consumedEventIds = 84
+}
+object "marketRun:NodeRun" as Market {
+  status = SUCCEEDED
+  attempt = 1
+}
+object "newsRun:NodeRun" as News {
+  status = DEGRADED
+  attempt = 2
+}
+object "pause84:RunEvent" as Event {
+  type = run.paused
+}
+object "policySnapshot:UserProfile" as Profile {
+  risk = balanced
+  maxLoss = 12%
+}
+User -- Run : owns
+Version -- Run : exact version
+Profile -- Run : copied policy
+Run *-- Checkpoint : latest
+Checkpoint o-- Market : restores
+Checkpoint o-- News : restores
+Run *-- Event : ordered event
+@enduml
